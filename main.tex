@@ -1,0 +1,216 @@
+\documentclass[12pt, a4paper, twoside]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{titlesec}
+\makeatletter
+
+\usepackage[citestyle=numeric, giveninits=true, backend=biber, doi=true, url=true, block=ragged, maxnames=6]{biblatex} % backend=bibtex
+
+\usepackage{microtype}
+\addbibresource{references.bib}
+
+\usepackage[ngerman]{babel}
+\usepackage{csquotes}
+\usepackage{subcaption}
+\usepackage[hidelinks]{hyperref}
+
+\usepackage{acronym}
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+ 
+\usepackage{glossaries}
+\makeglossaries
+\loadglsentries{glossar}
+\usepackage{fancyhdr}
+\setlength{\headheight}{15pt}
+
+% NEXT
+
+\usepackage{blindtext}
+% \usepackage[english]{babel}
+% \usepackage[utf8]{inputenc}
+\usepackage{xfrac} % Brüche im Fließtext
+\usepackage{graphicx} % Grafiken
+\usepackage{xcolor}
+\usepackage{float} % Gleitumgebungen (u.a. [H] für Bilder)
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{listliketab}
+\usepackage{colortbl}
+\usepackage{pdfpages} % für Unterschrift
+
+% Tabellen
+\usepackage{booktabs}
+\usepackage{tabularx} % Tabellen mit Autobreite
+\usepackage{longtable} % Tabellen über mehrere Seiten
+\usepackage{ltablex} % longtable + tabularx
+\usepackage{array} % Spaltenformate
+\usepackage{multirow} % Zellen über mehrere Spalten
+\usepackage{adjustbox} % Verkleinerung/Vergrößerung
+\newcolumntype{P}[1]{>{\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcommand{\vertical}[1]{\begin{tabular}{@{}c@{}}\rotatebox[origin=c]{90}{#1}\end{tabular}}
+\usepackage{makecell} % https://tex.stackexchange.com/a/176780
+
+% Aufzählungs-Listen
+\usepackage{enumitem} % https://tex.stackexchange.com/a/109608
+\setlist{noitemsep} % https://stackoverflow.com/a/1073140
+\setlist[2]{nosep}
+\setlist[3]{nosep}
+\setlist[4]{nosep}
+\setlist[5]{nosep}
+
+\usepackage{textgreek} % https://texblog.org/2012/03/15/greek-letters-in-text-without-changing-to-math-mode/
+
+% \usepackage[acronym]{glossaries}
+\DefineBibliographyStrings{ngerman}{
+   andothers = {{et\,al\adddot}},
+}
+
+\hypersetup{
+    pdftitle={Masterthesis - Generierung von Feedback-Regeln fuer Modelle aus annotierten Musterloesungen},
+    pdfauthor={Michael Mboni},
+    pdfsubject={Masterthesis}
+}
+
+
+% Quelltext
+\usepackage{listings}
+\usepackage{inconsolata}
+\lstset{
+	basicstyle=\small\ttfamily,
+	frame=single,
+	captionpos=b,
+	% numbers=none,
+	numbers=left,
+	numberstyle=\scriptsize,
+	% tabsize=2,
+	% gobble=2,
+	inputpath={ {./content/code/} },
+	upquote=true,
+	showspaces=false,
+	showstringspaces=false
+}
+% https://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings#Encoding_issue
+\lstset{literate=%
+	{ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+	{Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+	{ß}{{\ss}}1
+}
+\renewcommand{\lstlistingname}{Quelltext}
+\renewcommand{\lstlistlistingname}{Quelltextverzeichnis}
+
+% Andere Abkürzungen
+% https://texwelt.de/fragen/15497/leerzeichen-nach-punkt-z-b-nach-z-b-oder-eg-oder-vs-oder
+% https://tex.stackexchange.com/questions/22561/what-is-the-proper-use-of-i-e-backslash-at
+% https://texwelt.de/fragen/1154/was-ist-french-spacing-was-macht-frenchspacing
+\newcommand{\sczb}{z.\,B. }
+\newcommand{\sczbb}{z.\,B.}
+\newcommand{\scdh}{d.\,h. }
+\newcommand{\scua}{u.\,a. }
+\newcommand{\scuaa}{u.\,a.}
+\newcommand{\scog}{o.\,g. }
+\newcommand{\scggf}{ggf. }
+\newcommand{\scvgl}{vgl. }
+\newcommand{\scbzw}{bzw. }
+\newcommand{\scso}{(s.\,o.) }
+\newcommand{\scsoo}{(s.\,o.)}
+\newcommand{\scsu}{(s.\,u.) }
+\newcommand{\scsuu}{(s.\,u.)}
+\newcommand{\scs}{s. }
+\newcommand{\scbspw}{bspw. }
+\newcommand{\etal}{et~al. }
+\newcommand{\scvs}{vs. }
+\newcommand{\sczt}{z.\,T. }
+
+\newcommand{\mono}[1]{\texttt{#1}} %Monofont
+\newcommand{\footurl}[1]{\footnote{\url{#1}, zuletzt aufgerufen am \today}}
+\newcommand{\noemph}[1]{{\let\emph\relax #1}}
+
+\newcommand{\bolditem}[2]{\item \textsf{\textbf{#1}}\newline #2}
+
+% Zum Kürzen des Texts:
+% \renewcommand{\toprule}{\hline}
+% \renewcommand{\midrule}{\hline}
+% \renewcommand{\bottomrule}{\hline}
+\aboverulesep = 0mm
+\belowrulesep = 0mm
+
+
+
+% Stop Imports
+%\linespread{0.4}
+
+\def\whatIsIt{Masterarbeit}
+\def\title{Generierung von Feedback-Regeln für Modelle aus annotierten Musterlösungen}
+\def\fakultaet{Wirtschaftswissenschaften}
+
+\def\author{Michael Vivian Mboni Saha}
+\def\addrLineEins{michael.mboni-saha@stud.uni-due.de}
+\def\matrikelNr{3154361}
+
+\def\location{Campus Essen}
+\def\date{30.03.2024}
+
+\def\betreuer{Dr. Michael Striewe}
+\def\ersterGutachter{Prof. Dr. Michael Goedicke}
+\def\fach{M.Sc. Software and Network Engineering}
+\def\semester{Wintersemester 2023/2024}
+
+
+% Change Font
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault} % Set the default font family to Helvetica
+
+\usepackage{tocloft}
+% to update compile time remove this
+\renewcommand{\numberline}[1]{\@cftbsnum #1.\@cftasnum \space} \makeatother
+
+  
+
+\titleformat{\chapter}[block]
+  {\normalfont\Huge\bfseries}
+  {\thechapter. }
+  {0pt}
+  {\Huge}
+
+\begin{document}
+	\include{title}
+
+	%\frontmatter
+	\tableofcontents
+        \newpage
+        \listoffigures
+        \newpage
+        \listoftables
+
+        \printglossaries
+        \include{acronym}
+	\include{abstract}	
+
+	%\mainmatter
+	\lhead{}
+	\chead{}
+	\pagestyle{fancy}
+
+	\include{content/01_Einleitung}
+        \include{content/02_Hintergrund}
+        \include{content/03_Analyse}
+        \include{content/04_Konzept}
+        \include{content/05_Implementierung}
+        \include{content/06_Evaluation}
+        \include{content/07_Diskussion}
+        \include{content/08_Zusammenfassung}
+        %\include{content/99_Playground}
+	
+	\printbibliography[heading=bibintoc]
+	
+	\appendix
+	\include{appendix}
+	
+	\newpage
+	\include{erklaerung}
+ 
+\end{document}

@@ -1,0 +1,49 @@
+\chapter{Einleitung}
+
+Das erste Kapitel dieser Arbeit befasst sich mit der grundlegenden Motivation und definiert dann das allgemeine Problem, das gelöst werden soll. Es folgt eine Erläuterung der Zielsetzung und zum Schluss wird der Aufbau der Arbeit im Detail beschrieben.
+
+\section{Motivation}
+
+Nach den Prüfungsphasen in Bildungseinrichtungen auf Sekundarstufen und Universitätsniveau manifestiert sich regelmäßig die Herausforderung, der zahlreichen Korrekturaufgaben, welche Lehrer und Dozenten zu bewältigen haben. Diese Aufgabe kann mitunter mühsam und zeitaufwendig sein, insbesondere im Falle einer hohen Anzahl an Prüfungen \cite{aufwendig}. Die Evaluation von Prüfungsleistungen von 20 Prüflingen mag noch als vertretbar erscheinen, doch wie verhält es sich in Lehrveranstaltungen, in denen sich 400 oder gar mehr Studierende beteiligen? Bereits in den 1960er Jahren wurden Bestrebungen unternommen, solche Probleme durch die Entwicklung von \gls{E-Assessment-Systemen} zu lösen \cite{Hollingsworth}.
+
+Heute ist die automatisierte und computerbasierte Bewertung von akademischen Arbeiten weit verbreitet im Hochschulbereich. Diverse Plattformen wie Blackboard \cite{blackboard}, \ac{OPAL} \cite{opal}, und Moodle \cite{moodle} wurden konzipiert, um den Prüfungsprozess zu rationalisieren und vollständig zu automatisieren. Diese Plattformen finden insbesondere in der Beurteilung geschlossener Fragen wie Multiple-Choice-Aufgaben Anwendung, bei denen die Antworten klar und die Bewertung einfach automatisiert werden kann. Die Frage, die sich jedoch stellt, ist: Wie gestaltet sich die Evaluation offener Fragenstellungen in Übungen, wie beispielsweise die Erstellung konzeptioneller Modelle, bei denen Lösungsansätze variieren können, jedoch dennoch korrekt sind?
+
+In der allgemeinen Informatikbildung ist es üblich, Modelle zur Beschreibung der Architektur eines Systems oder abstrakterer Konzepte heranzuziehen. Diese Modelle können in Form von Diagrammen wie \ac{UML}-Klassendiagrammen, Sequenzdiagrammen oder Zustandsdiagrammen präsentiert werden. Bei einer Bewertungsaufgabe, bei der ein Studierender ein Modell auf Grundlage eines gegebenen Textes erstellen soll, sieht sich der Evaluierende oft mit der Herausforderung konfrontiert, das Ergebnis des Studierenden mit der erwarteten Lösung abzugleichen. Diese Form der Beurteilung kann jedoch diverse Schwierigkeiten aufwerfen: 
+
+
+\begin{enumerate}
+    \item Erstens, in der Modellierung existiert keine eindeutige Lösungsstrategie, was die Aufgabe komplexer gestaltet. Die Resultate jedes Studierenden müssen wiederholt mit der vorgeschlagenen Lösung verglichen werden, um sicherzustellen, dass die Arbeit alle wesentlichen Komponenten der Lösung berücksichtigt.
+
+    \item Das zweite Hindernis in diesem Evaluationsmodell ist die inhärente Subjektivität. Einige Studierende könnten vollständig funktionierende Modelle entwickeln, die jedoch von der erwarteten Lösung abweichen, und könnten dadurch benachteiligt werden. Dies kann zu einer gewissen Starre im Unterricht führen und verhindern, dass Studierende originelle Ansätze verfolgen.
+
+    \item Eine weitere bedeutende Herausforderung dieses Evaluationsmodells ist die potenzielle Subjektivität der Evaluierenden. Jeder Korrektor könnte eine individuelle Auslegung dessen haben, was als korrekte Antwort betrachtet wird, was zu Unstimmigkeiten in der Benotung und einer ungleichen Verteilung von Noten zwischen den Arbeiten der Studierenden führen kann. Dies könnte besonders problematisch sein, wenn mehrere Evaluierende dieselben Arbeiten bewerten, da dies zu signifikanten Unterschieden in den vergebenen Noten führen kann.
+
+    \item Zuletzt kann dieses Evaluationsmodell auch beträchtlich zeitaufwendig sein, insbesondere in Lehrveranstaltungen mit einer hohen Anzahl an Studierenden. Ein ausführlicher Abgleich der Studierendenarbeiten mit der Referenzlösung erfordert Zeit und könnte zu Verzögerungen bei der Mitteilung der Ergebnisse an die Studierenden und einer erhöhten Arbeitsbelastung für die Evaluierenden führen.
+\end{enumerate}
+    
+
+In diesem Zusammenhang könnte die Implementierung einer automatisierten Bewertung auf Basis klar definierter und spezifischer Kriterien, die in jeder Lösung berücksichtigt sein müssen, eine optimale Lösung darstellen. Eine automatisierte Evaluierung durch eine computerbasierte Anwendung könnte sämtliche dieser Probleme lösen, indem sie eine rasche, objektive und vorurteilsfreie Bewertung ermöglicht. Die automatische Evaluierung von \gls{konzeptuellen Modellen} ist kein neues Forschungsthema. Umfangreiche Untersuchungen in dieser Richtung wurden bereits durchgeführt, und verschiedene Ansätze wurden entwickelt, um dieses Ziel zu realisieren.
+
+\section{Zielsetzung und Abgrenzung}
+
+Im Rahmen dieser Masterarbeit wird das Ziel verfolgt, ein Verfahren zur (halb-)automatischen Erstellung von Bewertungsregeln auf Basis annotierter Musterlösungen zu entwickeln und in Form einer Softwareanwendung zu prototypisieren. Dieses Verfahren soll dazu beitragen, den Prozess der Regeldefinition zu vereinfachen und zu optimieren.
+
+In der Fakultät für Informatik an der \ac{UDE} wird ein E-Assessment-System namens ``\gls{JACK}'' \cite{jack}  verwendet, um Studierende automatisch bei bestimmten Prüfungen und Übungen zu bewerten. \gls{JACK} ist in der Lage, verschiedene Arten von Aufgaben, sowohl geschlossene als auch offene Fragen, zu bewerten. Unter den verschiedenen Aufgabentypen fallen auch Aufgaben zur Erstellung von \ac{UML}-Diagrammen. \gls{JACK} wurde entwickelt, um die Lösungen der Studierenden zu bewerten und Noten zu vergeben. Bei der Bewertung von \ac{UML}-Diagrammen verwendet \gls{JACK} regelbasierte Ansätze. Die Lehrenden müssen die Regeln definieren, die das Diagramm des Studierenden validieren und ihm eine Note zuweisen. Dieser Prozess der Regeldefinition ist jedoch zeitaufwändig und birgt das Risiko, dass kleine, aber bedeutende Unaufmerksamkeitsfehler und Flüchtigkeitsfehler auftreten.
+
+Das angestrebte Verfahren soll daher Lehrkräften dabei unterstützen, solche Bewertungsregeln effizienter und fehlerminimiert zu erstellen, indem es auf vorhandene annotierte Musterlösungen zurückgreift. Durch die Entwicklung einer Softwareanwendung, die diesen Prozess (halb-)automatisch durchführt, wird das Ziel verfolgt, eine zeit- und ressourcensparende Lösung bereitzustellen. Damit kann die Qualität der automatischen Bewertung von UML-Diagrammen in \gls{JACK} verbessert und der Aufwand für die Lehrkräfte reduziert werden.
+
+\section{Aufbau der Arbeit}
+
+Die vorliegende Arbeit gliedert sich in sechs Hauptkapitel, die jeweils einen spezifischen Aspekt des Forschungsgebiets beleuchten.
+
+Im zweiten Kapitel werden die grundlegenden Konzepte und Informationen eingeführt, die für das Verständnis der Arbeit erforderlich sind. Dies umfasst eine Erklärung der \gls{E-Assessment-Systemen}, konzeptioneller Modelle sowie der automatisierten Bewertung. Darüber hinaus werden verschiedene Ansätze zur automatisierten Bewertung im Detail betrachtet. Ein Überblick über den aktuellen Stand der Forschung auf diesem Gebiet wird ebenfalls gegeben, gefolgt von einer Einführung in das E-Assessment-System \gls{JACK}.
+
+Das dritte Kapitel widmet sich der detaillierten Analyse des zugrunde liegenden Problems. Hier wird der Prozess der Erstellung und Einreichung von Übungen sowie deren Bewertung durch die \gls{JACK}-Plattform erläutert. Die spezifischen Herausforderungen und Probleme, die in dieser Arbeit adressiert werden, werden identifiziert und diskutiert.
+
+Anschließend folgt das Kapitel vier, welches hauptsächlich das Konzept zur Bewältigung der zuvor im vorhergehenden Kapitel definierten Problematik behandelt. In diesem Kapitel wird eine theoretische Herangehensweise zur Problemlösung vorgestellt, und es wird ein methodischer Ansatz zur Problembewältigung skizziert. Die praktische Umsetzbarkeit dieser Lösungsstrategie wird im darauf folgenden Abschnitt ausführlich erörtert.
+
+Das Kapitel fünf beschäftigt sich mit der praktischen Umsetzung der entwickelten Lösung. Hier werden die verwendeten Technologien und der Entwicklungsprozess vorgestellt. Die Gründe für die Auswahl bestimmter Technologien, Herangehensweisen und Implementierungsmethoden werden erläutert. Die Gesamtarchitektur des entwickelten Prototyps wird präsentiert und begründet.
+
+Das sechste Kapitel widmet sich der Bewertung der entwickelten Lösung. Es werden Kriterien definiert, anhand derer der Prototyp bewertet wird. Der Evaluationsprozess wird erläutert, einschließlich der durchgeführten User Studies. Im Kapitel sieben werden die Ergebnisse der Arbeit kritisch diskutiert und interpretiert. Hierbei werden die Implikationen der Ergebnisse auf das Gesamtforschungsgebiet erörtert, eventuelle Limitationen der Arbeit aufgezeigt und mögliche Ansätze für zukünftige Forschung identifiziert.
+
+Abschließend bietet Kapitel sechs eine Zusammenfassung der wichtigsten Erkenntnisse und Ergebnisse dieser Masterarbeit. Es werden auch Perspektiven für die Weiterentwicklung der vorgestellten Lösung sowie die Bereitstellung der vollständigen Dokumentation des entwickelten Tools dargelegt.
