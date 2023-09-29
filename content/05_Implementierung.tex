@@ -54,28 +54,28 @@ manifestieren sich unter anderem in:
 \begin{enumerate}
     \item \textbf{Benutzerfreundlichkeit:} PlantText ist für Einsteiger und erfahrene Modellierer gleichermaßen zugänglich.
 Die Verwendung von textuellen Notationen vereinfacht den Einstieg und reduziert die Lernkurve, da sie natürlicher und
-verständlicher sind als grafische Schnittstellen.
+verständlicher sind als grafische Schnittstellen~\cite{mazanec2012general}.
     \item \textbf{Kollaboration und gemeinsame Nutzung:} PlantText bietet eine eingebettete Kollaborationsplattform, auf
 der mehrere Benutzer simultan an Diagrammen arbeiten können. Dies fördert die Teamarbeit und erlaubt die
-Echtzeit-Erstellung und Überarbeitung von Modellen.
+Echtzeit-Erstellung und Überarbeitung von Modellen~\cite{madanayake2017transforming}.
     \item \textbf{Plattformunabhängigkeit:} Da PlantText webbasiert ist, ist es plattformneutral. Benutzer können von
 jedem Gerät mit Internetzugang auf ihre Modelle zugreifen und sie editieren, ohne Softwareinstallationen durchführen
-zu müssen.
+zu müssen~\cite{planttext}.
     \item \textbf{Erweiterbarkeit:} PlantText unterstützt nicht ausschließlich UML, sondern auch diverse andere
 Modellierungssprachen und Diagrammtypen. Infolgedessen entwickelt sich PlantText zu einem vielseitigen Werkzeug für eine
-Vielzahl von Anwendungsszenarien.
+Vielzahl von Anwendungsszenarien~\cite{planttext}.
 \end{enumerate}
 
 \begin{figure}
     \centering
-    \includegraphics[width=15cm]{images/plantText.png}
+    \includegraphics[width=15cm]{images/plantText}
     \caption{Grafische Benutzeroberfläche von plantText}
     \label{fig:plant-text}
 \end{figure}
 
 Vor der Wahl von PlantText als Instrument für die Entwurfsphase der Anwendung wurden mehrere Modellierungswerkzeuge
 einer eingehenden Prüfung unterzogen. Diese Werkzeuge schlossen namhafte Anwendungen wie Enterprise Architect~\cite{enterarch},
-Astah UML~\cite{astah}, MagicDraw~\cite{magic}, Visual Paradigm~\cite{visual}, Umbrello \cite{umbrello} und Draw.io \cite{draw} ein.
+Astah UML ~\cite{astah}, MagicDraw ~\cite{magic}, Visual Paradigm ~\cite{visual}, Umbrello ~\cite{umbrello} und Draw.io~\cite{draw} ein.
 Eine gemeinsame Eigenschaft dieser Werkzeuge besteht darin, dass sie sich für die rasche Erstellung von Diagrammen
 eignen, was auf ihre intuitive Benutzeroberfläche, leichte Verständlichkeit und Nutzerfreundlichkeit zurückzuführen ist.
 Bedauerlicherweise wiesen sie jedoch einen bedeutenden Mangel auf, der ihre Anwendbarkeit in Bezug auf unsere
@@ -98,10 +98,86 @@ bedeutungsvollere Analyse der erstellten Diagramme. Dies fördert die Genauigkei
 dass die erstellten Diagramme nicht nur als visuelle Darstellungen betrachtet werden, sondern auch als Quellen
 semantischer Informationen dienen können.
 
-\subsection{PlantUML + Nodejs}
+\subsection{PlantUML Parser + Nodejs}
 
+Im vorangegangenen Unterabschnitt wurde die Anwendung PlantText als Instrument zur Erstellung von Diagrammen
+vorgestellt. Es ist jedoch essenziell zu betonen, dass PlantText lediglich die grafische Benutzeroberfläche darstellt,
+da die zugrundeliegende Engine, auf der PlantText basiert, ``Plant-UML''~\cite{plantUML} ist. PlantUML ist ein Open-Source-Tool,
+das von Arnaud Roques entwickelt wurde und erstmals im Jahr 2009 veröffentlicht wurde~\cite{plantUML}. Als Java-Anwendung
+ermöglicht PlantUML, ähnlich wie PlantText, die Modellierung von Diagrammen, wobei die Verwendung durch die Entwicklung
+von PlantText vereinfacht wurde. Alle im vorherigen Abschnitt hervorgehobenen Vorteile der Nutzung von PlantText sind in
+Wirklichkeit Funktionen von PlantUML.
+
+Eine besonders bemerkenswerte Funktion, die in diesem Abschnitt präsentiert und im Folgenden verwendet wird, ist jedoch
+der PlantUML-Parser~\cite{plantUMLParser}. PlantUML ist im Wesentlichen eine Backend-Anwendung, die auf einem Server
+ausgeführt wird. Wenn ein Benutzer ein Modell erstellen und Code in PlantText eingeben möchte, wird dieser Code an einen Server
+übertragen, der ihn analysiert, interpretiert und ein Diagramm mithilfe von Graphviz~\cite{graphViz} generiert. Mit
+Hilfe des PlantUML-Parsers besteht die Möglichkeit, das erzeugte Diagramm in ein Format zu exportieren, das für
+programmatische Anwendungen geeignet ist. Es ist genau diese Funktion, die im weiteren Verlauf dieser Abhandlung
+ausführlich behandelt wird.
+
+Der PlantUML Parser~\cite{plantUMLParser} ist ein Open-Source-Tool,
+mit dem der PlantUML-Code in ein JSON-Format geparst werden kann. Dieses Format kann zur Modellierung verschiedener
+Regelobjekte (wie im Konzept beschrieben~\ref{sec:konzept}) verwendet werden. Da der Parser ausschließlich in einer
+Serverumgebung funktioniert und somit in verschiedenen Java-, Node.js- und Python-Umgebungen verfügbar ist, kann er
+ausschließlich in solchen Umgebungen eingesetzt werden.
+
+Node.js~\cite{Node} wird verwendet, um diese Serverumgebung zu erstellen und eine gewisse Kohärenz zwischen dem
+Frontend und dem Backend sicherzustellen, indem die Verwendung mehrerer Programmiersprachen in einem Projekt vermieden
+wird. Dies trägt zur Effizienz und Integration des Gesamtprojekts bei.
 
 \subsection{Vue.js}
+
+Vue.js, oft auch einfach als Vue bezeichnet, ist  ein leistungsfähiges Open-Source-JavaScript-Framework, konzipiert und
+entwickelt von Evan You~\cite{vue}. Der Ursprung von Vue.js entsprang der Vision, eine zeitgemäße, wandelbare und leicht
+handhabbare Lösung zur Gestaltung von Benutzeroberflächen in Webanwendungen zu schaffen. In seiner Erstveröffentlichung
+im Jahr 2014 initiiert, hat Vue.js eine bemerkenswerte Entfaltung erfahren, die es zu einem herausragenden Akteur unter
+den JavaScript-Frameworks in der Sphäre der Webentwicklung gemacht hat.
+
+In den Zielen und Vorzügen von Vue.js kristallisiert sich eine Antwort auf die Herausforderungen bei der Generierung
+interaktiver Webanwendungen und die Optimierung des Entwicklungsprozesses in ein ergötzliches Narrativ. Wesentliche
+Prämissen und Gewinnpunkte von Vue.js offenbaren sich in folgender Weise:
+
+\begin{enumerate}
+    \item \textbf{Nahtlose Integration:} Vue.js kann ohne Mühe in laufende Projekte integriert werden, unabhängig davon,
+ob es als das Hauptframework oder als eine ergänzende Komponente in Kombination mit anderen Technologien fungiert.
+Hierdurch ergibt sich ein gestaffelter Übergangsprozess und eine vorherrschende Flexibilität in der Architektur von
+Anwendungen.
+    \item \textbf{Komponentenbasierte Architektur:} Vue begünstigt die Einsetzung wiederverwendbarer Komponenten, die
+nicht nur die Strukturierung und Organisation des Quellcodes erleichtern, sondern auch eine präzise Abgrenzung von
+Aufgaben und eine verbesserte Wartbarkeit ermöglichen.
+    \item \textbf{Reaktive Datenbindung:} Vue bietet eine reaktive Datenbindung, die die automatische Synchronisierung
+von Daten und Benutzeroberfläche gestattet. Hierbei erfolgt die Anpassung von Daten an die Benutzeroberfläche und
+umgekehrt ohne das Hinzufügen von Zusatzcode.
+    \item \textbf{Deklarative Rendering:} Die Einbindung deklarativer Syntax in Vue.js vereinfacht die Implementierung
+von Benutzeroberflächenelementen erheblich. Entwickler können die gewünschte Darstellung der Benutzeroberfläche
+beschreiben, während Vue für die entsprechende Logikumsetzung sorgt.
+    \item \textbf{Gemeinschaftsunterstützung:} Vue.js profitiert von einer florierenden und stetig wachsenden
+Entwicklergemeinschaft, die eine Vielzahl von Ressourcen, Bibliotheken und Erweiterungen zur Verfügung stellt. Dies
+vergrößert die Möglichkeiten zur Erweiterung und Anpassung von Vue-Projekten erheblich.
+\end{enumerate}
+
+Die Entscheidung zur Verwendung von Vue.js in einem Projekt kann vielschichtige Vorteile entfalten. Primär ermöglicht
+die komponentenbasierte Architektur eine effiziente Code-Entwicklung, indem wiederverwendbare Komponenten zur
+Strukturierung komplexer Benutzeroberflächen genutzt werden. Dies resultiert in einer verbesserten Wartbarkeit des
+Quellcodes und einer beschleunigten Entwicklungszeit~\cite{wohlgethan2018supportingweb}.
+
+Die reaktive Datenbindung von Vue.js bewirkt eine harmonische Synchronisation von Daten und Benutzeroberfläche, was die
+Schöpfung interaktiver und ansprechender Webanwendungen begünstigt. Die deklarative Syntax von Vue reduziert
+gleichzeitig den Boilerplate-Code und erleichtert die Nachvollziehbarkeit des Quellcodes. Vue.js ist zudem für seine
+aktive Entwicklergemeinschaft und die Verfügbarkeit einer Vielzahl von Erweiterungen und
+Plugins bekannt. Dies erlaubt den Zugriff auf bewährte Lösungen und bewährte Praktiken, was die Effizienz und Qualität
+eines Projekts immens steigern kann~\cite{wohlgethan2018supportingweb}.
+
+Schließlich bietet Vue.js eine attraktive Option für jene, die ein flexibles und gut dokumentiertes Framework suchen,
+das sich reibungslos in bestehende Projekte einfügt. Vue kann schrittweise übernommen und je nach Projektanforderungen
+sowohl als Hauptframework als auch für spezifische Aufgaben verwendet werden ~\cite{wohlgethan2018supportingweb}.
+
+Zusammengefasst gewährleistet Vue.js eine stabile Grundlage für die Gestaltung zeitgemäßer, interaktiver Webanwendungen
+und trägt entscheidend dazu bei, die Effizienz und Qualität von Projekten zu erhöhen. Vor diesem Hintergrund erweist
+sich die Verwendung von Vue.js in diesem Projekt als empfohlen, um die Vorzüge dieses robusten Frameworks voll
+auszuschöpfen. Für die Umsetzung des Konzepts wurden verschiedene andere Werkzeuge und Bibliotheken verwendet, jedoch
+wurden in diesem Abschnitt nur die wichtigsten vorgestellt.
 
 \section{Darlegung des Workflow-Prozesses}
 
