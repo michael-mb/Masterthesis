@@ -228,7 +228,7 @@ In ihrem Artikel ``Automated checks on UML diagrams'' \cite{striewe2011automated
 
 \ac{GReQL}, ähnlich wie SQL, eignet sich gut für die Implementierung regelbasierter Prüfungen von graphenbasierten Daten \cite{striewe2014automated}. Sie ermöglicht die Abfrage von Elementen bestimmter Typen, die Untersuchung ihrer Verbindungen und die Überprüfung ihrer Attribute. Im Kontext von UML-Klassendiagrammen können diese Abfragen das Vorhandensein von Diagrammelementen wie Klassen, Schnittstellen, Eigenschaften, Operationen, Parametern, Assoziationen und Generalisierungen ermitteln und ihre Beziehungen bewerten \cite{striewe2011automated}.
 
-\begin{lstlisting}[caption={[Codebeispiel] Codebeispiel in GReQL}, label=code:GreQL, float=!ht, language=xml]
+\begin{lstlisting}[caption={[Codebeispiel] Codebeispiel in GReQL}, label={lst:greql}, float=!ht, language=xml]
   <rule type="presence" points="5">
     <query>
     from x : V{Class},

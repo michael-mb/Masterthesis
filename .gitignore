@@ -2,5 +2,8 @@
 out/*
 !out/main.pdf
 main.log
-
+main.bbl
+main.blg
+main.glo
+main.ist
 
