@@ -181,4 +181,62 @@ wurden in diesem Abschnitt nur die wichtigsten vorgestellt.
 
 \section{Darlegung des Workflow-Prozesses}
 
+In diesem Abschnitt wird der umfassende Prozess zur Umsetzung des im vorherigen Kapitels skizzierten Konzepts~\ref{sec:konzept}
+detailliert erörtert. Ein zentrales Element dieser Umsetzung ist das derzeit in der Entwicklungsphase befindliche
+Werkzeug, welches unter dem Namen \textbf{``GReQL Converter''} firmiert. Dieses Instrument dient dazu, das zuvor skizzierte
+Konzept in die praktische Anwendung zu überführen. Der GReQL Converter ist eine Webanwendung, die in der Lage ist,
+GReQL Code aus PlantText zu generieren, um damit die Evaluation von UML-Klassendiagrammen zu ermöglichen. Die
+technischen Einzelheiten der Implementierung dieses Tools werden im ausführlichen Abschnitt 5.3 eingehend beleuchtet.
+Der Workflow-Prozess gliedert sich in vier Phasen:
+
+\begin{figure}
+    \centering
+    \includegraphics[width=15cm]{images/workflow}
+    \caption{repräsentatives Bild des Workflows des GReQL-Converters.}
+    \label{fig:workflow}
+\end{figure}
+
+\subsubsection{Phase 1: Modellierung einer Musterlösung mit PlantText}
+
+Nachdem der Lehrer eine Übung in Textform erstellt hat, um die Studierenden zu bewerten, muss er die Musterlösung
+mithilfe von PlantText modellieren. Dabei müssen bestimmte Kriterien beachtet werden, die in der Dokumentation zur 
+Verwendung des GReQL Converters ausführlich beschrieben sind. Diese Kriterien umfassen beispielsweise:
+
+\begin{itemize}
+    \item Enums immer mit $<<enum>>$ zu kennzeichnen.
+    \item Interfaces immer mit $<<interface>>$ zu annotieren.
+    \item Eine spezielle Syntax, die für bestimmte Assoziationen einzuhalten ist.
+\end{itemize}
+
+Nachdem der Code für die Musterlösung generiert wurde, kann der Lehrer zur Phase 2 übergehen.
+
+
+\subsubsection{Phase 2: Verarbeitung der auf dem GReQL Converter erzeugten Regeln}
+
+In der Phase der Regelbearbeitung, die auf die Codegenerierung folgt, hat die Lehrkraft die Aufgabe, den generierten
+Code in den GReQL Converter zu übertragen. In dieser Phase entstehen eine Vielzahl von anpassbaren Regeln. Die Anpassung
+erfolgt gemäß den spezifischen Bewertungskriterien, die die Lehrkraft verfolgt. Es ist hierbei möglich, Änderungen an
+den Regeln vorzunehmen, je nachdem, welche Aspekte der Übung bewertet werden sollen. Weiterhin besteht die Option,
+Regeln hinzuzufügen oder zu entfernen. In der Bearbeitung der Regeln ergibt sich auch die Möglichkeit, individuelles
+Feedback für jede einzelne Regel hinzuzufügen und die Punktzahl für jede Regel erneut zu justieren.
+
+
+\subsubsection{Phase 3: Generierung des GReQL-Codes}
+
+Sobald die Phase der Regelbearbeitung (Phase 2) abgeschlossen ist, kann die Lehrkraft den GReQL-Code auf der Plattform
+generieren. Dabei orientiert sich die Generierung an den zuvor definierten Regeln. Der generierte GReQL-Code kann,
+falls erforderlich, weiterhin angepasst werden.
+
+\subsubsection{Phase 4: Übertragung des GReQL-Codes auf JACK}
+
+Nach Beendigung der Phase 3 kann die Lehrkraft den generierten GReQL-Code auf die JACK-Plattform übertragen. Dies
+erfolgt, nachdem die Übung auf der Plattform erstellt wurde. Anschließend haben die Benutzer die Möglichkeit, ihre
+Übungen einzureichen, woraufhin eine Bewertung mit entsprechendem Feedback erfolgt.
+
+
+Die hier skizzierten Phasen repräsentieren einen essenziellen Schritt in der Umsetzung des im vorherigen Kapitel
+skizzierten Ansatzes zur Bewertung von UML-Diagrammen. Die ausführliche Dokumentation dieses Prozesses gewährt einen
+umfassenden Einblick in die technischen Aspekte des Projekts und erlaubt eine transparente Darstellung des
+Implementierungsprozesses.
+
 \section{Einrichtung und Entwicklung des ``GReQL Converter''}
