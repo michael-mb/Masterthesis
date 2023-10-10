@@ -29,4 +29,72 @@ erheblich vereinfachte~\ref{lst:bakcend}. Dies ermöglichte einen reibungslosen 
 der Erstellung des Grunddesigns der Anwendung.
 
 \subsection{Erstellung des Grunddesigns der Anwendung}\label{subsec:erstellung-des-grunddesigns-der-anwendung}
-lorem ipsum.
+
+Um die Ziele des GReQL Converters zu erreichen, ist es von entscheidender Bedeutung, den Benutzern eine elegante,
+intuitive und benutzerfreundliche grafische Benutzeroberfläche zur Verfügung zu stellen. Die möglichen Aktionen müssen
+auf den ersten Blick leicht erkennbar sein, um das Verständnis zu fördern und dem Benutzer eine schnelle und effiziente
+Arbeit zu ermöglichen~\cite{guntupalli2008user}. Die Seite ``Class Converter'' stellt die Benutzeroberfläche dar, auf
+der der Benutzer seinen PlantText-Code in GReQL-Code umwandeln kann. Diese Seite ist in drei Hauptabschnitte unterteilt:
+
+\begin{figure}
+    \centering
+    \includegraphics[width=16cm]{images/board}
+    \caption{Dashboard im Überblick}
+    \label{fig:dashboard}
+\end{figure}
+
+\subsubsection{Teil 1: Code editor}
+
+Dieser Abschnitt der grafischen Benutzeroberfläche ist für die Eingabe des PlantUML-Codes durch den Benutzer vorgesehen.
+Nachdem der Benutzer die Musterlösung in PlantText modelliert hat, muss er den generierten Code kopieren und in den
+Editor einfügen, der durch die Ziffer 1 (siehe~\ref{fig:dashboard}) gekennzeichnet ist. Darüber hinaus hat der Benutzer die
+Möglichkeit, Beispielscodes auszuwählen, wie dies in PlantText der Fall ist und in der Abbildung unter Ziffer 2 (siehe~\ref{fig:dashboard})
+dargestellt ist. Da der geschriebene Code jedoch der in der Dokumentation definierten Struktur entsprechen muss, sind
+diese Beispielscodes für den Benutzer nützlich, da sie funktionierende Codebeispiele liefern, von denen er sich
+inspirieren lassen und seinen eigenen Code schreiben kann, um die Plattform zu testen. Schließlich ermöglicht der
+Button ``Parse Code'' (Ziffer 3 - siehe~\ref{fig:dashboard}) das Extrahieren der Regelobjekte aus dem Code, was uns zum
+Teil 2 führt.
+
+\subsubsection{Teil 2: Derived Rules}
+
+Nachdem der Benutzer auf den Button ``Parse Code'' geklickt hat, wird eine Reihe von Regelobjekten
+(Nummer 4 - siehe~\ref{fig:dashboard}) aus dem im Code-Editor vorhandenen Code generiert. Diese Regeln werden durch ein
+Symbol und einen Titel dargestellt, was es ermöglicht, sie schnell zu unterscheiden und zu identifizieren. Ganz rechts
+neben dem Regelobjekt befindet sich ein Ausrufezeichen, das tatsächlich ein Button ist (Nummer 6 - siehe~\ref{fig:dashboard}).
+Wenn auf diesen Button geklickt wird, öffnet sich eine Dokumentation, die erklärt, was die Regel ist und wie sie
+verwendet wird. Wenn der Benutzer auf die Regel klickt (Nummer 5 - siehe ~\ref{fig:dashboard}), öffnet sich ein Menü,
+das es ihm ermöglicht, die in der Regel vorhandenen Informationen nach Belieben zu ändern (siehe~\ref{fig:rule_exemple}),
+wodurch der GReQL Converter zu einem halbautomatischen Werkzeug wird. Diese Informationen variieren je nach Art der Regel
+und den für die Generierung des GReQL-Codes erforderlichen Informationen.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=16cm]{images/derived_rule}
+    \caption{Beispiel eines Regelobjekts}
+    \label{fig:rule_exemple}
+\end{figure}
+
+Dann gibt es der Button ``Add Rule'' (Nummer 7 - siehe~\ref{fig:dashboard}), die es dem Benutzer ermöglicht,
+zusätzliche Regeln hinzuzufügen. Nachdem die Konfiguration und die Änderungen abgeschlossen sind, kann der Benutzer den
+GReQL-Code generieren, indem er auf den Button ``Generate GReQL Code'' klickt (Nummer 8 - siehe~\ref{fig:dashboard}).
+Der GReQL-Code wird aus den zuvor vom Benutzer konfigurierten Regelobjekten generiert.
+
+\subsubsection{Teil 3: GReQL Editor}
+
+Genau wie der erste Abschnitt ist dieser Bereich auch ein Code-Editor, jedoch für XML, da der GReQL-Code im XMI-Format
+vorliegt (das auf XML basiert). Dieser Editor (Nummer 9 - siehe~\ref{fig:dashboard}) ermöglicht es erfahrenen
+Benutzern, die bereits Erfahrung mit GReQL haben, detaillierte und fortgeschrittene Änderungen am generierten Code
+vorzunehmen. Auf diese Weise können sie die Abfragen verbessern und spezifizieren, wenn sie sie zu allgemein finden,
+oder sie einfach anpassen, je nachdem, was sie im UML-Diagramm bewerten möchten.
+
+Diese drei verschiedenen Teile bilden das grundlegende Design des GReQL Converters. Es gibt auch andere Seiten wie die
+Dokumentation oder die Startseite, die nicht erwähnt wurden, da sie in der weiteren Entwicklung keine wesentliche Rolle
+spielen. Dieses Design bietet jedoch die Möglichkeit zur Erweiterung, um die Hinzufügung weiterer Seiten und sogar
+weiterer Parser zu erleichtern. Der nächste Abschnitt konzentriert sich auf den Prozess der Extraktion von Regelobjekten
+aus dem zuvor geparsten Code.
+
+\subsection{Regel-Extraktionsprozess}\label{subsec:regel-extraktionsprozess}
+todo - write something here
+
+\subsection{Umwandlung der Regel-Objekte in GReQL-Code}\label{subsec:umwandlung-der-regel-objekte-in-greql-code}
+todo - write something here
