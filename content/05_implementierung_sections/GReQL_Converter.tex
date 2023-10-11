@@ -1,6 +1,6 @@
-\section{Einrichtung und Entwicklung des ``GReQL Converter''}\label{sec:greql-converter}
+\section{Einrichtung und Entwicklung des ``\gls{GReQL Converter}''}\label{sec:greql-converter}
 
-Der GReQL Converter stellt eine Webanwendung dar, die es ermöglicht, GReQL-Regeln aus einem UML-Klassendiagramm zu
+Der \gls{GReQL Converter} stellt eine Webanwendung dar, die es ermöglicht, GReQL-Regeln aus einem UML-Klassendiagramm zu
 extrahieren, das mithilfe von PlantText erstellt wurde. Diese extrahierten Regeln dienen anschließend der Bewertung
 von UML-Klassendiagrammen auf der JACK-Plattform. Die Realisierung dieser Anwendung erfolgte mit dem Vue.js-Framework
 im Frontend und Node.js im Backend, wie in fig-~\ref{fig:infrastructure} veranschaulicht. In diesem Kapitel wird der
@@ -30,7 +30,7 @@ der Erstellung des Grunddesigns der Anwendung.
 
 \subsection{Erstellung des Grunddesigns der Anwendung}\label{subsec:erstellung-des-grunddesigns-der-anwendung}
 
-Um die Ziele des GReQL Converters zu erreichen, ist es von entscheidender Bedeutung, den Benutzern eine elegante,
+Um die Ziele des \gls{GReQL Converter}s zu erreichen, ist es von entscheidender Bedeutung, den Benutzern eine elegante,
 intuitive und benutzerfreundliche grafische Benutzeroberfläche zur Verfügung zu stellen. Die möglichen Aktionen müssen
 auf den ersten Blick leicht erkennbar sein, um das Verständnis zu fördern und dem Benutzer eine schnelle und effiziente
 Arbeit zu ermöglichen~\cite{guntupalli2008user}. Die Seite ``Class Converter'' stellt die Benutzeroberfläche dar, auf
@@ -64,7 +64,7 @@ neben dem Regelobjekt befindet sich ein Ausrufezeichen, das tatsächlich ein But
 Wenn auf diesen Button geklickt wird, öffnet sich eine Dokumentation, die erklärt, was die Regel ist und wie sie
 verwendet wird. Wenn der Benutzer auf die Regel klickt (Nummer 5 - siehe ~\ref{fig:dashboard}), öffnet sich ein Menü,
 das es ihm ermöglicht, die in der Regel vorhandenen Informationen nach Belieben zu ändern (siehe~\ref{fig:rule_exemple}),
-wodurch der GReQL Converter zu einem halbautomatischen Werkzeug wird. Diese Informationen variieren je nach Art der Regel
+wodurch der \gls{GReQL Converter} zu einem halbautomatischen Werkzeug wird. Diese Informationen variieren je nach Art der Regel
 und den für die Generierung des GReQL-Codes erforderlichen Informationen.
 
 \begin{figure}[h]
@@ -87,7 +87,7 @@ Benutzern, die bereits Erfahrung mit GReQL haben, detaillierte und fortgeschritt
 vorzunehmen. Auf diese Weise können sie die Abfragen verbessern und spezifizieren, wenn sie sie zu allgemein finden,
 oder sie einfach anpassen, je nachdem, was sie im UML-Diagramm bewerten möchten.
 
-Diese drei verschiedenen Teile bilden das grundlegende Design des GReQL Converters. Es gibt auch andere Seiten wie die
+Diese drei verschiedenen Teile bilden das grundlegende Design des \gls{GReQL Converter}s. Es gibt auch andere Seiten wie die
 Dokumentation oder die Startseite, die nicht erwähnt wurden, da sie in der weiteren Entwicklung keine wesentliche Rolle
 spielen. Dieses Design bietet jedoch die Möglichkeit zur Erweiterung, um die Hinzufügung weiterer Seiten und sogar
 weiterer Parser zu erleichtern. Der nächste Abschnitt konzentriert sich auf den Prozess der Extraktion von Regelobjekten
@@ -130,7 +130,7 @@ dieser Assoziation im Diagramm nicht spezifiziert sind.
 \end{enumerate}
 
 
-Dies ist eine Darstellung des PlantText-Codes. Sobald dieser Code im GReQL Converter vorliegt und der Benutzer auf
+Dies ist eine Darstellung des PlantText-Codes. Sobald dieser Code im \gls{GReQL Converter} vorliegt und der Benutzer auf
 ``Parse Code'' klickt (Nummer 5 siehe~\ref{fig:dashboard}), wird dieser Code über das HTTP-Protokoll an den
 Node.js-Server gesendet. Der Server ist dafür verantwortlich, den Code zu analysieren, parsen und ein JSON-Objekt
 zurückzugeben, ähnlich dem unten dargestellten:
@@ -201,7 +201,75 @@ wurde.}, label={lst:parsed-json}, language=text]
   }
 ]
 \end{lstlisting}
-todo - json to rules objects
+
+Nach Erhalt des JSON wird der Regelgenerierungsprozess gestartet. Basierend auf dem JSON kann für jedes Element eine
+zugehörige Regel identifiziert werden. Zum Beispiel, um eine Generalisierung (Vererbung) zwischen zwei Klassen zu
+erkennen, reicht es aus, ein Objekt aus dem JSON (hier als ``elem'' bezeichnet) zu betrachten und zu überprüfen, ob
+folgende Bedingung erfüllt ist:
+
+\begin{lstlisting}[caption={Evaluationsbedingung für eine Generalisierung}, label={lst:condition-check}, language=javascript]
+elem.leftArrowHead.includes("<|") &&
+elem.leftArrowBody.includes("-") &&
+elem.rightArrowBody.includes("-")
+\end{lstlisting}
+
+Dies gilt auch für alle anderen Regeln, die anhand des generierten JSON identifiziert werden können. Einige
+UML-Feinheiten werden jedoch nicht vom Parser erkannt, was in einem späteren Abschnitt erläutert wird. Bei der
+Entwicklung des GReQL Converters wurden eine Reihe von Regeln definiert, darunter:
+
+\subsubsection{Class definition}
+Diese Regel hat zum Ziel, die Anwesenheit oder Abwesenheit einer Klasse in einem UML-Diagramm zu bestimmen. Darüber
+hinaus ermöglicht sie die Extraktion verschiedener Merkmale dieser Klasse. Mit Hilfe dieser Regel können Informationen
+wie die Abstraktion der Klasse, ihre Interface-Natur, die Methoden (einschließlich der Parameter und des Rückgabetyps),
+die Attribute und ihre Typen extrahiert werden (siehe~\ref{lst:rules_def}). Nach Extraktion dieser Informationen wird
+ein entsprechendes JSON-Objekt erstellt und einer Liste von Objekten hinzugefügt.
+
+\subsubsection{Enum definition}
+Das Ziel dieser Regel besteht darin, Enumerationen in einem UML-Diagramm zu identifizieren. Nachdem eine Enumeration
+ordnungsgemäß identifiziert wurde, geht es darum, alle verschiedenen Attribute zu identifizieren, die sie zusammensetzen,
+was ebenfalls in dieser Regel durchgeführt wird (siehe~\ref{lst:rules_def}). Nach dieser Identifizierung wird ein
+entsprechendes JSON-Objekt erstellt und der Liste von Objekten hinzugefügt.
+
+\subsubsection{Generalization}
+Diese Regel dient dazu, die verschiedenen Vererbungsbeziehungen zwischen Klassen und Schnittstellen zu definieren.
+Sie wird erstellt, wenn eine Klasse von einer anderen erbt oder eine Schnittstelle implementiert. Die Details dieser
+Beziehung werden erkannt, und ein JSON-Objekt wird generiert und zu einer Objektliste hinzugefügt (siehe~\ref{lst:rules_def}).
+
+\subsubsection{Simple Association}
+Diese Regel zielt darauf ab, die Assoziationsbeziehungen zwischen Klassen mit ihren jeweiligen Vielfachen zu definieren.
+Wenn eine Assoziation erkannt wird, werden die Klassennamen und die Vielfachen in einem JSON-Objekt gespeichert, das
+anschließend zu einer Objektliste hinzugefügt wird (siehe~\ref{lst:rules_def}).
+
+\subsubsection{Composition und Aggregation}
+Diese beiden Regeln dienen dazu, die verschiedenen Compositions- und Aggregationsbeziehungen im UML-Diagramm zu
+identifizieren und zu definieren. Das generierte Objekt enthält auch Multiplizitäten, die bei der Generierung von
+GReQL-Code wichtig sind. Dieses Objekt wird dann zu einer Liste von Objekten hinzugefügt (siehe~\ref{lst:rules_def}).
+
+\subsubsection{Association Class}
+Diese Regel ermöglicht es, die Beziehung von Assoziationsklassen zu identifizieren und zu definieren. Obwohl sie in den
+meisten UML-Diagrammen während der Modellierung selten verwendet wird, spielt sie dennoch bei der Bewertung eine
+wichtige Rolle. Das generierte JSON-Objekt enthält im Wesentlichen Informationen zur zugehörigen Klasse und nicht direkt
+zur Beziehung (siehe~\ref{lst:rules_def}).
+
+\subsubsection{Nomination Consistency (optional)}
+Diese Regel dient dazu, festzustellen, ob das zu bewertende Diagramm eine Konsistenz bei der Benennung der verschiedenen
+Attribute aufweist. Zum Beispiel gilt es als schlechte Praxis, Attribute gleichzeitig mit Groß- und Kleinbuchstaben zu
+benennen~\cite{albert2003implementing}. Ein JSON-Objekt wird generiert und zu einer Liste von Objekten hinzugefügt.
+Diese Regel ist optional, was bedeutet, dass sie zu den Regeln gehört, die vom Lehrer selbst hinzugefügt werden müssen.
+Sie wird also nicht automatisch generiert (siehe~\ref{lst:rules_def}).
+
+\subsubsection{Count Methods (optional)}
+Diese Regel ermöglicht es, die Anzahl der im UML-Diagramm vorhandenen Methoden zu definieren. Der Lehrer muss als
+Parameter die genaue Anzahl der Methoden angeben, die im UML-Diagramm des Schülers vorhanden sein müssen.
+Ein JSON-Objekt wird generiert und zu einer Liste von Objekten hinzugefügt. Diese Regel ist optional, was bedeutet,
+dass sie zu den Regeln gehört, die vom Lehrer selbst hinzugefügt werden müssen. Sie wird also nicht automatisch
+generiert (siehe~\ref{lst:rules_def}).
+
+\subsubsection{Test Association}
+Diese Regel dient einfach dazu, festzustellen, ob es eine Beziehung zwischen zwei Klassen gibt. Ein JSON-Objekt wird
+generiert und zu einer Liste von Objekten hinzugefügt (siehe~\ref{lst:rules_def}).
+
+..todo -> komm noch
 
 \subsection{Umwandlung der Regel-Objekte in GReQL-Code}\label{subsec:umwandlung-der-regel-objekte-in-greql-code}
 todo - write something here

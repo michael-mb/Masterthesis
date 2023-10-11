@@ -183,8 +183,8 @@ wurden in diesem Abschnitt nur die wichtigsten vorgestellt.
 
 In diesem Abschnitt wird der umfassende Prozess zur Umsetzung des im vorherigen Kapitels skizzierten Konzepts~\ref{sec:konzept}
 detailliert erörtert. Ein zentrales Element dieser Umsetzung ist das derzeit in der Entwicklungsphase befindliche
-Werkzeug, welches unter dem Namen \textbf{``GReQL Converter''} firmiert. Dieses Instrument dient dazu, das zuvor skizzierte
-Konzept in die praktische Anwendung zu überführen. Der GReQL Converter ist eine Webanwendung, die in der Lage ist,
+Werkzeug, welches unter dem Namen \textbf{``\gls{GReQL Converter}''} firmiert. Dieses Instrument dient dazu, das zuvor skizzierte
+Konzept in die praktische Anwendung zu überführen. Der \gls{GReQL Converter} ist eine Webanwendung, die in der Lage ist,
 GReQL Code aus PlantText zu generieren, um damit die Evaluation von UML-Klassendiagrammen zu ermöglichen. Die
 technischen Einzelheiten der Implementierung dieses Tools werden im ausführlichen Abschnitt 5.3 eingehend beleuchtet.
 Der Workflow-Prozess gliedert sich in vier Phasen:
@@ -197,7 +197,7 @@ Der Workflow-Prozess gliedert sich in vier Phasen:
         \textbf{Darstellung der Workflowphasen} \\
         \midrule
         Phase 1: Modellierung einer Musterlösung mit PlantText \\
-        Phase 2: Verarbeitung der auf dem GReQL Converter erzeugten Regeln \\
+        Phase 2: Verarbeitung der auf dem \gls{GReQL Converter} erzeugten Regeln \\
         Phase 3: Generierung des GReQL-Codes \\
         Phase 4: Übertragung des GReQL-Codes auf JACK \\
         \bottomrule
@@ -215,7 +215,7 @@ Der Workflow-Prozess gliedert sich in vier Phasen:
 
 Nachdem der Lehrer eine Übung in Textform erstellt hat, um die Studierenden zu bewerten, muss er die Musterlösung
 mithilfe von PlantText modellieren. Dabei müssen bestimmte Kriterien beachtet werden, die in der Dokumentation zur 
-Verwendung des GReQL Converters ausführlich beschrieben sind. Diese Kriterien umfassen beispielsweise:
+Verwendung des \gls{GReQL Converter}s ausführlich beschrieben sind. Diese Kriterien umfassen beispielsweise:
 
 \begin{itemize}
     \item Enums immer mit $<<enum>>$ zu kennzeichnen.
@@ -226,10 +226,10 @@ Verwendung des GReQL Converters ausführlich beschrieben sind. Diese Kriterien u
 Nachdem der Code für die Musterlösung generiert wurde, kann der Lehrer zur Phase 2 übergehen.
 
 
-\subsubsection{Phase 2: Verarbeitung der auf dem GReQL Converter erzeugten Regeln}
+\subsubsection{Phase 2: Verarbeitung der auf dem \gls{GReQL Converter} erzeugten Regeln}
 
 In der Phase der Regelbearbeitung, die auf die Codegenerierung folgt, hat die Lehrkraft die Aufgabe, den generierten
-Code in den GReQL Converter zu übertragen. In dieser Phase entstehen eine Vielzahl von anpassbaren Regeln. Die Anpassung
+Code in den \gls{GReQL Converter} zu übertragen. In dieser Phase entstehen eine Vielzahl von anpassbaren Regeln. Die Anpassung
 erfolgt gemäß den spezifischen Bewertungskriterien, die die Lehrkraft verfolgt. Es ist hierbei möglich, Änderungen an
 den Regeln vorzunehmen, je nachdem, welche Aspekte der Übung bewertet werden sollen. Weiterhin besteht die Option,
 Regeln hinzuzufügen oder zu entfernen. In der Bearbeitung der Regeln ergibt sich auch die Möglichkeit, individuelles
@@ -244,7 +244,7 @@ falls erforderlich, weiterhin angepasst werden.
 
 Dieser Bearbeitungsschritt ist nur dann sinnvoll, wenn der Lehrer bereits über Kenntnisse in GReQL zur Generierung von
 Regeln für Klassendiagramme verfügt. Dies ermöglicht es ihm, einige Details des Codes zu verfeinern. Der Zweck des
-GReQL Converters ist es, den GReQL-Code zu generieren, der am besten auf die Erwartungen der Lehrkraft eingeht, so dass
+\gls{GReQL Converter}s ist es, den GReQL-Code zu generieren, der am besten auf die Erwartungen der Lehrkraft eingeht, so dass
 dieser Änderungsschritt einfach übersprungen wird. Es ist jedoch möglich, dass dieser Schritt zu Beginn noch notwendig
 ist.
 
