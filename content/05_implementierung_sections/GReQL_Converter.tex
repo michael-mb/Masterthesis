@@ -94,7 +94,114 @@ weiterer Parser zu erleichtern. Der nächste Abschnitt konzentriert sich auf den
 aus dem zuvor geparsten Code.
 
 \subsection{Regel-Extraktionsprozess}\label{subsec:regel-extraktionsprozess}
-todo - write something here
+
+
+Um den Extraktionsprozess, der in diesem Kapitel beschrieben wird, einzuführen, wird mit einem Beispiel aus der
+Modellierung in PlantText angefangen. Die Schritte bis zur Erstellung der Regeln werden verfolgt. Hierzu wird der
+folgende PlantText-Code verwendet, der ein UML-Diagramm modelliert (siehe~\ref{fig:code-uml}).
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=16cm]{images/code-uml}
+    \caption{Beispiel eines Regelobjekts}
+    \label{fig:code-uml}
+\end{figure}
+
+Das Diagramm enthält vier Klassen: ClassA, ClassB, ClassC und ClassD\@. ClassA hat drei Elemente: ein privates Attribut
+namens ``Windows'' vom Typ Integer (Int), ein öffentliches Attribut namens ``Time'' vom Typ Date und eine öffentliche
+Methode namens ``Lock'' ohne Parameter und mit dem Rückgabetyp ``void''. ClassB und ClassC sind leere Klassen ohne
+definierte Attribute oder Methoden. ClassD ist ebenfalls eine leere Klasse. Im Diagramm sind verschiedene Beziehungen
+zwischen diesen Klassen dargestellt:
+
+\begin{enumerate}
+    \item Es gibt eine Assoziationsbeziehung zwischen ClassA und ClassB mit einer Multiplizität von ``1..2'' auf der
+Seite von ClassA und einer Multiplizität von ``*'' auf der Seite von ClassB, was bedeutet, dass eine Instanz von ClassA
+mit 1 bis 2 Instanzen von ClassB verknüpft ist.
+    \item Es besteht eine Kompositionsbeziehung zwischen ClassA und ClassC, die durch ein Rautensymbol auf der Seite von
+ClassA gekennzeichnet ist, mit einer Multiplizität von ``*'' auf der Seite von ClassC. Diese Komposition zeigt an, dass
+ClassA eine Sammlung von Instanzen von ClassC besitzt und dass diese Instanzen von ClassC von den Instanzen von ClassA
+verwaltet werden.
+    \item Eine Vererbungsbeziehung (oder Generalisierung) ist zwischen ClassB und ClassC etabliert, gekennzeichnet durch
+einen Pfeil, der von ClassC auf ClassB zeigt, mit einer gestrichelten Linie. Dies bedeutet, dass ClassC eine Unterklasse
+von ClassB ist, was auf eine Vererbungsbeziehung hinweist.
+    \item Schließlich gibt es eine einfache Assoziationsbeziehung zwischen ClassC und ClassD, dargestellt durch eine
+durchgehende Linie, was darauf hinweist, dass es eine Verbindung zwischen den beiden Klassen gibt, obwohl die Details
+dieser Assoziation im Diagramm nicht spezifiziert sind.
+\end{enumerate}
+
+
+Dies ist eine Darstellung des PlantText-Codes. Sobald dieser Code im GReQL Converter vorliegt und der Benutzer auf
+``Parse Code'' klickt (Nummer 5 siehe~\ref{fig:dashboard}), wird dieser Code über das HTTP-Protokoll an den
+Node.js-Server gesendet. Der Server ist dafür verantwortlich, den Code zu analysieren, parsen und ein JSON-Objekt
+zurückzugeben, ähnlich dem unten dargestellten:
+\newpage
+\begin{lstlisting}[caption={Snippet des JSON-Codes, der nach dem Parsen des PlantText-Codes durch den Server erhalten
+wurde.}, label={lst:parsed-json}, language=text]
+[
+  {
+    "elements": [
+      {
+        "name": "ClassA",
+        "title": "ClassA",
+        "isAbstract": false,
+        "members": [
+          {
+            "name": "Windows",
+            "isStatic": false,
+            "accessor": "-",
+            "type": "Int"
+          },
+          {
+            "name": "Time",
+            "isStatic": false,
+            "accessor": "+",
+            "type": "Date"
+          },
+          {
+            "name": "Lock",
+            "isStatic": false,
+            "accessor": "+",
+            "returnType": "void",
+            "_arguments": ""
+          }
+        ],
+        ...
+      },
+      ...
+      {
+        "left": "ClassA",
+        "right": "ClassB",
+        "leftType": "Unknown",
+        "rightType": "Unknown",
+        "leftArrowHead": "",
+        "rightArrowHead": "",
+        "leftArrowBody": "-",
+        "rightArrowBody": "-",
+        "leftCardinality": "1..2",
+        "rightCardinality": "*",
+        "label": "",
+        "hidden": false
+      },
+      ...
+      {
+        "left": "ClassC",
+        "right": "ClassD",
+        "leftType": "Unknown",
+        "rightType": "Unknown",
+        "leftArrowHead": "",
+        "rightArrowHead": "",
+        "leftArrowBody": "-",
+        "rightArrowBody": "-",
+        "leftCardinality": "",
+        "rightCardinality": "",
+        "label": "",
+        "hidden": false
+      }
+    ]
+  }
+]
+\end{lstlisting}
+todo - json to rules objects
 
 \subsection{Umwandlung der Regel-Objekte in GReQL-Code}\label{subsec:umwandlung-der-regel-objekte-in-greql-code}
 todo - write something here
