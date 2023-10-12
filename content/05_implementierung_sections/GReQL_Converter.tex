@@ -283,4 +283,114 @@ extrahiert und angepasst. Anschließend folgt der nächste Schritt, bei dem dies
 \end{figure}
 
 \subsection{Umwandlung der Regel-Objekte in GReQL-Code}\label{subsec:umwandlung-der-regel-objekte-in-greql-code}
-todo - write something here
+Nach dem Extrahieren und Anpassen der Regeln ist es nun möglich, GReQL-Code aus der Liste zu generieren, die die Objekte
+darstellt, welche diese Regeln repräsentieren. Tatsächlich hat jede Regel eine entsprechende Vorlage. Obwohl es
+verschiedene Möglichkeiten gibt, GReQL-Code zu schreiben, wurde im Verlauf der Entwicklung nach einer optimierten
+Variante gesucht, die das schnellste und effizienteste Ergebnis mit minimalem Code ermöglicht. Konkret geht es darum,
+den GReQL-Code so anzupassen, dass er perfekt zur zu konvertierenden Regel passt, und ihn dann als Vorlage zu verwenden.
+Zum Beispiel für die Regel, die das Vorhandensein einer Klasse definiert (siehe~\ref{lst:class_def_xml}):
+\\~\\
+\begin{lstlisting}[!h, caption={Class Definition Template \(erster Teil\)}, label={lst:class_def_xml}, language=xml]
+<rule type="${rule.existence}" points="${rule.points}">
+    <query>
+        from x : V{Class} with isDefined(x.name) and
+           stringLevenshteinDistance(x.name,
+           "${rule..}")&lt;3
+           ${abstractCode}
+           report 1 end
+    </query>
+    <feedback>
+        ${rule.feedback}
+    </feedback>
+</rule>
+\end{lstlisting}
+
+Nachdem die Vorlage erhalten wurde, werden die Parameter durch diejenigen aus dem Regelobjekt ersetzt. Auf diese Weise
+wird für jedes Objekt eine entsprechende Regel erstellt. Dieser Prozess kann je nach den verschiedenen Regeln und
+Objekten variieren, bleibt jedoch im Wesentlichen für die meisten Regeln gleich. Am Ende dieses Prozesses wird einen
+gültigen GReQL-Code erhalten, der auf der JACK-Plattform verwendet werden kann.
+\\~\\
+\begin{lstlisting}[!h, caption={Ausschnitt aus dem GReQL-Code, der nach der Konvertierung erhalten wurde}, label={lst:final_xml_convert}, language=xml]
+<checkerrules>
+    <!-- Class Definition -->
+    <rule type="presence" points="0">
+        <query>
+            from x : V{Class} with isDefined(x.name) and
+               stringLevenshteinDistance(x.name,
+               "ClassA")&lt;3
+               and (not x.isAbstract)
+               report 1 end
+        </query>
+        <feedback>
+            Es soll eine Klasse mit der Name
+            ClassA bereitgestellt werden.
+        </feedback>
+    </rule>
+    <!-- Class Definition -->
+    <rule type="presence" points="0">
+        <query>
+            from x : V{Class} with isDefined(x.name) and
+               stringLevenshteinDistance(x.name,
+               "ClassB")&lt;3
+               and (not x.isAbstract)
+               report 1 end
+        </query>
+        <feedback>
+            Es soll eine Klasse mit der Name
+            ClassB bereitgestellt werden.
+        </feedback>
+    </rule>
+    ...
+    <!-- Generalization rule -->
+    <rule type="presence" points="0">
+        <query>
+            from a,b : V{Class}
+                   with
+                      isDefined(a.name) and
+                      a.name="ClassC" and
+                      isDefined(b.name) and
+                      b.name="ClassB" and
+                      a --> V{Generalization} --> b
+                   report 1 end
+        </query>
+        <feedback>
+            Das Diagramm sollte eine Klasse
+            ClassC enthalten, die von einer
+            Oberklasse ClassB erbt.
+        </feedback>
+    </rule>
+    <!-- Test Association Rule -->
+    <rule type="presence" points="0">
+        <query>
+            from x,y : V{Class}
+                           with
+                              isDefined(x.name) and
+                              x.name="ClassC" and
+                              isDefined(y.name) and
+                              y.name="ClassD" and
+                              x --> V{Property}
+                              --> V{Association}
+                              &lt;-- V{Property}
+                              &lt;-- y
+                           report 1 end
+        </query>
+        <feedback prefix="Hinweis">
+            Im Diagramm gibt es keine directe Association
+            zwischen die Klasse "ClassD" und
+            die Klasse "ClassC". Das kann durch eine
+            bessere Modellierung vermieden werden.
+        </feedback>
+    </rule>
+</checkerrules>
+\end{lstlisting}
+
+
+\section{Erreichte Ergebnisse}
+
+Der GReQL Converter ist ein Instrument zur Generierung von GReQL-Code aus zuvor bereitgestelltem PlantText-Code. Der
+vorherige Abschnitt hat im Detail den Prozess der Extraktion von Regeln aus PlantText-Code bis hin zur Generierung
+von GReQL-Code beschrieben. Es ist jedoch von entscheidender Bedeutung, die Frage zu beantworten, ob dieses Werkzeug
+effektiv funktioniert. Selbst wenn es funktioniert, ist seine Nützlichkeit von Interesse. Im folgenden Kapitel wird
+die Frage der Evaluation erörtert. Dabei werden die verschiedenen Prozesse ausführlich beschrieben, die zur Prüfung
+des Tools verwendet wurden. Darüber hinaus wird eine gründliche Untersuchung durchgeführt, um die Relevanz dieses
+Tools für verschiedene Lehrkräfte nachzuweisen.
