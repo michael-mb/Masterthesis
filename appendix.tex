@@ -57,6 +57,7 @@ export default {
 _consistency_rule',
         'test_association': 'test_association_rule',
         'count_methods': 'count_methods_rule',
+        'count_attributes' : 'count_attributes_rule'
 
     },
     RULE_TYPE_JSON: {
@@ -167,7 +168,16 @@ _consistency_rule',
                 methods: 0,
             }
         },
-        'test_association_rule' : { // Done *
+        'count_attributes_rule' : {
+            rule_type: "count_attributes_rule",
+            rule_name: "Count Attributes",
+            existence: 'absence',
+            points: 0,
+            rule_specific: {
+                attributes: 0,
+            }
+        },
+        'test_association_rule' : {
             rule_type: "test_association_rule",
             rule_name: "Test Association",
             existence: "absence",
