@@ -1,3 +1,55 @@
 \chapter{Zusammenfassung und Ausblick}
+
+Dieses Kapitel markiert den Abschluss dieser Masterarbeit. In erster Linie wird eine kurze Zusammenfassung der
+erreichten Ergebnisse in dieser Arbeit präsentiert. Anschließend wird die Diskussion über potenzielle Ansätze und
+Alternativen eröffnet, die zur Lösung der in diesem Kontext aufgeworfenen Problematik erkundet werden könnten.
+
 \section{Zusammenfassung}
+
+In dieser Masterarbeit wurde die Generierung von Feedback-Regeln für UML-Modelle im Kontext von E-Assessment-Systemen
+untersucht. Die Untersuchung umfasste die Analyse der Herausforderungen, die im Zusammenhang mit der manuellen
+Erstellung von GReQL-Code für die Bewertung von UML-Modellen auftreten können, sowie die Vorstellung des GReQL
+Converters als Lösungsansatz. Im dritten Kapitel erfolgte eine detaillierte Analyse der Problematiken, die im
+Rahmen der manuellen Erstellung von GReQL-Code auftreten können. Diese Probleme umfassen die notwendige Expertise für
+die Erstellung von GReQL-Code, die Komplexität bei der Formulierung von Regelwerken sowie den zeitlichen Aufwand,
+der für die manuelle Erstellung von Feedback-Regeln erforderlich ist. Die erwähnten Schwierigkeiten können zu einer
+zeitaufwändigen und fehleranfälligen  manuellen Erstellung von Feedback-Regeln führen.
+
+Der GReQL Converter präsentiert sich als Lösung für diese Problematiken. Durch den Einsatz dieses Konverters können
+Feedback-Regeln automatisch generiert werden, ohne dass umfassende Kenntnisse im Bereich GReQL-Code erforderlich sind.
+Zusätzlich dazu ist der Konverter in der Lage, komplexe Regeln zu formulieren und den zeitlichen Aufwand für die
+manuelle Erstellung von Feedback-Regeln zu reduzieren. Die Ergebnisse dieser Untersuchung legen nahe, dass der GReQL
+Converter als ein nützliches Instrument für die automatisierte Bewertung von UML-Modellen betrachtet werden kann. Er
+trägt dazu bei, den Prozess der Generierung von Feedback-Regeln zu vereinfachen.
+
+In der Gesamtschau der vorliegenden Masterarbeit wird aufgezeigt, dass die Nutzung des GReQL Converters eine wirksame
+Lösung für die Herausforderungen bei der manuellen Erstellung von Feedback-Regeln für UML-Modelle darstellt. Die hier
+erzielten Erkenntnisse haben das Potenzial, den Einsatz von E-Assessment-Systemen zu optimieren und den Lernprozess für
+Lehrende und Lernende zu verbessern.
+
 \section{Ausblick}
+
+Für die Entwicklung des GReQL Converters wurde ursprünglich PlantText aufgrund seiner Fähigkeit gewählt, mithilfe des
+PlantUML Parser Beziehungen und Entitäten aus einem UML-Diagramm zu extrahieren und sie in einem leicht verwertbaren
+JSON-Format zu exportieren. Es gibt jedoch mehrere andere, komplexere Strategien, die in Erwägung gezogen werden können.
+Aktuell erfordert die Verwendung des GReQL Converters die Anwendung von PlantText, während für die Erstellung des zu
+bewertenden Diagramms auf der JACK-Seite die Generierung einer XMI-Datei mit BOUML erforderlich ist. Dies führt zu einer
+gewissen Heterogenität im Arbeitsablauf. Die Erkundung der Möglichkeit, Regeln direkt aus einer XMI-Datei zu generieren,
+könnte ein interessanter Entwicklungsbereich für den GReQL Converter sein. Dies wäre jedoch aufgrund der Entwicklung
+eines angepassten Parsers, die bereits eine recht komplexe Aufgabe darstellt, anspruchsvoll. Dennoch würde dies
+zweifellos einen Mehrwert für den Entwicklungsprozess bieten und es ermöglichen, aus einer Lösung, die beispielsweise
+in BOUML erstellt wurde, nicht nur GReQL-Regeln zu generieren, sondern sie auch direkt zu überprüfen. Der Benutzer
+müsste keine zwei unterschiedlichen Technologien erlernen, um diese Aufgabe zu erfüllen.
+
+Ein weiterer Entwicklungsbereich, der von Anfang an aufgegeben wurde, aber dennoch von Interesse sein könnte, ist die
+Integration eines KI-Algorithmus. Ein solcher Algorithmus könnte dazu befähigt sein, ein zuvor annotiertes
+UML-Übungsszenario zu lesen und daraus abzuleiten, welche Regeln generiert werden sollten. Eine ähnliche Aufgabe wurde
+bereits in einem anderen Kontext von Mohammed Amraouy et al.\cite{amraouy2023sentiment} realisiert, bei dem mithilfe
+von Studentenkommentaren auf einer E-Assessment-Plattform eine Analyse und Klassifizierung der Emotionen durchgeführt
+wurde, um das Engagement der Studenten in einem bestimmten Kurs zu bewerten. In einem Kontext, der dem dieser
+Masterarbeit ähnlicher ist, ist auch die Arbeit von Aggarwal et al.\cite{aggarwal2018machine} relevant, die verschiedene
+Algorithmen des maschinellen Lernens verwenden, um verschiedene Entitäten auf der Grundlage von Text in Kategorien zu
+klassifizieren.
+
+Da das Tool nicht vollständig automatisiert werden kann, ist nach wie vor das Eingreifen eines Benutzers erforderlich,
+um die Richtigkeit und Konsistenz der generierten Regeln zu überprüfen.

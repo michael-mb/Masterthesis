@@ -1,4 +1,112 @@
 \chapter{Diskussion}
+
+Dieses Kapitel wird in mehrere Abschnitte unterteilt sein. Zunächst wird eine Interpretation der Ergebnisse der
+Evaluation vorgenommen, um fundierte Schlussfolgerungen zu ziehen. Anschließend wird eine eingehende Diskussion über
+die verschiedenen Herausforderungen geführt, die im Laufe des Entwicklungsprozesses des Tools bewältigt wurden.
+Abschließend wird eine umfassende Untersuchung durchgeführt, um die verschiedenen Möglichkeiten zur Verbesserung des
+GReQL Converters zu erörtern und sein fortwährendes Potenzial zu bewerten. Diese thematische Struktur zielt darauf ab,
+eine ganzheitliche und gründliche Analyse der Leistung, der Herausforderungen und der Verbesserungsaussichten im
+Zusammenhang mit diesem Tool bereitzustellen.
+
 \section{Interpretation der Evaluationsergebnisse}
+todo - write something here
+
 \section{Herausforderungen während des Entwicklungsprozesses}
+
+Im Verlauf des Entwicklungsprozesses manifestierten sich verschiedene herausfordernde Sachverhalte, die eine gezielte
+Entwicklungsdynamik bedingten. Dies wiederum zwang die Notwendigkeit zur Implementierung spezifischer Beschränkungen
+oder die Abkehr von bestimmten funktionalen Aspekten.
+
+\subsubsection{PlantText Parser}
+
+Bezüglich des PlantText Parsers sind gewisse Limitationen zu konstatieren. Er ist nicht in der Lage, statische
+Attribute, statische Methoden und statische Klassen zu erfassen. Indessen fand rasch eine Lösung in Form eines
+Kompromisses Anklang, indem dem Anwender ermöglicht wird, diese Modifikationen manuell im Rahmen des Regel-Editors
+vorzunehmen.
+
+\subsubsection{GReQL Engine Optimizer}
+
+Der GReQL Engine Optimizer  verfügt über einen Algorithmus zur Optimierung von Abfragen, um deren Ausführung zu
+erleichtern und mögliche Probleme wie die Verwendung undefinierter Variablen, welche eine Abfrage fehlerhaft machen
+könnten, zu umgehen. Nichtsdestoweniger kann dieser Optimierer zuweilen Unklarheit in der Abfrageausführung stiften.
+Es besteht die Möglichkeit, dass eine Abfrage verfasst wird, die auf den ersten Blick in vollkommen korrektem Einklang
+erscheint, jedoch bei der Ausführung vom Optimierer in einer Art und Weise modifiziert wird, welche die Abfrage invalide
+werden lässt (Wie es bei einigen Regeln im WIKI der Fall ist~\cite{GReQL-wiki}). Daraus resultiert, dass die GReQL Engine
+Fehlermeldungen retourniert. Zur Bewältigung dieser Thematik waren eigens maßgeschneiderte Abfragen erforderlich, welche
+verschiedene Prüfungen vor der Ausführung durchführen. In dieser Hinsicht erweist sich die Verwendung des GReQL
+Converters als vorteilhaft, indem er ausschließlich valide Abfragen zur Optimierung generiert und dem Nutzer die
+Frustration erspart, scheinbar korrekte, aber nicht funktionierende Abfragen manuell zu konzipieren.
+
+
+\subsubsection{Beschränkung auf BOUML}
+
+Der Kern des GReQL Converters liegt in der Erstellung und Definition von Vorlagen, die für jede Regel festgelegt wurden.
+Zur Herstellung dieser Vorlagen war es erforderlich, zunächst ein Diagramm, welches die jeweilige Regel in Anspruch
+nimmt, mittels der Software BOUML zu modellieren. Anschließend erfolgte die grafische Darstellung mithilfe des GReQL
+Engine, um abschließend die Regel aus der grafischen Darstellung abzuleiten. Diese Vorgehensweise impliziert, dass die
+Mehrzahl der in Gebrauch genommenen Regeln ihren Ursprung in einer bildlichen Repräsentation eines Diagramms haben,
+welches mithilfe von BOUML erstellt wurde. Dies stellt ein substantielles Problem dar, da die XMI-Repräsentationen der
+Diagramme abhängig vom verwendeten Tool variieren. Als Beispiel generiert der Enterprise Architect offensichtlich eine
+XMI-Datei, die sich von derjenigen generiert durch BOUML zu unterscheiden scheint. Dies hätte zur Konsequenz, dass die
+Mehrzahl der durch den GReQL Converter generierten Regeln ungültig würde, sofern das zu beurteilende Diagramm mittels
+eines alternativen Tools geschaffen wurde. Das bedeutet, dass die Auswahl des Tools, das für die Generierung der
+Lösungen zur Beurteilung eingesetzt wird, von entscheidender Relevanz ist, was wiederum den GReQL Converter auf eine
+spezifische Werkzeugauswahl oder auf die Nutzung von BOUML für die Gestaltung der zu beurteilenden Diagramme beschränkt.
+
+\subsubsection{Primitive Datentypen}
+
+Im Zusammenhang mit den von BOUML generierten Diagrammen ist zu berücksichtigen, dass sie einem ausgewiesenen Standard
+entsprechen, nämlich dem UML-Standard 2.3~\cite{OMG_UML_23_Infrastructure}, der von BOUML in Gebrauch genommen wird.
+Dieser Standard erkennt jedoch lediglich vier primitive Datentypen, nämlich int, bool, string und
+UnlimitedNatural~\cite{OMG_UML_23_Infrastructure}. Diese Beschränkung führt dazu, dass Typen, die im Grundsatz als
+primitiv erachtet werden könnten, wie double, float, char und dergleichen, schlichtweg nicht berücksichtigt werden.
+Dieses Problem hat zur Folge, dass Typen in GReQL-Abfragen nicht überprüft werden können, sofern sie nicht den Kriterien
+des UML 2.3-Standards genügen. In praktischer Konsequenz mussten gewisse Funktionen aufgegeben werden, etwa die
+Überprüfung des Rückgabetyps einer Methode oder des Typs einer Variablen (sofern diese nicht gemäß UML 2.3 als primitiv
+gelten), da die Repräsentation, die durch die GReQL Engine erzeugt wird (basierend auf dem XMI von BOUML), diese Typen
+nicht erkennt und daher nicht darstellen kann. Infolgedessen können derlei Abfragen nicht ausgeführt werden.
+
+
+Diese genannten Beschränkungen stellen zweifelsohne vielversprechende Ansatzpunkte für eine substantielle Verbesserung
+des GReQL Converters dar. Daher wird in dem folgenden Abschnitt eine Diskussion darüber eingeleitet, wie der GReQL
+Converter möglicherweise verbessert werden kann, um einige dieser inhärenten Einschränkungen zu überwinden.
+
+
 \section{Potenziale für Weiterentwicklungen}
+
+Der GReQL Converter, obwohl er vielversprechend ist, verwehrt sich der Illusion der Vollkommenheit. In diversen Domänen
+sind signifikante Verbesserungen realisierbar, um seine Effektivität bei der Bewältigung spezifischer Herausforderungen
+zu optimieren.
+
+\subsubsection{Hinzufügen neuer Regeln}
+
+Eine solche Möglichkeit zur Verbesserung manifestiert sich in der Erweiterung des Regelkatalogs. Obwohl die Entwicklung
+des GReQL Converters bereits eine umfassende Berücksichtigung der Regeln, die der Modellierung von UML-Klassendiagrammen
+zugrunde liegen, einschloss, bleiben einige subtile Nuancen unvollständig berücksichtigt. Zum Beispiel wurden keine
+Regeln für Assoziationen mit spezifischer Richtung oder für nicht-ausgerichtete Beziehungen integriert. Während die
+Assoziation zwischen zwei Klassen betrachtet wird, sofern eine Beziehung zwischen ihnen besteht, erfolgt keine explizite
+Erfassung der Ausrichtung dieser Assoziation. Ebenso bleiben die mit Assoziationen verknüpften Rollennamen
+unberücksichtigt. Diese und andere Feinheiten könnten zukünftige Erweiterungen des GReQL Converters sein, um das Tool
+in Bezug auf die Generierung präziserer GReQL-Regeln zu bereichern.
+
+\subsubsection{Erweiterung bestehender Regeln}
+
+Mehrere Regeln könnten von Verbesserungen profitieren, um mit einer breiteren Palette von Entwurfsvarianten kompatibel
+zu sein. Hierfür ist es unerlässlich, den GReQL Converter auf einer signifikanten Anzahl von Diagrammen zu testen, um
+seine Grenzen zu ermitteln und sie umfassend anzugehen.
+
+
+\subsubsection{Erweiterung der Kompatibilität des GReQL Converter}
+
+Wie zuvor erwähnt, ist der von GReQL Converter generierte GReQL-Code derzeit zu 100\% kompatibel mit Lösungsdiagrammen,
+die mit BOUML erstellt wurden. Der GReQL Converter wurde jedoch mit Blick auf die Erweiterbarkeit zu anderen
+Technologien entwickelt, die die Modellierung von UML-Diagrammen und die Generierung von XMI-Dateien ermöglichen. Die
+Erweiterung auf andere Diagramm-Modellierungstools sollte hauptsächlich das Hinzufügen von regelbasierten Vorlagen für
+diese Tools und die Möglichkeit zur Auswahl des bevorzugten Tools über die grafische Benutzeroberfläche des GReQL
+Converter einschließen. Glücklicherweise sollte diese Aufgabe nicht besonders komplex sein.
+
+
+Bei der Entwicklung des GReQL Converter war eine der entscheidenden Überlegungen, ein Tool zu schaffen, das sich im
+Laufe der Zeit weiterentwickeln kann. Aus diesem Grund wurde der Code unter Einhaltung von Designprinzipien und
+bewährten Praktiken geschrieben, um zukünftigen Entwicklern, die an dem Tool arbeiten, die Orientierung zu erleichtern
+und ihre Entwicklererfahrung erheblich zu vereinfachen~\cite{mcconnell2006software}.

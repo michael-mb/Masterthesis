@@ -220,3 +220,210 @@ _consistency_rule',
     }
 }
 \end{lstlisting}
+
+\newpage
+
+\subsubsection{GReQL Code Generierung}
+\begin{lstlisting}[caption={Fall der Class Definition Rule}, label={lst:class_def_rule}, language=javascript]
+generateDefineClassRule: function (rule) {
+    const isInterface = rule.rule_specific.interface
+    let code = ""
+    if (isInterface) {
+        code += "<!-- Interface Definition -->"
+        code += `<rule type="${rule.existence}"
+        points="${rule.points}">
+        <query>from x : V{Interface}
+               with
+                  isDefined(x.name) and
+                  stringLevenshteinDistance(x.name,
+                  "${rule.rule_specific.class_name}")&lt;3
+              report 1 end
+        </query>
+        <feedback>${rule.feedback}</feedback>
+     </rule>`
+    } else {
+        const isAbstract = rule.rule_specific.abstract
+        let abstractCode
+        if (isAbstract)
+            abstractCode = `and x.isAbstract`
+        else
+            abstractCode = `and (not x.isAbstract)`
+        code += "<!-- Class Definition -->"
+        code += `<rule type="${rule.existence}"
+        points="${rule.points}">
+        <query>from x : V{Class}
+               with
+                  isDefined(x.name) and
+                  stringLevenshteinDistance(x.name,
+                  "${rule.rule_specific.class_name}")&lt;3
+                  ${abstractCode}
+               report 1 end
+        </query>
+        <feedback>${rule.feedback}</feedback>
+    </rule>`
+    }
+
+    if(rule.rule_specific.attributes.length !== 0){
+    rule.rule_specific.attributes.forEach(attribute => {
+    code += this.generateAttributeRule(rule, attribute)
+    })}
+
+    if(rule.rule_specific.methods.length !== 0){
+    rule.rule_specific.methods.forEach(method => {
+    code += this.generateMethodRule(rule, method)
+    })}
+
+    return code
+},
+
+generateAttributeRule: function (rule, attribute) {
+    /***
+     1- Only 3 primitive type are working
+     Integer - Boolean - String
+     2- GReQL Engine cannot handle this case from BOUML XMI
+     */
+    let code = ""
+    code += "<!-- Attribute Rule -->"
+
+    const visibility = this.getVisibility(attribute)
+    const isStatic = this.isStatic(attribute)
+    const primitiveType = this.getType(attribute.type)
+
+    let vType = "from x: V{Class}, y : V{Property}"
+    let vTypeText = ""
+    if (primitiveType !== '!prim') {
+        vType = "from x : V{Class},
+        y : V{Property},
+        z : V{PrimitiveType}"
+        vTypeText = `and y --> z and
+        isDefined(z.name) and
+        z.name="${primitiveType}"`
+    }
+
+    code += `<rule type="presence"
+    points="${attribute.points}">
+    <query>${vType}
+           with
+              isDefined(x.name) and
+              stringLevenshteinDistance(x.name,
+              "${rule.rule_specific.class_name}")&lt;3 and
+              x --> y and isDefined(y.name) and
+              stringLevenshteinDistance(y.name,
+              "${attribute.name}")&lt;3 and
+              ${visibility}
+              ${isStatic}
+              ${vTypeText}
+           report 1 end
+    </query>
+    <feedback>${attribute.feedback}</feedback>
+</rule>`
+    return code
+},
+generateMethodRule: function (rule, method) {
+    let code = ""
+    const visibility = this.getVisibility(method)
+    const isStatic = this.isStatic(method)
+    const retType = this.getType(method.return_type)
+    /***
+     1- Only 3 primitive type are working
+     Integer - Boolean - String
+     */
+    let vType = "from x: V{Class}, y : V{Operation}"
+    let vTypeText = ""
+    if (retType !== '!prim') {
+        vType = "from x : V{Class},
+        y : V{Operation},
+        ret: V{Parameter},
+        retType: V{PrimitiveType}"
+        vTypeText = ` and y --> ret and
+        isDefined(ret.name) and
+        ret.name="return"  and
+        ret --> retType and
+        isDefined(retType.name) and
+        retType.name="${retType}"`
+    }
+
+    code += "<!-- Method Rule -->"
+    code += `<rule type="presence"
+    points="${method.points}">
+    <query>${vType}
+           with
+              isDefined(x.name) and
+              x.name="${rule.rule_specific.class_name}" and
+              isDefined(y.name) and
+              stringLevenshteinDistance(y.name,
+              "${method.name}")&lt;3 and
+              ${visibility}
+              ${isStatic} and
+              x --> y
+              ${vTypeText}
+           report 1 end
+    </query>
+    <feedback>${method.feedback}</feedback>
+  </rule>`
+
+    this.extractVariableNames(method.arguments)
+        .forEach( arg => {
+        code += "<!-- Method Param -->"
+        code += `<rule type="presence" points="0">
+        <query>from x: V{Class}, y : V{Operation},
+        param: V{Parameter}
+        with
+        isDefined(x.name) and
+        stringLevenshteinDistance(x.name,
+        "${rule.rule_specific.class_name}")&lt;3 and
+        isDefined(y.name) and
+        stringLevenshteinDistance(y.name,
+        "${method.name}")&lt;3 and
+        x --> y and
+        y --> param and isDefined(param.name) and
+        param.name="${arg}"
+       report 1 end
+        </query>
+        <feedback>Die Methode ${method.name} muss
+        ein Attribut ${arg} haben.</feedback>
+      </rule>`
+    })
+    return code
+},
+
+extractVariableNames: function (inputString) {
+    inputString += ';'
+    const variablePattern = /\b(\w+)\s*,?\s*(?=[,;])/g;
+    const matches = inputString.match(variablePattern);
+    if (matches)
+        return  matches.map(match => match.trim());
+    return [];
+}
+getVisibility: function (accessor) {
+    switch (accessor.visibility) {
+        case 'public':
+            return 'y.visibility="public" and '
+        case 'private':
+            return 'y.visibility="private" and'
+        case 'protected':
+            return 'y.visibility="protected" and'
+        default:
+            return ""
+    }
+},
+isStatic: function (accessor) {
+    if (accessor.is_static)
+        return 'y.isStatic=true '
+    else
+        return 'y.isStatic=false '
+},
+getType: function (type) {
+    switch (type.toLowerCase()) {
+        case 'int':
+            return "Integer"
+        case 'string':
+            return "String"
+        case 'bool':
+        case 'boolean':
+            return "Boolean"
+        default:
+            return "!prim"
+    }
+},
+\end{lstlisting}
