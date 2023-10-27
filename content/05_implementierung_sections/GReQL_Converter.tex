@@ -103,7 +103,7 @@ folgende PlantText-Code verwendet, der ein UML-Diagramm modelliert (siehe~\ref{f
 \begin{figure}[h]
     \centering
     \includegraphics[width=16cm]{images/code-uml}
-    \caption{Beispiel eines Regelobjekts}
+    \caption{PlantText-Code mit der grafischen Darstellung}
     \label{fig:code-uml}
 \end{figure}
 
@@ -134,7 +134,7 @@ Dies ist eine Darstellung des PlantText-Codes. Sobald dieser Code im \gls{GReQL 
 ``Parse Code'' klickt (Nummer 5 siehe~\ref{fig:dashboard}), wird dieser Code über das HTTP-Protokoll an den
 Node.js-Server gesendet. Der Server ist dafür verantwortlich, den Code zu analysieren, parsen und ein JSON-Objekt
 zurückzugeben, ähnlich dem unten dargestellten:
-\newpage
+
 \begin{lstlisting}[caption={Snippet des JSON-Codes, der nach dem Parsen des PlantText-Codes durch den Server erhalten
 wurde.}, label={lst:parsed-json}, language=text]
 [
@@ -277,7 +277,7 @@ generiert und zu einer Liste von Objekten hinzugefügt (siehe~\ref{lst:rules_def
 Die zuvor erwähnte Objektliste enthält nun alle Regeln, die aus dem vom Node.js-Server bereitgestellten JSON extrahiert
 wurden. Jede dieser Regeln wird auf der Frontend-Seite angezeigt und ist anpassbar (siehe~\ref{fig:rule_exemple}).
 Der Benutzer hat somit die Möglichkeit, jede Regel nach seinen Wünschen anzupassen, indem er beispielsweise Kommentare,
-Punkte sowie jeden mit der jeweiligen Regel verknüpften Attribut ändert. Auf diese Weise werden die Regeln aus dem JSON
+Punkte (Points) sowie jeden mit der jeweiligen Regel verknüpften Attribut ändert. Auf diese Weise werden die Regeln aus dem JSON
 extrahiert und angepasst. Anschließend folgt der nächste Schritt, bei dem diese Regeln in GReQL-Code umgewandelt werden.
 
 \begin{figure}[!h]
@@ -389,6 +389,53 @@ gültigen GReQL-Code erhalten, der auf der JACK-Plattform verwendet werden kann.
 </checkerrules>
 \end{lstlisting}
 
+\section{Entwicklung eines Annotationssystems}
+In der in Abschnitt~\ref{sec:darlegung-des-workflow-prozesses} beschriebenen ersten Phase (die das Schreiben des
+plantText-Codes in den GReQL Converter umfasst), folgt die zweite Phase, in der die generierten Regelobjekte modifiziert
+werden. Es ist jedoch wichtig zu beachten, dass dieser Prozess zur Modifikation der Regelobjekte als äußerst
+arbeitsintensiv angesehen werden kann. Um dies zu verdeutlichen, kann das Beispiel der Anpassung der Anzahl der Punkte (Points)
+für jede Regel in einem Diagramm mit mehr als zwanzig Regeln dienen. Diese Aufgabe erweist sich schnell als zeitaufwändig,
+da jede Regel individuell bearbeitet werden muss, um die erforderlichen Änderungen vorzunehmen. Ebenso stellt sich die
+gleiche Problematik ein, wenn es um die Eigenschaft ``Exact match'' (siehe~\ref{fig:code-uml}) geht (die festlegt, ob
+der Name eines Attributs, einer Methode oder einer Klasse genau mit dem im Diagramm angegebenen Namen übereinstimmen
+muss oder ob eine gewisse Fehlermarge akzeptiert wird).
+
+Um diesen Prozess zu erleichtern, wurde im GReQL Converter ein Annotationssystem implementiert. Dieses Vorhaben zielt
+zunächst darauf ab, einige Attribute des PlantUML-Parsers zu nutzen, die in Bezug auf UML-Diagramme vergleichsweise
+selten verwendet werden, insbesondere Generika, sowie das Labeling-System von PlantText. Hierfür wurde eine spezifische
+Syntax entwickelt, deren Einzelheiten in der Dokumentation des GReQL Converters erläutert sind. Das folgende Beispiel~\ref{fig:annotation}
+zeigt einen Anwendungsfall dieser Syntax für die Annotation einer Klasse:
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=16cm]{images/annotation}
+    \caption{Beispiel für die Verwendung des Annotationssystems}
+    \label{fig:annotation}
+\end{figure}
+
+\begin{itemize}[label={}]
+    \item \textbf{!class}: Die Verwendung der Direktive ``!class'' dient dazu, die Funktion der exakten Übereinstimmung
+anhand von Klassennamen zu aktivieren.
+    \item \textbf{!attr(0,1,3)}: Die Direktive ``!attr(0,1,3)'' wird verwendet, um die exakte Übereinstimmung in den
+    ersten, zweiten und vierten Attributen, nämlich ``windows'', ``x'' und ``time'' zu aktivieren.
+    \item \textbf{!attr(*)}: Wenn beabsichtigt wird, die exakte Übereinstimmung in allen Attributen zu aktivieren,
+sollte die Direktive ``!attr(*)'' verwendet werden.
+    \item \textbf{!method(1,2)}: Die Direktive ``!method(1,2)'' wird verwendet, um die exakte Übereinstimmung in den
+zweiten und dritten Methoden, nämlich ``unlock'' und ``block'' zu aktivieren.
+    \item \textbf{!method(*)}: Sollte der Wunsch bestehen, die exakte Übereinstimmung in allen Methoden zu
+aktivieren, sollte die Direktive ``!method(*)'' verwendet werden.
+    \item \textbf{p}: Die Variable ``p'' dient dazu, das Ausmaß zu bestimmen, in dem die Punkte (Points) der
+Klassendefinitionsregel zuzuordnen sind.
+    \item \textbf{ad-p}: In ähnlicher Weise bestimmt ``ad-p'' die Punkte (Points), die den
+Attributregeln zugeordnet sind.
+    \item \textbf{md-p}: Gleichzeitig dient ``md-p'' als Indikator für die Punkte (Points), die den Methodenregeln
+zugeordnet sind.
+\end{itemize}
+
+Dieses Annotierungssystem beschleunigt und optimiert signifikant den Prozess der Generierung von GReQL-Code. Sobald
+die Beherrschung dieses Annotierungssystems erreicht ist, werden Lehrende nicht länger auf die Zwischenrepräsentation
+von Regelobjekten angewiesen sein, da sie in der Lage sein werden, GReQL-Code direkt mit der PlantText-Code und der
+Annotation zu generieren.
 
 \section{Erreichte Ergebnisse}
 

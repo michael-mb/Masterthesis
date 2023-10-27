@@ -53,16 +53,16 @@ export default {
         'association_class': 'association_class_rule',
 
         // OPTIONAL
-        'nomination_consistency': 'nomination
-_consistency_rule',
+        'nomination_consistency':
+'nomination_consistency_rule',
         'test_association': 'test_association_rule',
         'count_methods': 'count_methods_rule',
-        'count_attributes' : 'count_attributes_rule'
+        'count_attributes': 'count_attributes_rule'
 
     },
     RULE_TYPE_JSON: {
         // CLASS & INTERFACE
-        'defined_class_rule' : {
+        'defined_class_rule': {
             rule_type: 'defined_class_rule',
             rule_name: 'Class definition',
             feedback: '... no feedback yet',
@@ -70,6 +70,7 @@ _consistency_rule',
             existence: 'presence',
             rule_specific: {
                 class_name: "Car",
+                exact_match: false,
                 abstract: false,
                 interface: false,
                 methods: [],
@@ -77,19 +78,20 @@ _consistency_rule',
             }
         },
         // ENUM
-        'defined_enum_rule' : {
+        'defined_enum_rule': {
             rule_type: 'defined_enum_rule',
             rule_name: 'Enum definition',
-            feedback: '... no feedback',
+            feedback: '... no feedback yet',
             points: 0,
             existence: 'presence',
             rule_specific: {
                 enum_class_name: "Car",
+                exact_match: false,
                 attributes: [],
             }
         },
         // GENERALIZATION & SPECIALIZATION
-        'generalization_rule' : {
+        'generalization_rule': {
             rule_type: "generalization_rule",
             rule_name: "Generalization",
             existence: "presence",
@@ -98,6 +100,7 @@ _consistency_rule',
             rule_specific: {
                 class_child: "Child",
                 class_parent: "Parent",
+                exact_match: false,
                 type: "inheritance" // implementation
             }
         },
@@ -111,11 +114,12 @@ _consistency_rule',
             rule_specific: {
                 class_A: "Class A",
                 class_B: "Class B",
+                exact_match: false,
                 A_multiplicity: "1",
                 B_multiplicity: "1"
             }
         },
-        'composition_rule' : {
+        'composition_rule': {
             rule_type: "composition_rule",
             rule_name: "Composition",
             existence: "presence",
@@ -124,11 +128,11 @@ _consistency_rule',
             rule_specific: {
                 class_composite: "Composite",
                 class_element: "Element",
-                composite_multiplicity: "1",
+                exact_match: false,
                 element_multiplicity: "*",
             }
         },
-        'aggregation_rule' : {
+        'aggregation_rule': {
             rule_type: "aggregation_rule",
             rule_name: "Aggregation",
             existence: "presence",
@@ -137,29 +141,30 @@ _consistency_rule',
             rule_specific: {
                 class_aggregate: "Aggregate",
                 class_element: "Element",
-                aggregate_multiplicity: "1",
+                exact_match: false,
                 element_multiplicity: "*",
             }
         },
         // ASSOCIATION CLASS
-        'association_class_rule' : {
+        'association_class_rule': {
             rule_type: "association_class_rule",
             rule_name: "Association Class",
             existence: "presence",
             points: 0,
-            feedback: "Es muss eine Asso...",
+            feedback: "...",
             rule_specific: {
                 class_A: "Class A",
                 class_B: "Class B",
-                class_C: "Class C"
+                class_C: "Association Class",
+                exact_match: false,
             }
         },
         // OPTIONAL
-        'nomination_consistency_rule' : {
+        'nomination_consistency_rule': {
             rule_type: "nomination_consistency_rule",
             rule_name: "Nomination Consistency",
         },
-        'count_methods_rule' : {
+        'count_methods_rule': {
             rule_type: "count_methods_rule",
             rule_name: "Count Methods",
             existence: 'absence',
@@ -168,7 +173,7 @@ _consistency_rule',
                 methods: 0,
             }
         },
-        'count_attributes_rule' : {
+        'count_attributes_rule': {
             rule_type: "count_attributes_rule",
             rule_name: "Count Attributes",
             existence: 'absence',
@@ -177,7 +182,7 @@ _consistency_rule',
                 attributes: 0,
             }
         },
-        'test_association_rule' : {
+        'test_association_rule': {
             rule_type: "test_association_rule",
             rule_name: "Test Association",
             existence: "absence",
@@ -185,11 +190,13 @@ _consistency_rule',
             rule_specific: {
                 class_A: "Class A",
                 class_B: "Class B",
+                exact_match: false,
             }
         },
     },
     METHODS_TYPE: {
         name: "public_method_name",
+        exact_match: false,
         return_type: "void",
         visibility: "public",
         arguments: "",
@@ -199,6 +206,7 @@ _consistency_rule',
     },
     ATTRIBUTE_TYPE: {
         name: "attribute_name",
+        exact_match: false,
         type: "string",
         visibility: "public",
         points: 0,
@@ -207,18 +215,155 @@ _consistency_rule',
     },
     ENUM_ATTRIBUTE_TYPE: {
         name: "ENUM_ATTR",
+        exact_match: false,
         points: 0,
         feedback: '... no feedback',
     },
     EXISTENCE_TYPE: {
         'presence': 'presence',
-        'absence' : 'absence'
+        'absence': 'absence'
     },
     GENERALIZATION_TYPE: {
         'inheritance': 'inheritance',
         'implementation': 'implementation'
     }
 }
+}
+\end{lstlisting}
+
+
+\newpage
+\subsubsection{Rule Object Generierung}
+\begin{lstlisting}[caption={Class Definition Rule}, label={lst:rule_object_gen}, language=javascript]
+generateClassRule(elem) {
+    const rule = JSON.parse(JSON.stringify(rulesDefinitions
+        .RULE_TYPE_JSON.defined_class_rule));
+
+    rule.rule_specific.class_name = elem.name;
+
+    const annotation_rules =
+        this.annotationConverter(elem.generics[0])
+
+    rule.points = annotation_rules.p
+
+    rule.rule_specific.exact_match =
+        annotation_rules.classMatch
+
+    let abstractText = ""
+    if (elem.isAbstract) {
+        rule.rule_specific.abstract = elem.isAbstract;
+        abstractText = "abstracte "
+    }
+
+    if (elem.stereotypes.includes("interface"))
+        rule.rule_specific.interface = true;
+
+
+    let attr_index = 0
+    let method_index = 0
+    elem.members.forEach((member) => {
+        // METHODS
+        if (member.returnType) {
+            const method = JSON.parse(
+                JSON.stringify
+                    (rulesDefinitions.METHODS_TYPE));
+            method.name = member.name;
+            method.return_type = member.returnType;
+            method.arguments = member._arguments;
+
+            method.visibility =
+                this.getVisibility(member.accessor);
+            method.feedback =
+                `Die Klasse ${rule.rule_specific.class_name}
+                 soll eine Methode namens ${method.name}
+                 bereitstellen.`;
+
+            rule.rule_specific.methods.push(method);
+            if(annotation_rules.method === '*')
+                method.exact_match = true
+            else if (annotation_rules.method
+                    .includes(method_index))
+                method.exact_match = true
+            method.points = annotation_rules.mdp
+            method_index++
+        }
+        // ATTRIBUTES
+        else if (member.type) {
+            const attribute = JSON.parse(
+                JSON.stringify(rulesDefinitions
+                    .ATTRIBUTE_TYPE));
+            attribute.name = member.name;
+            attribute.type = member.type;
+
+            attribute.visibility =
+                this.getVisibility(member.accessor);
+            attribute.feedback = `Die Klasse
+                ${rule.rule_specific.class_name} soll ein
+                ${attribute.visibility} Attribut für die
+                Eigenschaft ${attribute.name} und type
+                ${attribute.type} bereitstellen.`;
+
+            rule.rule_specific.attributes.push(attribute);
+            if(annotation_rules.attr === '*')
+                attribute.exact_match = true
+            else if (annotation_rules.attr
+                .includes(attr_index))
+                attribute.exact_match = true
+            attribute.points = annotation_rules.adp
+            attr_index++
+        }
+    });
+
+    const entityName = rule.rule_specific.interface
+        === true ? "Interface" : "Klasse"
+    rule.feedback = `Es soll eine ${abstractText}
+        ${entityName} mit der Name
+        ${rule.rule_specific.class_name}
+        bereitgestellt werden.`;
+    return rule;
+},
+
+annotationConverter(input){
+    const result = {};
+
+    result.classMatch = /!class/.test(input);
+
+    const attrMatch = /!attr\((.*?)\)/.exec(input);
+    if (attrMatch) {
+        const attrValue = attrMatch[1].trim();
+        result.attr = attrValue === '*' ? '*' :
+            attrValue.split(',').map(Number);
+    } else
+        result.attr = [];
+
+    const methodMatch = /!method\((.*?)\)/.exec(input);
+    if (methodMatch) {
+        const methodValue = methodMatch[1].trim();
+        result.method = methodValue === '*' ? '*' :
+            methodValue.split(',').map(Number);
+    } else
+        result.method = [];
+
+    const pMatch = /p=(\d+)/.exec(input);
+    if (pMatch)
+        result.p = parseInt(pMatch[1]);
+    else
+        result.p = 0
+
+    const adpMatch = /ad-p=(\d+)/.exec(input);
+    if (adpMatch)
+        result.adp = parseInt(adpMatch[1]);
+    else
+        result.adp = 0
+
+    const mdpMatch = /md-p=(\d+)/.exec(input);
+    if (mdpMatch)
+        result.mdp = parseInt(mdpMatch[1]);
+    else
+        result.mdp = 0
+
+    return result;
+},
 \end{lstlisting}
 
 \newpage
