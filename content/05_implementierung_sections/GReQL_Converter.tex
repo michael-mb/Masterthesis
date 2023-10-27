@@ -273,19 +273,22 @@ Parameter die genaue Anzahl der Attribute angeben, die im UML-Diagramm des Schü
 \subsubsection{Test Association}
 Diese Regel dient einfach dazu, festzustellen, ob es eine Beziehung zwischen zwei Klassen gibt. Ein JSON-Objekt wird
 generiert und zu einer Liste von Objekten hinzugefügt (siehe~\ref{lst:rules_def}).
+
+\begin{figure}
+    \centering
+    \includegraphics[width=16cm]{images/extracted_rules}
+    \caption{Regeln, die dem geparsten PlantText-Code entsprechen}
+    \label{fig:extracted_rules}
+\end{figure}
+
 \\~\\
+
 Die zuvor erwähnte Objektliste enthält nun alle Regeln, die aus dem vom Node.js-Server bereitgestellten JSON extrahiert
 wurden. Jede dieser Regeln wird auf der Frontend-Seite angezeigt und ist anpassbar (siehe~\ref{fig:rule_exemple}).
 Der Benutzer hat somit die Möglichkeit, jede Regel nach seinen Wünschen anzupassen, indem er beispielsweise Kommentare,
 Punkte (Points) sowie jeden mit der jeweiligen Regel verknüpften Attribut ändert. Auf diese Weise werden die Regeln aus dem JSON
 extrahiert und angepasst. Anschließend folgt der nächste Schritt, bei dem diese Regeln in GReQL-Code umgewandelt werden.
 
-\begin{figure}[!h]
-    \centering
-    \includegraphics[width=16cm]{images/extracted_rules}
-    \caption{Regeln, die dem geparsten PlantText-Code entsprechen}
-    \label{fig:extracted_rules}
-\end{figure}
 
 \subsection{Umwandlung der Regel-Objekte in GReQL-Code}\label{subsec:umwandlung-der-regel-objekte-in-greql-code}
 Nach dem Extrahieren und Anpassen der Regeln ist es nun möglich, GReQL-Code aus der Liste zu generieren, die die Objekte
@@ -295,12 +298,14 @@ Variante gesucht, die das schnellste und effizienteste Ergebnis mit minimalem Co
 den GReQL-Code so anzupassen, dass er perfekt zur zu konvertierenden Regel passt, und ihn dann als Vorlage zu verwenden.
 Zum Beispiel für die Regel, die das Vorhandensein einer Klasse definiert (siehe~\ref{lst:class_def_xml}):
 \\~\\
-\begin{lstlisting}[!h, caption={Class Definition Template \(erster Teil\)}, label={lst:class_def_xml}, language=xml]
+\begin{lstlisting}[caption={Class Definition Template \(erster Teil\)}, label={lst:class_def_xml}, language=xml]
 <rule type="${rule.existence}" points="${rule.points}">
     <query>
-        from x : V{Class} with isDefined(x.name) and
+        from x : V{Class}
+           with
+           isDefined(x.name) and
            stringLevenshteinDistance(x.name,
-           "${rule..}")&lt;3
+           "${rule.rule_specific.class_name}")&lt;3
            ${abstractCode}
            report 1 end
     </query>
@@ -317,6 +322,7 @@ gültigen GReQL-Code erhalten, der auf der JACK-Plattform verwendet werden kann.
 \\~\\
 \begin{lstlisting}[!h, caption={Ausschnitt aus dem GReQL-Code, der nach der Konvertierung erhalten wurde}, label={lst:final_xml_convert}, language=xml]
 <checkerrules>
+
     <!-- Class Definition -->
     <rule type="presence" points="0">
         <query>
@@ -331,10 +337,12 @@ gültigen GReQL-Code erhalten, der auf der JACK-Plattform verwendet werden kann.
             ClassA bereitgestellt werden.
         </feedback>
     </rule>
+
     <!-- Class Definition -->
     <rule type="presence" points="0">
         <query>
-            from x : V{Class} with isDefined(x.name) and
+            from x : V{Class} with
+               isDefined(x.name) and
                stringLevenshteinDistance(x.name,
                "ClassB")&lt;3
                and (not x.isAbstract)
@@ -345,7 +353,9 @@ gültigen GReQL-Code erhalten, der auf der JACK-Plattform verwendet werden kann.
             ClassB bereitgestellt werden.
         </feedback>
     </rule>
+
     ...
+
     <!-- Generalization rule -->
     <rule type="presence" points="0">
         <query>
