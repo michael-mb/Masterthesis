@@ -99,4 +99,146 @@ Hilfsmittel bei der Erstellung von GReQL-Code für die Bewertung von Klassendiag
 Zeit spart. Im nächsten Abschnitt wird eine Studie durchgeführt, um zu ermitteln, ob Lehrende diese Ansicht teilen.
 
 \section{Interview zur Bewertung des GReQL Converters}
+
+In diesem Abschnitt erfolgt zunächst die Vorstellung des verwendeten Modells für die Realisierung des Interviews,
+gefolgt von der Präsentation diverser Resultate.
+
+\subsection{Konzeption des Interviews}
+
+Das Ziel des Interviews besteht darin, das Feedback verschiedener Lehrer zum GReQL Converter zu sammeln und die
+Möglichkeiten zur Verbesserung des Tools zu erörtern. Am Ende des Interviews wird es möglich sein festzustellen, ob
+das Tool einen echten Nutzen für die Benutzer hat und ob es sinnvoll ist, seine Entwicklung fortzusetzen. Um dies zu
+erreichen, war es zunächst erforderlich, die verschiedenen Lehrer anhand bestimmter Kriterien zu qualifizieren,
+darunter:
+
+\begin{enumerate}
+    \item Die Lehrer sollten bereits wissen, was GReQL ist.
+    \item Die Lehrer sollten bereits GReQL-Code geschrieben haben, um ein UML-Klassendiagramm zu bewerten.
+\end{enumerate}
+
+Das Interview erstreckt sich tatsächlich über fünf Phasen, von der Vorbereitung bis zum Fragebogen:
+
+\subsubsection{PHASE 1: Vorbereitung auf das Interview}
+
+Während des Interviews sollte der Schwerpunkt auf dem GReQL Converter liegen. Um zu verhindern, dass die Lehrer
+während des Interviews mit dem Schreiben von PlantText-Code beschäftigt sind, wurde beschlossen, sicherzustellen,
+dass die Lehrer vor dem Interview den PlantText-Code schreiben, den sie während des Interviews benötigen werden. Zu
+diesem Zweck sollen die interviewten Personen eine Übung durchführen, die sie mit dem PlantText-Tool und plantUML
+vertraut macht.
+
+Bei der Einladung zum Interview wurde ein Bild ausgewählt und an die Lehrer gesendet, das bereits sein äquivalentes XMI
+generiert hat, das später verwendet wird, um den generierten GReQL-Code auf JACK zu testen. Da das Hauptziel darin
+besteht, GReQL-Code aus PlantText zu generieren, sollen die Lehrer versuchen, die Musterlösung auf PlantText zu
+reproduzieren:
+
+\begin{enumerate}
+    \item Wenn sie dies schaffen, müssen sie ihren PlantText-Code lediglich mit dem GReQL Converter annotieren, die
+Lösung auf JACK testen und die während des Interviews gestellten Fragen beantworten.
+    \item Wenn sie dies nicht geschafft haben, wird ihnen der PlantText-Code zur Verfügung gestellt und erklärt, wie
+dieser Code erstellt wurde, einschließlich einiger Feinheiten. Anschließend sollen sie diesen PlantText-Code mit dem
+GReQL Converter annotieren und die während des Interviews gestellten Fragen beantworten.
+\end{enumerate}
+
+Es ist auch wichtig, den Lehrern die Dokumentation zum GReQL Converter sowie den Zugang zum Tool zur Verfügung zu
+stellen, damit sie es vor dem Interview testen und sich damit vertraut machen können, wenn ihre Verfügbarkeit dies
+zulässt.
+
+\subsubsection{PHASE 2: Einführung in das Interview}
+
+In dieser Phase geht es darum, den GReQL Converter vorzustellen, seine Feinheiten, Funktionen sowie seine Verwendung und
+Dokumentation zu präsentieren. Das Ziel dieser Phase besteht darin, die Lehrer mit dem Tool vertraut zu machen und
+ihnen alle notwendigen Informationen für den weiteren Verlauf zur Verfügung zu stellen.
+
+\subsubsection{PHASE 3: Annotation des PlantText-Codes}
+
+In dieser Phase müssen sich die Lehrer auf die Annotation des PlantText-Codes im GReQL Converter konzentrieren. Sie
+verwenden das Tool zur Generierung von GReQL-Code.
+
+\subsubsection{PHASE 4: Test des generierten GReQL-Codes}
+
+In dieser Phase müssen die Lehrer den generierten GReQL-Code auf JACK testen. Zu diesem Zweck wurden entsprechende
+Übungen bereits auf der Plattform vorbereitet, um den Prozess zu erleichtern. Sie müssen lediglich ihren GReQL-Code
+sowie das zuvor vorbereitete XMI eingeben, um ihn zu testen.
+
+\subsubsection{PHASE 5: Fragebogen}
+
+Am Ende des Interviews werden den Lehrern eine Reihe von vorbereiteten Fragen gestellt, um ihre Erfahrungen, Meinungen
+und Verbesserungsvorschläge für den GReQL Converter zu bewerten. Die während des Interviews gestellten Fragen sind
+wie folgt:
+
+\begin{enumerate}
+    \item \textbf{Einführung in das Tool:}
+    \begin{enumerate}
+        \item Können Sie kurz erklären, was das Tool GReQL Converter Ihrer Meinung nach ist?
+        \item Haben Sie bereits ähnliche Tools zur Generierung von GReQL-Code aus UML-Diagrammen verwendet?
+    \end{enumerate}
+    \item \textbf{Benutzererfahrung:}
+    \begin{enumerate}
+        \item Wie empfanden Sie die Benutzeroberfläche des GReQL Converters in Bezug auf Benutzerfreundlichkeit?
+        \item Können Sie die Schritte beschreiben, die Sie unternommen haben, um das Tool zu verwenden, von der
+        Code-Importierung aus PlantText bis zur Generierung von GReQL-Code?
+        \item Ist das Tool intuitiv?
+        \item Konnten Sie auf einen Blick verstehen, was Sie tun mussten?
+        \item Gab es Probleme oder Hindernisse bei der Verwendung des Tools?
+    \end{enumerate}
+    \item \textbf{Dokumentation:}
+    \begin{enumerate}
+        \item Haben Sie die Dokumentation des GReQL Converters konsultiert?
+        \item Wenn ja, wie fanden Sie sie in Bezug auf Klarheit und Nützlichkeit?
+        \item Gibt es Aspekte des Tools oder seiner Funktionsweise, die Sie in der Dokumentation nicht
+        verstanden haben und die Sie gerne darin gefunden hätten?
+    \end{enumerate}
+    \item \textbf{Generierung von GReQL-Regeln:}
+    \begin{enumerate}
+        \item Wie würden Sie die Genauigkeit des Tools bei der Generierung von GReQL-Regeln aus mit PlantText
+        erstellten UML-Diagrammen bewerten?
+        \item Gab es Fehler oder Inkonsistenzen in den generierten Regeln?
+    \end{enumerate}
+    \item \textbf{Vergleich des Tools mit der manuellen Methode:}
+    \begin{enumerate}
+        \item Wie würden Sie die Effizienz des GReQL Converters im Vergleich zur manuellen Erstellung von GReQL-Regeln
+        aus UML-Diagrammen in Bezug auf Zeitersparnis und Genauigkeit bewerten?
+        \item Können Sie konkrete Beispiele nennen, in denen das Tool besonders nützlich oder weniger effektiv als
+        die manuelle Methode war?
+    \end{enumerate}
+    \item \textbf{Verbesserungsvorschläge:}
+    \begin{enumerate}
+        \item Haben Sie Vorschläge zur Verbesserung der Benutzeroberfläche oder der Funktionen des GReQL Converters?
+        \item Gibt es zusätzliche Funktionen, die Sie gerne im Tool sehen würden?
+    \end{enumerate}
+    \item \textbf{Nützlichkeit und Relevanz:}
+    \begin{enumerate}
+        \item Halten Sie das Tool GReQL Converter im Kontext der Bewertung von UML-Diagrammen für nützlich?
+        \item Warum oder warum nicht?
+    \end{enumerate}
+    \item \textbf{Gesamtbewertung:}
+    \begin{enumerate}
+        \item Auf einer Skala von 1 bis 5, wobei 1 ``nutzlos'' und 5 ``äußerst nützlich'' bedeutet, wie würden Sie die
+        Nützlichkeit des GReQL Converters bewerten?
+        \item Auf einer Skala von 1 bis 5, wobei 1 ``sehr schlecht'' und 5 ``ausgezeichnet'' bedeutet, wie würden Sie
+        das Design des GReQL Converters bewerten?
+        \item Auf einer Skala von 1 bis 5, wobei 1 ``sehr schlecht'' und 5 ``ausgezeichnet'' bedeutet, wie würden Sie
+        die Benutzerfreundlichkeit des GReQL Converters bewerten?
+        \item Würden Sie dieses Tool anderen Fachleuten empfehlen, die mit UML-Diagrammen zur Bewertung arbeiten?
+    \end{enumerate}
+    \item \textbf{Allgemeines Feedback:}
+    \begin{enumerate}
+        \item Haben Sie weitere Kommentare, Vorschläge oder Beobachtungen, die Sie zum GReQL Converter teilen möchten?
+    \end{enumerate}
+\end{enumerate}
+
+Die grundlegende Struktur der Interviews und die Wahl der Fragen wurden maßgeblich von den Erkenntnissen und Ratschlägen
+des Autors Ian Brace in seinem Werk ``Questionnaire Design: How to Plan, Structure and Write Survey Material for
+Effective Market Research'' beeinflusst~\cite{brace2018questionnaire}. Dieses Buch bietet umfassende Einblicke in
+bewährte Methoden zur Gestaltung von Fragen und zur Strukturierung von Umfragen, die sich auch auf die
+Interviewkonzeption übertragen lassen. Bei der Gestaltung der Fragen zur Benutzererfahrung und Benutzerfreundlichkeit
+wurde das Buch ``Designing and Conducting Survey Research: A Comprehensive Guide'' von Louis M. Rea und Richard
+A. Parker~\cite{rea2014designing} herangezogen, um die Best Practices für die Benutzerfreundlichkeit von Fragen zu
+verstehen. Online-Umfrageplattformen wie SurveyMonkey~\cite{monkey} dienten als Inspiration für die Erstellung des
+Interviewleitfadens und halfen bei der Identifizierung bewährter Praktiken zur Erstellung von Fragen und zur
+Strukturierung von Umfragen. Im kommenden Abschnitt steht die Präsentation einer Auswahl der Ergebnisse nach den
+Interviews im Vordergrund.
+
+
+\subsection{Ergebnisse des Interviewverfahrens}
 todo - write something here
