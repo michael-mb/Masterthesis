@@ -104,6 +104,18 @@ Erweiterung auf andere Diagramm-Modellierungstools sollte hauptsächlich das Hin
 diese Tools und die Möglichkeit zur Auswahl des bevorzugten Tools über die grafische Benutzeroberfläche des GReQL
 Converter einschließen. Glücklicherweise sollte diese Aufgabe nicht besonders komplex sein.
 
+\subsubsection{Erweiterung des PlantText-Syntaxparsers zur Erkennung von Syntaxfehlern}
+Während des Interviews mit Dr. Michael Striewe wurde ein Verhalten bemerkt. Als er seinen PlantText-Code auf die
+Plattform kopierte, konnten nur die Klassendefinitionen Regeln (``Class Definition'') generiert werden, und die
+Assoziationsregeln wurden nicht erkannt. Dies lag daran, dass die Klassennamen in den Assoziationen in
+Anführungszeichen standen, was der Parser nicht erkennen konnte. Dieses Problem lässt sich dadurch erklären, dass der
+Parser solche Ausdrücke nicht als Fehler erkennt. Es gibt mehrere Arten von gültigem PlantText-Code, der jedoch nicht
+zwangsläufig vom Parser verarbeitet werden kann. Aus diesem Grund sollte man sich an die Dokumentation halten, um die
+Regeln zu schreiben, und auf der Entwicklungsseite einen Weg finden, diese Fehler zu identifizieren und insbesondere den
+Benutzer darauf aufmerksam zu machen, dass etwas nicht wie erwartet funktioniert. Das gilt auch für den Fehler, den er
+bezüglich des Enums erwähnt hat, der eine spezifische Syntax im GReQL Converter erfordert.
+
+\\~\\
 
 Bei der Entwicklung des GReQL Converter war eine der entscheidenden Überlegungen, ein Tool zu schaffen, das sich im
 Laufe der Zeit weiterentwickeln kann. Aus diesem Grund wurde der Code unter Einhaltung von Designprinzipien und

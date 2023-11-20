@@ -9,7 +9,7 @@ angewandten Ansätze zur Prüfung des GReQL Converters, die Datensammlungsmethod
 Messung seiner Nützlichkeit. Letztendlich geht es darum, empirisch festzustellen, ob dieses Werkzeug konkrete Vorteile
 und einen signifikanten Mehrwert für Lehrende und Lernende bietet.
 
-\section{Erreichte Ziele}
+\section{Erreichte Ziele}\label{sec:erreichte-ziele}
 
 Die Untersuchung der Effizienz und Funktionalität des GReQL Converters als Instrument zur Extraktion relevanter
 GReQL-Regeln aus einer UML-Diagrammannotation, die mittels PlantText zur Evaluation von UML-Diagrammen erstellt wurde,
@@ -341,7 +341,114 @@ Feedback zum Tool zu erhalten.
 \end{enumerate}
 
 \subsubsection{Interview mit Dr. Michael Striewe}
-write some text here
+
+Dr. Michael Striewe ist ein wissenschaftlicher Mitarbeiter an der Universität Duisburg-Essen. Er ist eines der
+Teammitglieder, das die Plattform JACK pflegt und weiterentwickelt. Zusätzlich dazu verfügt er über umfangreiche
+Erfahrung mit GReQL, da er die Idee einbrachte und umsetzte, GReQL-Code zur Auswertung von Klassendiagrammen zu
+nutzen~\cite{striewe2011automated}. Daher verfügt er über Fachwissen im Schreiben von GReQL-Code und in der Auswertung
+von Diagrammen. Wie bei Christoph Olbricht begann das Interview mit einer Vorstellung des GReQL Converters sowie seiner
+Dokumentation. Anschließend sollte Dr. Michael Striewe dieselbe Aufgabe wie herr Olbricht durchführen: Code in PlantText
+für ein Klassendiagramm generieren. Danach annotierte er das Diagramm und testete es auf der Plattform JACK, wo er
+zunächst ein Ergebnis von 96\% erzielte, aufgrund von zwei Fehlern. Insbesondere wurde die Syntax zum Schreiben eines
+Enums gemäß der Dokumentation nicht eingehalten und es gab einen Tippfehler bei der Eingabe eines Klassennamens in der
+XMI-Musterlösung. Genauer gesagt handelte es sich um den Namen einer Klasse ``Rofstoff'', der in der Standardlösung
+falsch geschrieben war. Der korrekte Name sollte ``Rohstoff'' sein. Da er den Fehler bei der Erstellung der Regeln behob
+und einen exakten Abgleich für den Klassennamen verwendete, erkannte JACK den Fehler. Dieses Verhalten ist keine
+Programmierfehler oder ein Problem mit dem Tool, sondern vielmehr ein Beweis dafür, dass das Tool zuverlässig arbeitet
+und wie erwartet funktioniert. Am Ende des Interviews wurden Fragen aus dem vorherigen Abschnittsfragebogen gestellt,
+um ein spezifisches Feedback zum Tool zu erhalten.
+
+\begin{enumerate}[itemsep=8pt, parsep=5pt]
+    \item \textbf{Einführung in das Tool:}
+
+    Dr. Michael Striewe hat das Wesen des GReQL Converters erfasst. Er beschrieb ihn als ein Werkzeug, das es
+    ermöglicht, aus dem PlantUML-Code eines Klassendiagramms GReQL-Code zu generieren. Er hatte zuvor keine Erfahrung
+    mit einem solchen Tool in Bezug auf die Auswertung von UML-Diagrammen mittels
+    GReQL.
+
+    \item \textbf{Benutzererfahrung:}
+
+    Bezüglich Benutzererfahrung äußerte er: ``Es war relativ einfach zu bedienen. Allerdings muss man viel hin und her
+    scrollen. Ansonsten ist es relativ intuitiv und ich bin ziemlich gut damit klargekommen.'' Jedoch hatte er zu Beginn
+    einige Probleme bei der Verwendung des GReQL Converters. Als er seinen PlantText-Code auf die Plattform kopierte,
+    konnten nur Klassendefinitionen (``Class Definition'') Regeln generiert werden, während die Assoziationsregeln nicht
+    erkannt wurden. Dies lag daran, dass die Klassennamen in den Assoziationen in Anführungszeichen standen, was der
+    Parser nicht erkennen konnte. Um dieses Problem zu beheben, musste der Benutzer sich an die in der Tool-Dokumentation
+    definierte Syntax halten, und auf Entwicklerseite war es wichtig, den Benutzer zu benachrichtigen, wenn solche Fälle
+    auftreten, damit er das Problem ohne weitere Untersuchungen verstehen kann.
+
+    \item \textbf{Dokumentation:}
+
+    Die Dokumentation fand er leicht verständlich und nützlich. Er wünschte sich jedoch, dass bestimmte Funktionen,
+    wie die Definition des Enums, stärker hervorgehoben würden.
+
+    \item \textbf{Generierung von GReQL-Regeln:}
+
+    Hinsichtlich der Präzision des Tools glaubt Dr. Michael Striewe, dass ein einzelnes Beispiel nicht ausreicht, um
+    diesen Aspekt zu testen. Es wäre notwendig, es mit mehreren Lösungen und unterschiedlichen Diagrammen mit mehr oder
+    weniger Fehlern zu testen, um zu sehen, ob die vom GReQL Converter generierten Regeln die Feinheiten erkennen. Er
+    erwähnte auch die Möglichkeit, dass verschiedene Diagramme, die auf PlantText identisch sind, unterschiedliche
+    Regeln generieren könnten, je nach verwendeter Syntax. Seiner Meinung nach sollte das Tool in verschiedenen
+    Varianten getestet werden. Ein einzelnes Beispiel reicht nicht aus, um diese Frage zu beantworten.
+
+
+    Hinsichtlich der Unstimmigkeiten im generierten GReQL-Code hatte er bis zum Zeitpunkt des Interviews nichts
+    Auffälliges bemerkt. Er betonte jedoch auch, dass er die Regeln nicht einzeln überprüft hatte, was ebenfalls
+    weitere Untersuchungen erfordert.
+
+
+    \item \textbf{Vergleich des Tools mit der manuellen Methode:}
+
+    Dr. Michael Striewe ist der Ansicht, dass durch die Verwendung des GReQL Converters viel Zeit gespart werden kann.
+    Um das zu annotierende PlantText-Diagramm zu generieren, benötigte er nur 15 Minuten und konnte von dort aus mehr
+    als zwanzig Regeln erstellen. Das empfand er als äußerst schnell und er könnte sich nicht vorstellen, die gleiche
+    Aufgabe manuell genauso schnell zu erledigen. Er findet das Tool sehr effektiv bei Regeln, die viel Copy-and-Paste
+    erfordern (zum Beispiel bei Attributregeln, Klassendefinitionen und Methoden).
+
+    Dort, wo das Tool weniger effektiv sein könnte, wären spezielle Varianten, insbesondere Fälle, in denen spezifische
+    Varianten von Klassennamen gefordert sind. Zum Beispiel, wenn Regeln erstellt werden müssen, bei denen die
+    Klassennamen genau ``Kunde'' oder ``Kunden'' sein müssen, wäre es einfacher, dies manuell zu tun als den GReQL
+    Converter zu nutzen.
+
+    \item \textbf{Verbesserungsvorschläge:}
+
+    \begin{itemize}[itemsep=8pt, parsep=5pt]
+        \item Die Bezeichnung des ``Delete''-Buttons sollte in ``Disable'' geändert werden, um nicht mehr für die
+        Generierung des GReQL-Codes in Betracht gezogen zu werden. Dadurch könnte die Möglichkeit geschaffen werden,
+        bestimmte Codevarianten zu testen. Mit ``Delete'' wird die Regel gelöscht und der Code muss erneut geparst
+        werden, alle zuvor vorgenommenen Änderungen gehen verloren. ``Disable'' könnte mehr Flexibilität bei der
+        Generierung der Regeln bieten.
+        \item Der GReQL Converter sollte in der Lage sein, verschiedene Modellierungsvarianten von Regeln zu
+        ermöglichen. Nicht nur Varianten in Bezug auf die Klassennamen, sondern auch die Möglichkeit, mehrere
+        Modellierungsvarianten einer Regel zu haben. Derzeit generiert der GReQL Converter nur Regeln für einen
+        einzigen Diagrammtyp. Es ist jedoch möglich, dass Studenten verschiedene Diagrammtypen erstellen, die alle
+        korrekt sind. Im Fall von ``Sohn Maschinenbau GmbH'' (Siehe~\ref{sec:erreichte-ziele}) könnte es möglich sein,
+        ``stueckliste'' entweder als Attribut oder als Assoziation zu modellieren. Es gibt auch Fälle, in denen Student
+        eine einfache Assoziation anstelle einer Aggregation verwenden könnten, und die Modellierung wäre immer noch
+        korrekt. Der GReQL Converter sollte diese Funktionalität hinzufügen können.
+        \item Der GReQL Converter sollte auch die Möglichkeit bieten, GReQL-Code nur für eine einzelne Regel zu
+        generieren. Das könnte die Änderung von Regeln erheblich erleichtern.
+    \end{itemize}
+
+    \item \textbf{Nützlichkeit und Relevanz:}
+
+    In Bezug auf die Nützlichkeit und Relevanz des Tools sagte Dr. Michael Striewe: ``Ja, definitiv, es ist nützlich.
+    Es erleichtert mir zunächst einmal das schnelle Erstellen einer großen Anzahl von Regeln. Danach muss ich jedoch
+    vieles manuell nacharbeiten. Aber der Aufwand, zunächst einmal die Regeln zu erstellen, ist bereits erledigt.''
+
+
+    \item \textbf{Gesamtbewertung:}
+
+    Er bewertete den GReQL Converter insgesamt mit \textbf{5 von 5 Punkten} in den Kategorien \textbf{Design} und
+    \textbf{Benutzerfreundlichkeit}, sowie mit \textbf{4 von 5 Punkten} für die \textbf{Nützlichkeit}, da er noch
+    Erwartungen und Wünsche für Verbesserungen hat. Das Tool wurde als äußerst hilfreich und empfehlenswert
+    für Fachleute eingestuft.
+
+\end{enumerate}
 
 \subsubsection{Interview mit Tobias Stottrop}
 write some text here
+
+\section{Erweiterung von GReQL Converter-Funktionen gemäß den Interviewvorschlägen}
+write some text here
+
