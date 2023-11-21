@@ -242,8 +242,8 @@ Interviews im Vordergrund.
 
 \subsection{Ergebnisse des Interviewverfahrens}
 
-Die Interviews wurden mit einer Gruppe von sechs wissenschaftliche Mitarbeiter aus zwei Hochschuleinrichtungen
-durchgeführt, nämlich der Universität Duisburg-Essen und der Technischen Hochschule Dortmund (siehe~\ref{tab:personnen}).
+Die Interviews wurden mit einer Gruppe von sechs wissenschaftliche Mitarbeiter aus einer Hochschuleinrichtung
+durchgeführt, nämlich der Universität Duisburg-Essen (siehe~\ref{tab:personnen}).
 
 \begin{table}
     \centering
@@ -258,12 +258,6 @@ durchgeführt, nämlich der Universität Duisburg-Essen und der Technischen Hoch
             Universität Duisburg Essen & Tobias Stottrop \\
             \midrule
             Universität Duisburg Essen & Christoph Olbricht \\
-            \midrule
-            Technische Hochschule Köln & Prof. Dr. Mario Winter \\
-            \midrule
-            Technische Hochschule Köln & Uwe Poborski \\
-            \midrule
-            Technische Hochschule Köln & Paul Hufnagel \\
             \bottomrule
         \end{tabular}
     \end{adjustbox}
@@ -447,7 +441,96 @@ um ein spezifisches Feedback zum Tool zu erhalten.
 \end{enumerate}
 
 \subsubsection{Interview mit Tobias Stottrop}
-write some text here
+
+Tobias Stottrop, wissenschaftlicher Mitarbeiter an der Universität Duisburg-Essen, hat bereits GReQL-Code für die
+Auswertung von UML-Klassendiagrammen im Rahmen des Vorlesung ``Software Systeme'' verwendet. Tobias hatte das Interview
+nicht vorbereitet, da er sich nicht auf der JACK-Plattform registriert hatte und auch nicht den erforderlichen
+PlantText-Code für die Diagrammbewertung geschrieben hatte. Daher wurde während des Interviews ein anderer Ansatz
+verfolgt. Basierend auf seiner Erfahrung mit GReQL und einer kurzen Einführung und Demonstration von PlantText ging
+es darum, verschiedene Anwendungsfälle des GReQL Converters zu testen, um zu analysieren, was möglich ist und welche
+Punkte noch verbessert werden müssen. Das Interviewmodell war anders als zuvor durchgeführte.
+
+\begin{enumerate}[itemsep=8pt, parsep=5pt]
+    \item \textbf{Einführung in das Tool:}
+    Tobias Stottrop hat verstanden, was der GReQL Converter ist. In seinen eigenen Worten erklärte er:
+    ``Es handelt sich um ein Hilfswerkzeug zur Generierung von GReQL-Code für UML-Diagramme. Es basiert auf einer
+    Beschreibungssprache namens PlantUML und dient der Generierung von XMI-Code.'' Er hatte zuvor kein solches Tool
+    verwendet und glaubt, dass der GReQL Converter das erste seiner Art ist.
+
+    \item \textbf{Benutzererfahrung:}
+
+    Er fand die Syntax-Hervorhebung sehr angenehm und meinte, dass dies die Benutzererfahrung mit dem GReQL Converter
+    verbessert. Er erwähnte auch, dass es schwierig sein kann, bei einem sehr umfangreichen Diagramm den Überblick
+    zu behalten, mit Code auf der einen Seite und mehreren generierten Regeln auf der anderen Seite. Er betonte jedoch,
+    dass er darüber nicht urteilen könne, da ihm kein solches Beispiel vorliegt.
+
+    Er empfand das Tool insgesamt als sehr intuitiv. Aber er erwähnte, dass bestimmte Funktionen, wie das Hinzufügen von
+    manuellen Regeln, nicht auf Anhieb zu finden waren. Außerdem sagte er, dass es keine Hindernisse bei der Nutzung des
+    Tools gibt, aber dass es manchmal für bestimmte Regeln manuelle Eingriffe erfordert, um genau das zu erreichen, was
+    man möchte.
+
+    \item \textbf{Dokumentation:}
+
+    Er fand die Dokumentation verständlich und ausreichend, um das zu erreichen, was er wollte. Er betonte jedoch
+    bedauerlicherweise, dass er nicht mehr dazu sagen könne, da er sich vor dem Interview nicht ausreichend mit dem
+    Tool vertraut gemacht hatte.
+
+
+    \item \textbf{Generierung von GReQL-Regeln:}
+
+    Tobias Stottrop betonte, dass das Feedback, das vom GReQL Converter generiert wird, sehr präzise ist, sodass der
+    Studierende nach dem Nichtbestehen eines Teils der Übung genau weiß, was zu tun ist, nachdem er das Feedback gelesen
+    hat (was tatsächlich die Rolle des Feedbacks ist). Allerdings äußerte er Unzufriedenheit mit dieser Funktion. Es
+    wurde daher vorgeschlagen, das Feedback manuell zu ändern, um weniger Informationen zu liefern. Er betonte, dass er
+    sich wünschen würde, dass bei Nichterfüllung einer Regel das Programm das Feedback der anderen Regeln nicht mehr
+    anzeigen sollte. Diese Funktionalität liegt jedoch leider nicht im Bereich des GReQL Converters, sondern eher daran,
+    wie GReQL interpretiert wird oder sogar am JACK-System selbst.
+
+    \item \textbf{Vergleich des Tools mit der manuellen Methode:}
+
+    Er erwähnte, dass das Tool tatsächlich viel Zeit spart, wenn man schnell Regeln für ein Diagramm generieren möchte.
+    Aber er betonte, dass manuelle Intervention notwendig ist, um die generierten Regeln zu vervollständigen und
+    anzupassen. Er erwähnte auch, dass das Tool viel Copy-and-Paste spart und Fehler aufgrund von schlechten Kopien
+    oder falscher Eingaben vermeidet.
+
+    \item \textbf{Verbesserungsvorschläge:}
+
+    \begin{itemize}[itemsep=8pt, parsep=5pt]
+        \item Die Möglichkeit, basierend auf einer Annotation den Bereich einer Regel zu wählen
+        (Abwesenheit, Vorhandensein)
+        \item Die Möglichkeit, Standardwerte für Attribute festzulegen (nicht sehr üblich in UML, aber eine nette
+        Ergänzung)
+        \item Um das Tool zu vervollständigen, könnte auch eine Sichtbarkeitskomponente auf Paketebene für Attribute
+        hinzugefügt werden.
+        \item Es ist nicht möglich, Regeln mit einer negativen Punktzahl direkt über das Annotationssystem oder die
+        grafische Darstellung zu erstellen. Dies muss unbedingt direkt nach der Generierung des GReQL-Codes erfolgen.
+        Es sollte dem Benutzer möglich sein, negative Punkte hinzuzufügen.
+        \item Hinzufügen von Regeln wie ``Anzahl Attribute'' und ``Anzahl Methoden'', um die Anzahl der Attribute bzw.
+        Methoden einer Klasse zu zählen und nicht direkt des gesamten Diagramms.
+        \item Die Möglichkeit, den Typ der Parameter in Methoden zu überprüfen. Diese Funktionalität funktioniert nur
+        für primitive Typen (dieses Problem wird im nächsten Kapitel ausführlich erläutert).
+        \item Die Möglichkeit, den Code vorübergehend zu speichern, während Änderungen vorgenommen werden (ähnlich wie
+        bei der Funktionsweise von PlantText).
+    \end{itemize}
+
+    \item \textbf{Nützlichkeit und Relevanz:}
+    Er fand, dass das Tool sehr nützlich ist und Lehrern viel Zeit sparen wird.
+
+    \item \textbf{Gesamtbewertung:}
+    Für die \textbf{Nützlichkeit} des Tools vergab er dem GReQL Converter eine Bewertung von \textbf{4 von 5} Punkten.
+    Er sagte, dass es noch einige Funktionen gibt, die fehlen und die er gerne in Zukunft sehen würde. In Bezug auf das
+    Design fand er, dass alles viel zu groß war (Text, Komponenten, Symbole). Er sagte, dass es schwierig sein wird,
+    sich zurechtzufinden, wenn die zu generierenden Diagramme sehr groß sind. Während des Interviews wurde besprochen,
+    dass es möglich ist, aus dem Browser heraus zu zoomen, um eine bessere Ansicht zu erhalten, was eine Option ist.
+    Er klagte auch darüber, dass man in der Anwendung viel scrollen muss, und aus diesen Gründen vergab er eine
+    Bewertung von \textbf{4 von 5} für das \textbf{Design}. In Bezug auf die \textbf{Benutzerfreundlichkeit} vergab er
+    ebenfalls \textbf{3 von 5} Punkten aus denselben Gründen wie für das Design.
+
+    Er empfiehlt das Tool seinen Kollegen und findet, dass das Tool großartig ist und eine beträchtliche Hilfe sein
+    kann.
+\end{enumerate}
+
+
 
 \section{Erweiterung von GReQL Converter-Funktionen gemäß den Interviewvorschlägen}
 write some text here
