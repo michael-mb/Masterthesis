@@ -242,8 +242,8 @@ Interviews im Vordergrund.
 
 \subsection{Ergebnisse des Interviewverfahrens}
 
-Die Interviews wurden mit einer Gruppe von sechs wissenschaftliche Mitarbeiter aus einer Hochschuleinrichtung
-durchgeführt, nämlich der Universität Duisburg-Essen (siehe~\ref{tab:personnen}).
+Die Interviews wurden mit einer Gruppe von sechs wissenschaftliche Mitarbeiter aus zwei Hochschuleinrichtungen
+durchgeführt, nämlich der Universität Duisburg-Essen und der Technische Hochschule Dortmund (siehe~\ref{tab:personnen}).
 
 \begin{table}
     \centering
@@ -258,6 +258,8 @@ durchgeführt, nämlich der Universität Duisburg-Essen (siehe~\ref{tab:personne
             Universität Duisburg Essen & Tobias Stottrop \\
             \midrule
             Universität Duisburg Essen & Christoph Olbricht \\
+            \midrule
+            Technische Hochschule Dortmund & Prof. Dr. Mario Winter \\
             \bottomrule
         \end{tabular}
     \end{adjustbox}
@@ -452,6 +454,7 @@ Punkte noch verbessert werden müssen. Das Interviewmodell war anders als zuvor 
 
 \begin{enumerate}[itemsep=8pt, parsep=5pt]
     \item \textbf{Einführung in das Tool:}
+
     Tobias Stottrop hat verstanden, was der GReQL Converter ist. In seinen eigenen Worten erklärte er:
     ``Es handelt sich um ein Hilfswerkzeug zur Generierung von GReQL-Code für UML-Diagramme. Es basiert auf einer
     Beschreibungssprache namens PlantUML und dient der Generierung von XMI-Code.'' Er hatte zuvor kein solches Tool
@@ -514,9 +517,12 @@ Punkte noch verbessert werden müssen. Das Interviewmodell war anders als zuvor 
     \end{itemize}
 
     \item \textbf{Nützlichkeit und Relevanz:}
+
     Er fand, dass das Tool sehr nützlich ist und Lehrern viel Zeit sparen wird.
 
     \item \textbf{Gesamtbewertung:}
+
+
     Für die \textbf{Nützlichkeit} des Tools vergab er dem GReQL Converter eine Bewertung von \textbf{4 von 5} Punkten.
     Er sagte, dass es noch einige Funktionen gibt, die fehlen und die er gerne in Zukunft sehen würde. In Bezug auf das
     Design fand er, dass alles viel zu groß war (Text, Komponenten, Symbole). Er sagte, dass es schwierig sein wird,
@@ -530,8 +536,84 @@ Punkte noch verbessert werden müssen. Das Interviewmodell war anders als zuvor 
     kann.
 \end{enumerate}
 
-
-
-\section{Erweiterung von GReQL Converter-Funktionen gemäß den Interviewvorschlägen}
+\subsubsection{Interview mit Prof. Dr. Mario Winter}
 write some text here
 
+\section{Erweiterung von GReQL Converter-Funktionen gemäß der Interviewrückmeldungen}
+
+Nach Abschluss der Interviewphase wurden zahlreiche Rückmeldungen gegeben, um zur Verbesserung des GReQL Converters und
+seiner Funktionalitäten beizutragen. Da es nicht möglich war, alle diese Funktionen nur im Rahmen dieser Masterarbeit
+zu implementieren, wurde eine Auswahl der Funktionen getroffen, die den größten Einfluss auf das Benutzererlebnis und
+die Funktionalitäten haben. In diesem Kapitel geht es darum, diese verschiedenen Funktionen vorzustellen.
+
+\subsection{Feature 1: Doppeltes Scrolling}
+
+Während der Interviews äußerte die Mehrheit der Teilnehmer Beschwerden über die Notwendigkeit eines umfangreichen
+Scrollens. Die Anordnung des PlantText-Codes auf der linken Seite des Bildschirms und der generierten Regeln auf der
+rechten Seite führte dazu, dass das Scrollen auf dem Bildschirm für beide Teile gleichzeitig erfolgte. Dies erschwerte
+die Visualisierung erheblich, insbesondere bei komplexeren und umfangreicheren Diagrammen, wenn Vergleiche angestellt
+oder Regeln im Zusammenhang mit dem PlantText-Code identifiziert werden mussten.
+
+Um dieses Problem anzugehen, wurde eine unabhängige Scrollfunktion für die beiden Bildschirmbereiche implementiert.
+Dadurch ist es möglich, in den generierten Regeln zu scrollen, ohne dass sich die Ansicht des PlantText-Codes ändert.
+Dies erleichtert es dem Benutzer, Korrespondenzen zwischen dem PlantText-Code und den generierten Regeln zu suchen. Das
+Ziel dieser Funktionalität besteht darin, die Benutzererfahrung zu verbessern und das Tool angenehmer in der Anwendung
+zu gestalten.
+
+\subsection{Feature 2: Regeln deaktivieren/aktivieren}
+
+Während des Interviews mit Dr. Michael Striewe erwähnte er das Problem des ``Delete''-Buttons, der verwendet wird, um
+Regeln zu entfernen, die generiert wurden und die möglicherweise nicht im GReQL-Code benötigt werden. Er zeigte jedoch
+während des Interviews die Grenzen dieser Funktionalität auf und schlug vor, einen Button zu verwenden, der es
+ermöglicht, Regeln vorübergehend zu deaktivieren, anstatt sie zu löschen. Falls ein Benutzer beispielsweise
+versehentlich eine Regel löscht, gäbe es keine Möglichkeit zur Wiederherstellung. Der Benutzer müsste den PlantText-Code
+erneut parsen, und alle Änderungen an den Regeln wären unwiederbringlich verloren.
+
+Diese neue Funktionalität ermöglicht es dem Benutzer, eine Regel, ein Attribut oder eine Methode vorübergehend zu
+deaktivieren, ohne sie zu löschen (siehe~\ref{fig:feat2n3}). Auf diese Weise kann der generierte Code zuvor visualisiert werden, und falls eine
+Deaktivierung versehentlich erfolgt ist, könnte die Regel einfach wieder aktiviert werden. Diese Funktion wurde
+implementiert. Das Ergebnis dieser Funktionalität besteht darin, dass sie mehr Flexibilität bei der Generierung von
+GReQL-Code bietet und die Visualisierung des Codes erleichtert, insbesondere in Kombination mit der nächsten Funktion,
+dem Rule Viewer.
+
+\subsection{Feature 3: Rule Viewer}
+Diese Funktion wurde ebenfalls von Dr. Michael Striewe vorgeschlagen und zielt darauf ab, die Benutzererfahrung zu
+verbessern. Um den GReQL-Code einer bestimmten Regel zu visualisieren, muss zunächst der GReQL-Code aller Regeln
+generiert werden, um dann zu untersuchen, welcher Teil der Regel entspricht, die man betrachten möchte. Im Fall der
+Klassendefinition könnte es vorkommen, dass der Benutzer nur sehen möchte, worauf sich die Regel bezieht, nachdem er
+Attribute deaktiviert oder bestimmte Parameter geändert hat. Es war zuvor nicht möglich, den Code einer einzelnen Regel
+zu visualisieren.
+
+Diese Funktion ermöglicht es nun, durch Klicken auf einen Button den entsprechenden GReQL-Code einer bestimmten Regel
+zu generieren (siehe~\ref{fig:feat2n3}). Dadurch kann der Benutzer Tests und Änderungen leichter durchführen, was mehr Möglichkeiten bietet und
+das Benutzererlebnis verbessert.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=16cm]{images/features-2n3}
+    \caption{Feature 2 und 3}
+    \medskip
+    \small
+    Auf der linken Seite des Bildes ist der GReQL-Code für die Regel ``Count Methods'' zu sehen. Um dieses Canvas
+    anzuzeigen, kann man auf die Schaltfläche in Form eines Auges neben dem Titel der Regel klicken. Auf der linken
+    Seite sind mehrere Regeln in Grau markiert, was bedeutet, dass sie deaktiviert sind. Diese werden daher bei der
+    vollständigen Generierung des GReQL-Codes ignoriert.
+    \label{fig:feat2n3}
+\end{figure}
+
+\subsection{Feature 4: Kombinierte Regeln}
+write something here
+
+\\~\\
+
+
+\section{Zusammenfassung der Analyse}
+
+Abschließend bietet die Analyse und Bewertung des GReQL Converters einen detaillierten Einblick in die Wirksamkeit und
+Potenziale dieses Tools. Die erörterten Verbesserungsvorschläge sowie die ermittelten Stärken und Schwächen legen den
+Grundstein für zukünftige Entwicklungen und zeigen auf, wie dieses Instrument im Bildungsumfeld und darüber hinaus noch
+effektiver genutzt werden könnte. Die Bewertung des Tools, getragen von den Erwartungen, dem Nutzen und den
+Erkenntnissen aus den Anwendererfahrungen, bildet eine solide Grundlage für weiterführende Studien und Implementierungen
+zur Steigerung seiner Funktionalitäten und Anwenderfreundlichkeit. Diese umfassende Bewertung legt den Fokus auf die
+kontinuierliche Weiterentwicklung und Optimierung des GReQL Converters, um seinen Wert und seine Wirksamkeit für
+zukünftige Anwendungen zu maximieren.
