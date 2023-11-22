@@ -9,7 +9,22 @@ eine ganzheitliche und gründliche Analyse der Leistung, der Herausforderungen u
 Zusammenhang mit diesem Tool bereitzustellen.
 
 \section{Interpretation der Evaluationsergebnisse}
-todo - write something here
+
+
+Die Interviews ergaben überwiegend positive Ergebnisse. Der GReQL Converter stellt ein innovatives Tool dar, das als
+erstes seiner Art die Generierung von GReQL-Code ermöglicht, um Klassendiagramme zu bewerten. Alle Befragten äußerten
+sich äußerst positiv über die Nützlichkeit des GReQL Converters und betonten dessen Potenzial, Lehrern erheblich Zeit
+beim Verfassen von GReQL-Code zu sparen. Sie sind außerdem bereit, das Tool ihren Kollegen zu empfehlen, die bereits E
+rfahrung mit GReQL-Code für die Klassendiagrammbewertung haben.
+
+Die grafische Benutzeroberfläche und die Nutzererfahrung stießen bei den meisten Befragten auf Zustimmung.
+Dennoch wurde auf verschiedene Bereiche hingewiesen, die noch verbessert werden könnten, um das Tool weiter zu
+optimieren. Obwohl der GReQL Converter die Generierung generischer Regeln stark erleichtert, stellten die Interviews
+fest, dass bei zunehmender Komplexität manuelle Eingriffe erforderlich sind. Es wurde betont, dass fortlaufende
+Verbesserungen an dem Tool dazu beitragen könnten, den Bedarf an solchen manuellen Interventionen im Laufe der Zeit zu
+verringern. Es ist jedoch wichtig zu beachten, dass der GReQL Converter nicht darauf abzielt, die menschliche
+Intervention zu ersetzen. Stattdessen sollte er als unterstützendes Instrument für Lehrkräfte betrachtet werden.
+
 
 \section{Herausforderungen während des Entwicklungsprozesses}
 
@@ -77,7 +92,7 @@ Der GReQL Converter, obwohl er vielversprechend ist, verwehrt sich der Illusion 
 sind signifikante Verbesserungen realisierbar, um seine Effektivität bei der Bewältigung spezifischer Herausforderungen
 zu optimieren.
 
-\subsubsection{Hinzufügen neuer Regeln}
+\subsection{Hinzufügen neuer Regeln}
 
 Eine solche Möglichkeit zur Verbesserung manifestiert sich in der Erweiterung des Regelkatalogs. Obwohl die Entwicklung
 des GReQL Converters bereits eine umfassende Berücksichtigung der Regeln, die der Modellierung von UML-Klassendiagrammen
@@ -88,14 +103,16 @@ Erfassung der Ausrichtung dieser Assoziation. Ebenso bleiben die mit Assoziation
 unberücksichtigt. Diese und andere Feinheiten könnten zukünftige Erweiterungen des GReQL Converters sein, um das Tool
 in Bezug auf die Generierung präziserer GReQL-Regeln zu bereichern.
 
-\subsubsection{Erweiterung bestehender Regeln}
+\subsection{Erweiterung bestehender Regeln}
 
-Mehrere Regeln könnten von Verbesserungen profitieren, um mit einer breiteren Palette von Entwurfsvarianten kompatibel
-zu sein. Hierfür ist es unerlässlich, den GReQL Converter auf einer signifikanten Anzahl von Diagrammen zu testen, um
-seine Grenzen zu ermitteln und sie umfassend anzugehen.
+Eine Vielzahl von Regeln könnte von Verbesserungen profitieren, um eine größere Bandbreite von Designvarianten zu
+unterstützen und kompatibler zu werden. Um dieses Ziel zu erreichen, ist es unerlässlich, den GReQL Converter an einer
+beträchtlichen Anzahl von Diagrammen zu testen, um seine Grenzen und Einschränkungen zu identifizieren und umfassend
+anzugehen. Durch eine breite Testbasis können potenzielle Schwachstellen erkannt und verbessert werden, um eine
+robustere und flexiblere Anwendung des Tools zu gewährleisten.
 
 
-\subsubsection{Erweiterung der Kompatibilität des GReQL Converter}
+\subsection{Erweiterung der Kompatibilität des GReQL Converter}
 
 Wie zuvor erwähnt, ist der von GReQL Converter generierte GReQL-Code derzeit zu 100\% kompatibel mit Lösungsdiagrammen,
 die mit BOUML erstellt wurden. Der GReQL Converter wurde jedoch mit Blick auf die Erweiterbarkeit zu anderen
@@ -104,7 +121,7 @@ Erweiterung auf andere Diagramm-Modellierungstools sollte hauptsächlich das Hin
 diese Tools und die Möglichkeit zur Auswahl des bevorzugten Tools über die grafische Benutzeroberfläche des GReQL
 Converter einschließen. Glücklicherweise sollte diese Aufgabe nicht besonders komplex sein.
 
-\subsubsection{Erweiterung des PlantText-Syntaxparsers zur Erkennung von Syntaxfehlern}
+\subsection{Erweiterung des PlantText-Syntaxparsers zur Erkennung von Syntaxfehlern}
 Während des Interviews mit Dr. Michael Striewe wurde ein Verhalten bemerkt. Als er seinen PlantText-Code auf die
 Plattform kopierte, konnten nur die Klassendefinitionen Regeln (``Class Definition'') generiert werden, und die
 Assoziationsregeln wurden nicht erkannt. Dies lag daran, dass die Klassennamen in den Assoziationen in
@@ -117,7 +134,10 @@ bezüglich des Enums erwähnt hat, der eine spezifische Syntax im GReQL Converte
 
 \\~\\
 
-Bei der Entwicklung des GReQL Converter war eine der entscheidenden Überlegungen, ein Tool zu schaffen, das sich im
-Laufe der Zeit weiterentwickeln kann. Aus diesem Grund wurde der Code unter Einhaltung von Designprinzipien und
-bewährten Praktiken geschrieben, um zukünftigen Entwicklern, die an dem Tool arbeiten, die Orientierung zu erleichtern
-und ihre Entwicklererfahrung erheblich zu vereinfachen~\cite{mcconnell2006software}.
+Die Entwicklung des GReQL Converters basierte auf der grundlegenden Überlegung, ein Tool zu schaffen, das sich
+kontinuierlich weiterentwickeln kann. Dieser Aspekt fand sich in der Gestaltung des Codes wider, der gemäß etablierter
+Designprinzipien und bewährter Praktiken verfasst wurde. Der Fokus lag darauf, kommenden Entwicklern, die an diesem Tool
+arbeiten, eine klare Orientierung zu bieten und ihre Entwicklererfahrung erheblich zu verbessern, wie auch McConnell es
+erwähnt~\cite{mcconnell2006software}. Diese strategische Herangehensweise zielt darauf ab, eine solide Grundlage zu
+schaffen, die zukünftige Erweiterungen und Anpassungen erleichtert und einen nahtlosen Entwicklungsprozess für kommende
+Versionen des GReQL Converters ermöglicht.
