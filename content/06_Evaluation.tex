@@ -602,7 +602,22 @@ das Benutzererlebnis verbessert.
 \end{figure}
 
 \subsection{Feature 4: Kombinierte Regeln}
-write something here
+
+Die erste Version des GReQL Converters war zweifellos sehr nützlich, da er die Erstellung einer großen Menge von Regeln
+allein aus einem PlantText-Code ermöglichte. Allerdings blieb seine Nützlichkeit auf die Generierung einfacher und
+größtenteils generischer Regeln beschränkt. Diese Einschränkung wurde vom Dr. Michael Striewe während seines Interviews
+aufgezeigt, als er den Wunsch äußerte, komplexere Regeln aus annotiertem PlantText-Code zu generieren. Ein praktisches
+Beispiel hierfür wäre zum Beispiel eine Klasse ``Bibliothek'', die ein oder mehrere Objekte der Klasse ``Buch'' enthält.
+Diese einfache Darstellung kann auf verschiedene Arten modelliert werden, sei es durch das Hinzufügen von ``Buch'' als
+Attribut zur Klasse ``Bibliothek``, durch Aggregation, Komposition oder einfache Beziehung. Die Einschränkung der ersten
+Version des GReQL Converters bestand darin, dass er keine Möglichkeit bot, Regeln zu kombinieren, um verschiedene, aber
+alle korrekte Antworten zu ermöglichen.
+
+Um dieses Problem zu lösen, wurde die Entwicklung der Funktion zur Kombination von Regeln vorangetrieben. Diese Funktion
+zielt darauf ab, eine gewisse Flexibilität zu bieten und Lehrkräften die Definition von deutlich komplexeren Regeln zu
+ermöglichen. Damit können Variationen der Antworten definiert werden, die alle korrekt sein können.
+
+continue to write something here
 
 \\~\\
 
