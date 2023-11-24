@@ -690,12 +690,107 @@ alle korrekte Antworten zu ermöglichen.
 
 Um dieses Problem zu lösen, wurde die Entwicklung der Funktion zur Kombination von Regeln vorangetrieben. Diese Funktion
 zielt darauf ab, eine gewisse Flexibilität zu bieten und Lehrkräften die Definition von deutlich komplexeren Regeln zu
-ermöglichen. Damit können Variationen der Antworten definiert werden, die alle korrekt sein können.
+ermöglichen. Damit können Variationen der Antworten definiert werden, die alle korrekt sein können. Um die
+Funktionsweise dieser Funktionalität zu veranschaulichen, ist es sinnvoll, dies anhand eines Beispiels zu erläutern.
+Angenommen, ein Lehrer möchte überprüfen, ob ein Schüler die richtige Beziehung zwischen der Klasse ``Bibliothek'' und
+der Klasse ``Buch'' korrekt verwendet hat (siehe~\ref{fig:combined}). Es gibt jedoch mehrere Möglichkeiten, wie diese
+Beziehung konzipiert werden kann, wie zuvor erwähnt. Um GReQL-Code für diesen speziellen Fall zu generieren, wurde das
+Annotationsystem erweitert. Durch das Stichwort ``combineID'' können Kombinationen mehrerer Regeln mit derselben
+Kennung erstellt werden. Dies ermöglicht schließlich die Generierung von GReQL-Code~\ref{lst:combined}, der eine der
+drei Bedingungen überprüft. Wenn eine dieser Bedingungen erfüllt ist, erhält der Schüler die Punkte. Details zu
+diesem Annotationsystem finden sich in der Dokumentation des GReQL Converters.
 
-continue to write something here.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=16cm]{images/combined}
+    \caption{Kombinierte Regeln}
+    \label{fig:combined}
+\end{figure}
 
-\\~\\
 
+\begin{lstlisting}[!h, caption={Ausschnitt aus dem GReQL-Code, der nach der Konvertierung erhalten wurde}, label={lst:combined}, language=xml]
+<checkerrules>
+    <!-- Combined  Rule -->
+    <rule type="presence" points="0">
+        <!-- Aggregation SubRule -->
+        <query>
+            from x, y : V{Class}, p: V{Property},
+            a,b: V{LiteralString}
+                with
+                isDefined(x.name) and
+                stringLevenshteinDistance(x.name,
+                "Bibliothek")&lt;3 and
+                isDefined(y.name) and
+                stringLevenshteinDistance(y.name,
+                "Buch")&lt;3 and
+                isDefined(p.aggregation) and
+                p.aggregation="shared" and
+                x --> V{Property} -->
+                V{Association} --> p &lt;-- y and
+                isDefined(a.value) and
+                a.value="*"  and
+                isDefined(b.value) and
+                b.value="*"  and
+                x --> V{Property} --> a and
+                x --> V{Property} --> b
+                report 1 end
+        </query>
+        <!-- Composition SubRule -->
+        <query>
+            from x, y : V{Class}, p: V{Property},
+            a,b: V{LiteralString}
+                with
+                isDefined(x.name) and
+                stringLevenshteinDistance(x.name,
+                "Bibliothek")&lt;3 and
+                isDefined(y.name) and
+                stringLevenshteinDistance(y.name,
+                "Buch")&lt;3 and
+                isDefined(p.aggregation) and
+                p.aggregation="composite" and
+                x --> V{Property} -->
+                V{Association} --> p &lt;-- y and
+                isDefined(a.value) and
+                a.value="*"  and
+                isDefined(b.value) and
+                b.value="*"  and
+                x --> V{Property} --> a and
+                x --> V{Property} --> b
+                report 1 end
+        </query>
+        <!-- Simple Association SubRule -->
+        <query>
+            from x,y : V{Class}, ass : V{Association},
+            a,b,c,d  : V{LiteralString}
+                with
+                isDefined(x.name) and
+                stringLevenshteinDistance(x.name,
+                "Bibliothek")&lt;3 and
+                isDefined(y.name) and
+                stringLevenshteinDistance(y.name,
+                "Buch")&lt;3 and
+                isDefined(a.value) and
+                a.value="*"  and
+                isDefined(b.value) and
+                b.value="*"  and
+                x --> V{Property} --> a and
+                x --> V{Property} --> b and
+                isDefined(c.value) and
+                c.value="1"  and
+                isDefined(d.value) and
+                d.value="1"  and
+                y --> V{Property} --> c and
+                y --> V{Property} --> d and
+                x --> V{Property} --> ass
+                &lt;-- V{Property} &lt;-- y
+                report 1 end
+        </query>
+        <feedback>
+            ... i need a feedback please 😊.
+        </feedback>
+    </rule>
+</checkerrules>
+\end{lstlisting}
 
 \section{Zusammenfassung der Evaluation}
 
