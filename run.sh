@@ -11,8 +11,7 @@ biber --input-directory="/Users/michael/Documents/uni/4.Semester/Masterthesis/ou
 
 # RUN CA
 #biber --input-directory="/Users/michael/Documents/uni/4.Semester/Masterthesis/" main
-# COPY LE RESULTAT DANS OUT
-# RUN TOUT A NOUVEAU
+
 
 # Run makeglossaries to process glossaries
 makeglossaries main
