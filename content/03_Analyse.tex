@@ -15,21 +15,22 @@ Eine Übung vom Typ UML-Klassendiagramm besteht darin, die statische Struktur ei
 
 In dieser ersten Phase erstellt der Lehrer die Übung, indem er eine schriftliche Beschreibung eines zu modellierenden Systems bereitstellt. Besonderes Augenmerk wird auf die Genauigkeit der Bezeichnungen der Entitäten und die Klarheit und Explizitheit der Beziehungen zwischen ihnen gelegt. Der Lehrer hat dann einen Bereich in der JACK-Anwendung, in den er diesen Text einfügen kann, der von den Studierenden eingesehen wird.
 
-
+\\~\\
 \textbf{Phase 2: Erstellung einer Musterlösung oder Anmerkung (optional)}
 
 In dieser Phase kann der Lehrer entscheiden, ein UML-Diagramm als Musterlösung für die Übung zu erstellen. Dies erleichtert das Verständnis der Übung, ermöglicht die Überprüfung der Kohärenz und Durchführbarkeit des Systems. Alternativ kann der Lehrer die Übung lediglich annotieren, um die Schlüsselbegriffe und -elemente hervorzuheben, die in der späteren Phase nützlich sein werden.
 
-
+\\~\\
 \textbf{Phase 3: Entwicklung des GReQL-Codes}
 
 In dieser Phase verwendet der Lehrer seine Anmerkungen und die Musterlösung, um den GReQL-Code zu entwickeln, der von JACK interpretiert wird, um die von den Studierenden eingereichten Lösungen zu bewerten. JACK verwendet den GReQL-Code sowie verschiedene in dieser Sprache definierte Regeln, um die UML-Diagramme zu bewerten. Wenn ein Student seine Lösung einreicht, wird eine grafische Darstellung dieser Lösung erstellt, und der GReQL-Code führt Abfragen auf dieser Darstellung aus, um eine Note für die Lösung des Studenten zu vergeben \cite{striewe2011automated}.
 
+\\~\\
 \textbf{Phase 4: Einreichung der Lösung durch den Studenten}
 
 Nachdem der Student an der Lösung der Übung gearbeitet hat, lädt er ein XML-Dokument im XMI Format auf JACK hoch. Zur Generierung dieses kompatiblen XMI-Dokuments verwenden Studierende Tools wie BOUML \cite{bouml} oder Software Ideas Modeler \cite{sim}, mit denen sie XMI-Code aus einer zuvor erstellten grafischen UML Darstellung ableiten können. Dieses Dokument repräsentiert die von ihm entwickelte Lösung.
 
-    
+\\~\\
 \textbf{Phase 5: Bewertung des Diagramms}
 
 Das von den Studierenden eingereichte Diagramm wird anhand des von den Lehrern verfassten GReQL-Codes bewertet. Anschließend wird dem Studenten eine Note zugeteilt.
@@ -42,16 +43,31 @@ Diese Phasen veranschaulichen die grundlegende Funktionsweise der JACK-Plattform
 
 Im Verlauf der dritten Phase, wie im vorherigen Kapitel beschrieben, sehen sich Lehrende mit der Notwendigkeit konfrontiert, GReQL-Code zu verfassen, der vom JACK-System zur Bewertung der Einreichungen verschiedener Studierender verwendet wird. Diese Phase stellt jedoch bereits auf verschiedenen Ebenen eine Herausforderung für die Lehrenden dar, aus folgenden Gründen:
 
-\textbf{Erforderliche Expertise für die Erstellung von GReQL-Code:} Das Verfassen von GReQL-Code erfordert eine gewisse Expertise. Auf den ersten Blick mag die Syntax von GReQL nicht schwer zu verstehen sein. Dennoch kann es anspruchsvoll sein, die Feinheiten der Code-Erstellung zu beherrschen. Dies erfordert von den Lehrenden mehrere Stunden, intensives Üben und umfangreiche Tests, um einen Code zu erstellen, der präzise bewertet, insbesondere in Fällen von komplexeren Beziehungen zwischen Entitäten.
+\vspace{0.5cm}
 
-\textbf{Hohe Möglichkeit von Fehlern im GReQL-Code:} Selbst bei Beherrschung der Feinheiten von GReQL sind Lehrende nicht vor möglichen Fehlern gefeit. Diese Fehler können zwar geringfügig erscheinen, haben jedoch das Potenzial, das Bewertungssystem erheblich zu beeinträchtigen.
+\textbf{Erforderliche Expertise für die Erstellung von GReQL-Code:}
+Das Verfassen von GReQL-Code erfordert eine gewisse Expertise. Auf den ersten Blick mag die Syntax von GReQL nicht schwer zu verstehen sein. Dennoch kann es anspruchsvoll sein, die Feinheiten der Code-Erstellung zu beherrschen. Dies erfordert von den Lehrenden mehrere Stunden, intensives Üben und umfangreiche Tests, um einen Code zu erstellen, der präzise bewertet, insbesondere in Fällen von komplexeren Beziehungen zwischen Entitäten.
 
-\textbf{Zeitaufwand für die Erstellung von GReQL-Code:} Die Bewertung jedes Diagramms erfordert erheblichen Zeitaufwand, um einen GReQL-Bewertungscode zu erstellen, insbesondere für komplexere Beziehungen zwischen verschiedenen Entitäten. Die Zeit, um die erforderliche Expertise zu erlangen, kann stark variieren und erfordert zahlreiche Stunden intensiver Übung.
+\vspace{0.5cm}
 
-\textbf{Wartung und Anpassungsfähigkeit des GReQL-Codes:} Nachdem der GReQL-Code erstellt und für die Bewertung von UML-Diagrammen implementiert wurde, ist kontinuierliche Wartung erforderlich. Mit steigenden Anforderungen an die Bewertung muss der GReQL-Code regelmäßig aktualisiert und angepasst werden. Dies stellt für Lehrende eine fortwährende Herausforderung dar und erfordert Zeit und Aufwand, um sicherzustellen, dass das Bewertungssystem präzise und relevant bleibt.
+\textbf{Hohe Möglichkeit von Fehlern im GReQL-Code:}
+Selbst bei Beherrschung der Feinheiten von GReQL sind Lehrende nicht vor möglichen Fehlern gefeit. Diese Fehler können zwar geringfügig erscheinen, haben jedoch das Potenzial, das Bewertungssystem erheblich zu beeinträchtigen.
 
-\textbf{Bedarf an Ressourcen und technischer Unterstützung:} Lehrende benötigen möglicherweise Zugang zu technischen Ressourcen und angemessener Unterstützung, um die Kunst der effizienten GReQL-Code-Erstellung zu beherrschen. Dies kann Schulungen, Orientierungsdokumente, Diskussionsforen oder andere Formen technischer Unterstützung einschließen. Die Beschaffung dieser Ressourcen kann Zeit in Anspruch nehmen und eine institutionelle Koordination erfordern.
+\vspace{0.5cm}
 
+\textbf{Zeitaufwand für die Erstellung von GReQL-Code:}
+Die Bewertung jedes Diagramms erfordert erheblichen Zeitaufwand, um einen GReQL-Bewertungscode zu erstellen, insbesondere für komplexere Beziehungen zwischen verschiedenen Entitäten. Die Zeit, um die erforderliche Expertise zu erlangen, kann stark variieren und erfordert zahlreiche Stunden intensiver Übung.
+
+\vspace{0.5cm}
+
+\textbf{Wartung und Anpassungsfähigkeit des GReQL-Codes:}
+Nachdem der GReQL-Code erstellt und für die Bewertung von UML-Diagrammen implementiert wurde, ist kontinuierliche Wartung erforderlich. Mit steigenden Anforderungen an die Bewertung muss der GReQL-Code regelmäßig aktualisiert und angepasst werden. Dies stellt für Lehrende eine fortwährende Herausforderung dar und erfordert Zeit und Aufwand, um sicherzustellen, dass das Bewertungssystem präzise und relevant bleibt.
+
+\vspace{0.5cm}
+\textbf{Bedarf an Ressourcen und technischer Unterstützung:}
+Lehrende benötigen möglicherweise Zugang zu technischen Ressourcen und angemessener Unterstützung, um die Kunst der effizienten GReQL-Code-Erstellung zu beherrschen. Dies kann Schulungen, Orientierungsdokumente, Diskussionsforen oder andere Formen technischer Unterstützung einschließen. Die Beschaffung dieser Ressourcen kann Zeit in Anspruch nehmen und eine institutionelle Koordination erfordern.
+
+\vspace{0.5cm}
 Dies sind die verschiedenen Herausforderungen, die bei der Erstellung von GReQL-Code für die Bewertung von UML-Diagrammen auf der JACK-Plattform auftreten können.
 
 
@@ -60,7 +76,7 @@ Dies sind die verschiedenen Herausforderungen, die bei der Erstellung von GReQL-
 
 Das Ziel dieser Masterarbeit besteht nicht darin, Lehrkräfte von der Notwendigkeit zu befreien, GReQL-Code zu schreiben oder zu bearbeiten. Vielmehr geht es darum, den Prozess der Regeldefinition erheblich zu erleichtern. Um diesen Prozess zu vereinfachen, zielt diese Masterarbeit darauf ab, ein Verfahren zu entwickeln und in Form einer Softwareanwendung zu prototypisieren, mit dem (halb-)automatisch Bewertungsregeln aus annotierten Musterlösungen erstellt werden können. Dieses System soll in der Lage sein, folgende Ziele zu erreichen:
 
-\begin{enumerate}
+\begin{enumerate}[itemsep=8pt, parsep=5pt]
     \item \textbf{Verminderung der Einstiegshürde:} Es strebt danach, den Prozess der Erstellung von GReQL-Regeln zu erleichtern. Selbst jemand, der keine Vorkenntnisse in GReQL hat, sollte unser Tool verwenden können, um Regeln zu erstellen, die bereits eine Bewertung von einfachen Diagrammen und Beziehungen ermöglichen.
     
     \item \textbf{Verbesserung der Präzision und Zuverlässigkeit der GReQL-Regeln:}
