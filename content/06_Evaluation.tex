@@ -243,7 +243,7 @@ Interviews im Vordergrund.
 \subsection{Ergebnisse des Interviewverfahrens}
 
 Die Interviews wurden mit einer Gruppe von vier wissenschaftlichen Mitarbeitern von zwei Hochschulen geführt, nämlich
-der Universität Duisburg-Essen und der Technischen Universität Dortmund (siehe~\ref{tab:personnen}).
+der Universität Duisburg-Essen und der Technischen Hochschule Köln (siehe~\ref{tab:personnen}).
 
 \begin{table}
     \centering
@@ -259,7 +259,9 @@ der Universität Duisburg-Essen und der Technischen Universität Dortmund (siehe
             \midrule
             Universität Duisburg Essen & Christoph Olbricht \\
             \midrule
-            Technische Hochschule Dortmund & Paul Hufnagel \\
+            Technische Hochschule Köln & Paul Hufnagel \\
+            \midrule
+            Technische Hochschule Köln & Prof. Dr. Mario Winter \\
             \bottomrule
         \end{tabular}
     \end{adjustbox}
@@ -607,6 +609,86 @@ Fragen der Phase 5 des Interviews.
     jedoch bereits sehr zufrieden mit dem, was er gesehen hat.
 
 \end{enumerate}
+
+\subsubsection{Interview mit Prof. Dr. Mario Winter}
+
+Prof. Dr. Mario Winter ist ein wissenschaftlicher Mitarbeiter und Professor an der Fakultät für Informatik und
+Ingenieurwissenschaften der TH Köln. Prof. Mario Winter hat bereits an Projekten gearbeitet, die den Einsatz von GReQL
+erforderten, sowie an der Plattform JACK und ihrer internen Funktionsweise. Darüber hinaus verfügt er über Erfahrung
+in der Modellierung von Diagrammen mit PlantUML, was ihm die Vorbereitung auf das Interview erleichterte. Prof. Mario
+Winter hat sich aktiv darauf vorbereitet, indem er den PlantText-Code aus dem per E-Mail erhaltenen Bild geschrieben
+hat und einen Vorsprung erlangte, indem er zuvor den GReQL Converter getestet hat. Vor dem Interview hatte er also
+bereits einen umfassenden Überblick über das Tool und seine Funktionsweise. Während des Interviews bestand seine
+Aufgabe darin, den von ihm generierten PlantText-Code im GReQL Converter zu testen. Anschließend annotierte er diesen
+Code, nachdem er den Abschnitt zur Annotation im Dokumentationsmaterial gelesen hatte, und führte dann eine Analyse
+des generierten GReQL-Codes durch. Nach dieser Testphase kam die Phase 5, in der es darum ging, die Interviewfragen
+zu beantworten.
+
+\begin{enumerate}[itemsep=8pt, parsep=5pt]
+    \item \textbf{Einführung in das Tool:}
+
+    Prof. Mario Winter hat das Wesen des GReQL Converters verstanden. Er beschrieb ihn als ein Werkzeug, das es
+    ermöglicht, aus PlantUML-Code für Klassendiagramme automatisch GReQL-Code zu generieren, der später annotiert wird,
+    um die verschiedenen generierten Regeln anzupassen. Er betonte, dass er zuvor noch nie ein derartiges Tool
+    verwendet hatte, das GReQL-Code generiert.
+
+
+    \item \textbf{Benutzererfahrung:}
+
+    Er fand die grafische Benutzeroberfläche des GReQL Converters sehr benutzerfreundlich und selbsterklärend,
+    allerdings nur für Personen, die bereits eine Vorstellung davon haben, was GReQL ist. Er erwähnte, dass er
+    lediglich Probleme mit dem Annotierungssystem hatte, was vermutlich darauf zurückzuführen war, dass er die
+    Dokumentation nicht gründlich gelesen hatte.
+
+    \item \textbf{Dokumentation:}
+
+    Er sah sich die Dokumentation kurz an, da er sich bereits sehr gut mit PlantUML auskannte. Das Einzige, was er
+    nicht beachtete, war das Annotationssystem.
+
+    \item \textbf{Generierung von GReQL-Regeln:}
+
+    Prof. Mario Winter betonte, dass die vom GReQL Converter generierten Regeln genau denjenigen entsprachen, die er
+    von einem solchen Tool auf Basis des von ihm eingegebenen Diagramms erwartet hätte. Allerdings testete er nur mit
+    einem einzigen Beispiel und schlug vor, mit mehreren Diagrammen zu experimentieren, um eine fundierte Antwort geben
+    zu können.
+
+    \item \textbf{Vergleich des Tools mit der manuellen Methode:}
+
+    Er stellte fest, dass der GReQL Converter viel effizienter und schneller ist als die manuelle Methode. Doch in Bezug
+    auf die Genauigkeit der Regeln müssen noch weitere Tests durchgeführt werden, bevor eine konsistente Aussage
+    getroffen werden kann. Er erwähnte jedoch, dass es nicht möglich sei, alternative Regeln zu generieren
+    (genau wie Dr. Michael Striewe es in seinem Interview erwähnte). Der GReQL Converter sei ideal zur Generierung
+    generischer Regeln, aber ab einer gewissen Komplexität sei manuelle Intervention erforderlich.
+
+    \item \textbf{Verbesserungsvorschläge:}
+
+    \begin{itemize}[itemsep=8pt, parsep=5pt]
+        \item Der GReQL Converter sollte die Möglichkeit bieten, am Anfang des PlantText-Modells Variablen zu
+        definieren und Platzhalter im Modell zu lassen, die von diesen Variablen gefüllt werden. Zum Beispiel könnte
+        eine Variable ClassA = ``Auto'' sein, und in einer anderen Version ClassA = ``Fahrzeug''. Überall im
+        PlantText-Code, wo ClassA erscheint, sollte beim Generieren des GReQL-Codes je nach Definition der Variable
+        entweder ``Auto'' oder ``Fahrzeug'' eingesetzt werden. Diese Funktionalität würde es ermöglichen, verschiedene
+        Versionen desselben Diagramms zu haben und unterschiedliche Übungen für verschiedene Studentengruppen zu
+        generieren. Damit wäre es möglich, Übungsfamilien zu erstellen, um verschiedene Schülergruppen zu bewerten.
+
+        \item Die Möglichkeit, Regeln mit mehreren Alternativen zu modellieren.
+    \end{itemize}
+
+    \item \textbf{Nützlichkeit und Relevanz:}
+
+    Er fand das Tool äußerst nützlich und sieht ein beträchtliches Potenzial für die Erweiterung des Tools,
+    insbesondere hinsichtlich der Integration anderer Diagrammtypen.
+
+    \item \textbf{Gesamtbewertung:}
+
+    Hinsichtlich der \textbf{Nützlichkeit} vergab er dem GReQL Converter eine Bewertung von \textbf{4 von 5 Punkten},
+    da er noch verschiedene Verbesserungsbereiche sieht. Bezüglich des \textbf{Designs} und der
+    \textbf{Benutzerfreundlichkeit} vergab er \textbf{3 von 5 Punkten}. Er erwähnte, dass es sicherlich
+    Verbesserungspotenzial gibt, aber da er nicht ausgiebig getestet hat, zieht er es vor, zunächst einen
+    Mittelwert zu vergeben.
+
+\end{enumerate}
+
 
 \section{Erweiterung von GReQL Converter-Funktionen gemäß der Interviewrückmeldungen}
 
