@@ -14,7 +14,7 @@ und einen signifikanten Mehrwert für Lehrende und Lernende bietet.
 Die Untersuchung der Effizienz und Funktionalität des GReQL Converters als Instrument zur Extraktion relevanter
 GReQL-Regeln aus einer UML-Diagrammannotation, die mittels PlantText zur Evaluation von UML-Diagrammen erstellt wurde,
 stellt eine essenzielle Fragestellung dar, welche eine systematische und tiefgehende Herangehensweise erfordert. In dem
-Implementierungskapitel (siehe ~\ref{ch:implementierung}) wurden diverse Regeln vorgestellt, begleitet von einer detaillierten Erläuterung des
+Implementierungskapitel (siehe Kapitel~\ref{ch:implementierung}) wurden diverse Regeln vorgestellt, begleitet von einer detaillierten Erläuterung des
 spezifischen Extraktionsprozesses für jede dieser Regeldefinitionen. Gleichwohl erwies sich eine umfassende Testphase
 als unverzichtbar, um eine eingehende Evaluierung der Leistungsfähigkeit jeder einzelnen Regel zu ermöglichen.
 
@@ -49,7 +49,7 @@ wurde bei jeder Fehlererkennung oder -identifikation angepasst, um seine Effizie
 In einem darauffolgenden Schritt wurden verschiedene gängige Übungen zu UML-Diagrammen selektiert, um die akademische
 Leistung der Studierenden an der Universität zu evaluieren. Unter diesen Übungen findet sich das Diagramm ``Mendelssohn
 \& Sohn Maschinenbau GmbH'', welches im Rahmen des Kurses ``Einführung in die Unified Modeling Language'' an der
-Universität Potsdam zum Einsatz kam (siehe~\ref{fig:bau_gmbh}). Dieses spezifische Diagramm weist signifikante
+Universität Potsdam zum Einsatz kam (siehe Abbildung~\ref{fig:bau_gmbh}). Dieses spezifische Diagramm weist signifikante
 Ähnlichkeiten zu den traditionellen Modellen auf, die in universitären Prüfungskontexten verwendet werden, wodurch es
 sich als exemplarisches Testobjekt zur Ermittlung der Leistungsfähigkeit des GReQL Converters erweist.
 
@@ -94,14 +94,24 @@ was seine Vielseitigkeit und Anpassungsfähigkeit stärkt.
 \end{enumerate}
 
 Wenn man diese Vorteile mit den in Teil drei aufgeführten Problemen vergleicht, die die
-Problemanalyse (siehe~\ref{ch:problemanalyse}) behandelten, steht außer Frage, dass der GReQL Converter seine Rolle als
+Problemanalyse (siehe Kapitel~\ref{ch:problemanalyse}) behandelten, steht außer Frage, dass der GReQL Converter seine Rolle als
 Hilfsmittel bei der Erstellung von GReQL-Code für die Bewertung von Klassendiagrammen erfüllt und Lehrern erheblich
 Zeit spart. Im nächsten Abschnitt wird eine Studie durchgeführt, um zu ermitteln, ob Lehrende diese Ansicht teilen.
 
 \section{Interview zur Bewertung des GReQL Converters}
 
-In diesem Abschnitt erfolgt zunächst die Vorstellung des verwendeten Modells für die Realisierung des Interviews,
-gefolgt von der Präsentation diverser Resultate.
+Im vorherigen Kapitel wurde der GReQL Converter auf seine Funktionen hin getestet, um potenzielle Fehler zu erkennen und
+zu beheben. Es war jedoch von entscheidender Bedeutung, externe Rückmeldungen und Kommentare einzuholen, um weitere
+Verbesserungsansätze zu identifizieren, neue Ideen zu generieren und die Grenzen des Tools aufzuzeigen. Aus diesem Grund
+wurde beschlossen, Interviews mit verschiedenen wissenschaftlichen Mitarbeitern durchzuführen, die bereits Erfahrung
+mit GReQL-Code haben, um das Tool zu testen.
+
+Das Interview erwies sich als das geeignetste Modell, da es bereits die Möglichkeit bietet, direkte Fragen zu stellen
+und ein lebhafteres Feedback zu erhalten sowie detaillierte und umfassende Antworten vom Befragten zu erhalten. Darüber
+hinaus ermöglicht das Interviewformat eine gewisse Flexibilität, da zukünftige Fragen je nach den erhaltenen Antworten
+angepasst werden können. Dieses Format erleichtert auch die Kontextualisierung. Falls eine Frage nicht verstanden wird,
+kann der Befragte Nachfragen stellen, um im Kontext zu bleiben. Im folgenden Abschnitt wird zunächst die
+Interviewkonzeption sowie der Prozess und die Ergebnisse des Interviews diskutiert.
 
 \subsection{Konzeption des Interviews}
 
@@ -243,7 +253,7 @@ Interviews im Vordergrund.
 \subsection{Ergebnisse des Interviewverfahrens}
 
 Die Interviews wurden mit einer Gruppe von fünf wissenschaftlichen Mitarbeitern von zwei Hochschulen geführt, nämlich
-der Universität Duisburg-Essen und der Technischen Hochschule Köln (siehe~\ref{tab:personnen}).
+der Universität Duisburg-Essen und der Technischen Hochschule Köln (siehe Tabelle~\ref{tab:personnen}).
 
 \begin{table}
     \centering
@@ -420,7 +430,7 @@ um ein spezifisches Feedback zum Tool zu erhalten.
         ermöglichen. Nicht nur Varianten in Bezug auf die Klassennamen, sondern auch die Möglichkeit, mehrere
         Modellierungsvarianten einer Regel zu haben. Derzeit generiert der GReQL Converter nur Regeln für einen
         einzigen Diagrammtyp. Es ist jedoch möglich, dass Studenten verschiedene Diagrammtypen erstellen, die alle
-        korrekt sind. Im Fall von ``Sohn Maschinenbau GmbH'' (Siehe~\ref{sec:erreichte-ziele}) könnte es möglich sein,
+        korrekt sind. Im Fall von ``Sohn Maschinenbau GmbH'' (siehe Abschnitt~\ref{sec:erreichte-ziele}) könnte es möglich sein,
         ``stueckliste'' entweder als Attribut oder als Assoziation zu modellieren. Es gibt auch Fälle, in denen Student
         eine einfache Assoziation anstelle einer Aggregation verwenden könnten, und die Modellierung wäre immer noch
         korrekt. Der GReQL Converter sollte diese Funktionalität hinzufügen können.
@@ -721,7 +731,7 @@ versehentlich eine Regel löscht, gäbe es keine Möglichkeit zur Wiederherstell
 erneut parsen, und alle Änderungen an den Regeln wären unwiederbringlich verloren.
 
 Diese neue Funktionalität ermöglicht es dem Benutzer, eine Regel, ein Attribut oder eine Methode vorübergehend zu
-deaktivieren, ohne sie zu löschen (siehe~\ref{fig:feat2n3}). Auf diese Weise kann der generierte Code zuvor visualisiert werden, und falls eine
+deaktivieren, ohne sie zu löschen (siehe Abbildung~\ref{fig:feat2n3}). Auf diese Weise kann der generierte Code zuvor visualisiert werden, und falls eine
 Deaktivierung versehentlich erfolgt ist, könnte die Regel einfach wieder aktiviert werden. Diese Funktion wurde
 implementiert. Das Ergebnis dieser Funktionalität besteht darin, dass sie mehr Flexibilität bei der Generierung von
 GReQL-Code bietet und die Visualisierung des Codes erleichtert, insbesondere in Kombination mit der nächsten Funktion,
@@ -736,7 +746,7 @@ Attribute deaktiviert oder bestimmte Parameter geändert hat. Es war zuvor nicht
 zu visualisieren.
 
 Diese Funktion ermöglicht es nun, durch Klicken auf einen Button den entsprechenden GReQL-Code einer bestimmten Regel
-zu generieren (siehe~\ref{fig:feat2n3}). Dadurch kann der Benutzer Tests und Änderungen leichter durchführen, was mehr Möglichkeiten bietet und
+zu generieren (siehe Abbildung~\ref{fig:feat2n3}). Dadurch kann der Benutzer Tests und Änderungen leichter durchführen, was mehr Möglichkeiten bietet und
 das Benutzererlebnis verbessert.
 
 \begin{figure}[h]
@@ -769,10 +779,10 @@ zielt darauf ab, eine gewisse Flexibilität zu bieten und Lehrkräften die Defin
 ermöglichen. Damit können Variationen der Antworten definiert werden, die alle korrekt sein können. Um die
 Funktionsweise dieser Funktionalität zu veranschaulichen, ist es sinnvoll, dies anhand eines Beispiels zu erläutern.
 Angenommen, ein Lehrer möchte überprüfen, ob ein Schüler die richtige Beziehung zwischen der Klasse ``Bibliothek'' und
-der Klasse ``Buch'' korrekt verwendet hat (siehe~\ref{fig:combined}). Es gibt jedoch mehrere Möglichkeiten, wie diese
+der Klasse ``Buch'' korrekt verwendet hat (siehe Abbildung~\ref{fig:combined}). Es gibt jedoch mehrere Möglichkeiten, wie diese
 Beziehung konzipiert werden kann, wie zuvor erwähnt. Um GReQL-Code für diesen speziellen Fall zu generieren, wurde das
 Annotationsystem erweitert. Durch das Stichwort ``combineID'' können Kombinationen mehrerer Regeln mit derselben
-Kennung erstellt werden. Dies ermöglicht schließlich die Generierung von GReQL-Code (siehe~\ref{lst:combined}), der eine der
+Kennung erstellt werden. Dies ermöglicht schließlich die Generierung von GReQL-Code (siehe Code~\ref{lst:combined}), der eine der
 drei Bedingungen überprüft. Wenn eine dieser Bedingungen erfüllt ist, erhält der Schüler die Punkte. Details zu
 diesem Annotationsystem finden sich in der Dokumentation des GReQL Converters.
 

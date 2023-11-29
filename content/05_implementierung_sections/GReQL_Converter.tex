@@ -25,7 +25,7 @@ dieselbe Programmiersprache für das gesamte Projekt beizubehalten und die Gesam
 seiner zukünftigen Bereitstellung, zu vereinfachen. Node.js eignet sich besonders gut für kleinere Projekte wie dieses.
 
 Im Großen und Ganzen wurde Node.js ausschließlich für die Bereitstellung des Parsers genutzt, was den Backend-Code
-erheblich vereinfachte~\ref{lst:bakcend}. Dies ermöglichte einen reibungslosen Übergang zum nächsten Schritt, nämlich
+erheblich vereinfachte (siehe Code~\ref{lst:bakcend}). Dies ermöglichte einen reibungslosen Übergang zum nächsten Schritt, nämlich
 der Erstellung des Grunddesigns der Anwendung.
 
 \subsection{Erstellung des Grunddesigns der Anwendung}\label{subsec:erstellung-des-grunddesigns-der-anwendung}
@@ -47,23 +47,23 @@ der der Benutzer seinen PlantText-Code in GReQL-Code umwandeln kann. Diese Seite
 
 Dieser Abschnitt der grafischen Benutzeroberfläche ist für die Eingabe des PlantUML-Codes durch den Benutzer vorgesehen.
 Nachdem der Benutzer die Musterlösung in PlantText modelliert hat, muss er den generierten Code kopieren und in den
-Editor einfügen, der durch die Nummer 1 (siehe~\ref{fig:dashboard}) gekennzeichnet ist. Darüber hinaus hat der Benutzer die
-Möglichkeit, Beispielscodes auszuwählen, wie dies in PlantText der Fall ist und in der Abbildung unter Nummer 2 (siehe~\ref{fig:dashboard})
+Editor einfügen, der durch die Nummer 1 (siehe Abbildung~\ref{fig:dashboard}) gekennzeichnet ist. Darüber hinaus hat der Benutzer die
+Möglichkeit, Beispielscodes auszuwählen, wie dies in PlantText der Fall ist und in der Abbildung unter Nummer 2 (siehe Abbildung~\ref{fig:dashboard})
 dargestellt ist. Da der geschriebene Code jedoch der in der Dokumentation definierten Struktur entsprechen muss, sind
 diese Beispielscodes für den Benutzer nützlich, da sie funktionierende Codebeispiele liefern, von denen er sich
 inspirieren lassen und seinen eigenen Code schreiben kann, um die Plattform zu testen. Schließlich ermöglicht der
-Button ``Parse Code'' (Nummer 3 - siehe~\ref{fig:dashboard}) das Extrahieren der Regelobjekte aus dem Code, was uns zum
+Button ``Parse Code'' (Nummer 3 - siehe Abbildung~\ref{fig:dashboard}) das Extrahieren der Regelobjekte aus dem Code, was uns zum
 Teil 2 führt.
 
 \subsubsection{Teil 2: Derived Rules}
 
 Nachdem der Benutzer auf den Button ``Parse Code'' geklickt hat, wird eine Reihe von Regelobjekten
-(Nummer 4 - siehe~\ref{fig:dashboard}) aus dem im Code-Editor vorhandenen Code generiert. Diese Regeln werden durch ein
+(Nummer 4 - siehe Abbildung~\ref{fig:dashboard}) aus dem im Code-Editor vorhandenen Code generiert. Diese Regeln werden durch ein
 Symbol und einen Titel dargestellt, was es ermöglicht, sie schnell zu unterscheiden und zu identifizieren. Ganz rechts
-neben dem Regelobjekt befindet sich ein Ausrufezeichen, das tatsächlich ein Button ist (Nummer 6 - siehe~\ref{fig:dashboard}).
+neben dem Regelobjekt befindet sich ein Ausrufezeichen, das tatsächlich ein Button ist (Nummer 6 - siehe Abbildung~\ref{fig:dashboard}).
 Wenn auf diesen Button geklickt wird, öffnet sich eine Dokumentation, die erklärt, was die Regel ist und wie sie
-verwendet wird. Wenn der Benutzer auf die Regel klickt (Nummer 5 - siehe ~\ref{fig:dashboard}), öffnet sich ein Menü,
-das es ihm ermöglicht, die in der Regel vorhandenen Informationen nach Belieben zu ändern (siehe~\ref{fig:rule_exemple}),
+verwendet wird. Wenn der Benutzer auf die Regel klickt (Nummer 5 - siehe Abbildung~\ref{fig:dashboard}), öffnet sich ein Menü,
+das es ihm ermöglicht, die in der Regel vorhandenen Informationen nach Belieben zu ändern (siehe Abbildung~\ref{fig:rule_exemple}),
 wodurch der \gls{GReQL Converter} zu einem halbautomatischen Werkzeug wird. Diese Informationen variieren je nach Art der Regel
 und den für die Generierung des GReQL-Codes erforderlichen Informationen.
 
@@ -74,15 +74,15 @@ und den für die Generierung des GReQL-Codes erforderlichen Informationen.
     \label{fig:rule_exemple}
 \end{figure}
 
-Dann gibt es der Button ``Add Rule'' (Nummer 7 - siehe~\ref{fig:dashboard}), die es dem Benutzer ermöglicht,
+Dann gibt es der Button ``Add Rule'' (Nummer 7 - siehe Abbildung~\ref{fig:dashboard}), die es dem Benutzer ermöglicht,
 zusätzliche Regeln hinzuzufügen. Nachdem die Konfiguration und die Änderungen abgeschlossen sind, kann der Benutzer den
-GReQL-Code generieren, indem er auf den Button ``Generate GReQL Code'' klickt (Nummer 8 - siehe~\ref{fig:dashboard}).
+GReQL-Code generieren, indem er auf den Button ``Generate GReQL Code'' klickt (Nummer 8 - siehe Abbildung~\ref{fig:dashboard}).
 Der GReQL-Code wird aus den zuvor vom Benutzer konfigurierten Regelobjekten generiert.
 
 \subsubsection{Teil 3: GReQL Editor}
 
 Genau wie der erste Abschnitt ist dieser Bereich auch ein Code-Editor, jedoch für XML, da der GReQL-Code im XMI-Format
-vorliegt (das auf XML basiert). Dieser Editor (Nummer 9 - siehe~\ref{fig:dashboard}) ermöglicht es erfahrenen
+vorliegt (das auf XML basiert). Dieser Editor (Nummer 9 - siehe Abbildung~\ref{fig:dashboard}) ermöglicht es erfahrenen
 Benutzern, die bereits Erfahrung mit GReQL haben, detaillierte und fortgeschrittene Änderungen am generierten Code
 vorzunehmen. Auf diese Weise können sie die Abfragen verbessern und spezifizieren, wenn sie sie zu allgemein finden,
 oder sie einfach anpassen, je nachdem, was sie im UML-Diagramm bewerten möchten.
@@ -98,7 +98,7 @@ aus dem zuvor geparsten Code.
 
 Um den Extraktionsprozess, der in diesem Kapitel beschrieben wird, einzuführen, wird mit einem Beispiel aus der
 Modellierung in PlantText angefangen. Die Schritte bis zur Erstellung der Regeln werden verfolgt. Hierzu wird der
-folgende PlantText-Code verwendet, der ein UML-Diagramm modelliert (siehe~\ref{fig:code-uml}).
+folgende PlantText-Code verwendet, der ein UML-Diagramm modelliert (siehe Abbildung~\ref{fig:code-uml}).
 
 \begin{figure}[h]
     \centering
@@ -131,7 +131,7 @@ dieser Assoziation im Diagramm nicht spezifiziert sind.
 
 
 Dies ist eine Darstellung des PlantText-Codes. Sobald dieser Code im \gls{GReQL Converter} vorliegt und der Benutzer auf
-``Parse Code'' klickt (Nummer 5 siehe~\ref{fig:dashboard}), wird dieser Code über das HTTP-Protokoll an den
+``Parse Code'' klickt (Nummer 5 siehe Abbildung~\ref{fig:dashboard}), wird dieser Code über das HTTP-Protokoll an den
 Node.js-Server gesendet. Der Server ist dafür verantwortlich, den Code zu analysieren, parsen und ein JSON-Objekt
 zurückzugeben, ähnlich dem unten dargestellten:
 
@@ -221,58 +221,58 @@ Entwicklung des GReQL Converters wurden eine Reihe von Regeln definiert, darunte
 Diese Regel hat zum Ziel, die Anwesenheit oder Abwesenheit einer Klasse in einem UML-Diagramm zu bestimmen. Darüber
 hinaus ermöglicht sie die Extraktion verschiedener Merkmale dieser Klasse. Mit Hilfe dieser Regel können Informationen
 wie die Abstraktion der Klasse, ihre Interface-Natur, die Methoden (einschließlich der Parameter und des Rückgabetyps),
-die Attribute und ihre Typen extrahiert werden (siehe~\ref{lst:rules_def}). Nach Extraktion dieser Informationen wird
+die Attribute und ihre Typen extrahiert werden (siehe Code~\ref{lst:rules_def}). Nach Extraktion dieser Informationen wird
 ein entsprechendes JSON-Objekt erstellt und einer Liste von Objekten hinzugefügt.
 
 \subsubsection{Enum definition}
 Das Ziel dieser Regel besteht darin, Enumerationen in einem UML-Diagramm zu identifizieren. Nachdem eine Enumeration
 ordnungsgemäß identifiziert wurde, geht es darum, alle verschiedenen Attribute zu identifizieren, die sie zusammensetzen,
-was ebenfalls in dieser Regel durchgeführt wird (siehe~\ref{lst:rules_def}). Nach dieser Identifizierung wird ein
+was ebenfalls in dieser Regel durchgeführt wird (siehe Code~\ref{lst:rules_def}). Nach dieser Identifizierung wird ein
 entsprechendes JSON-Objekt erstellt und der Liste von Objekten hinzugefügt.
 
 \subsubsection{Generalization}
 Diese Regel dient dazu, die verschiedenen Vererbungsbeziehungen zwischen Klassen und Schnittstellen zu definieren.
 Sie wird erstellt, wenn eine Klasse von einer anderen erbt oder eine Schnittstelle implementiert. Die Details dieser
-Beziehung werden erkannt, und ein JSON-Objekt wird generiert und zu einer Objektliste hinzugefügt (siehe~\ref{lst:rules_def}).
+Beziehung werden erkannt, und ein JSON-Objekt wird generiert und zu einer Objektliste hinzugefügt (siehe Code~\ref{lst:rules_def}).
 
 \subsubsection{Simple Association}
 Diese Regel zielt darauf ab, die Assoziationsbeziehungen zwischen Klassen mit ihren jeweiligen Vielfachen zu definieren.
 Wenn eine Assoziation erkannt wird, werden die Klassennamen und die Vielfachen in einem JSON-Objekt gespeichert, das
-anschließend zu einer Objektliste hinzugefügt wird (siehe~\ref{lst:rules_def}).
+anschließend zu einer Objektliste hinzugefügt wird (siehe Code~\ref{lst:rules_def}).
 
 \subsubsection{Composition und Aggregation}
 Diese beiden Regeln dienen dazu, die verschiedenen Compositions- und Aggregationsbeziehungen im UML-Diagramm zu
 identifizieren und zu definieren. Das generierte Objekt enthält auch Multiplizitäten, die bei der Generierung von
-GReQL-Code wichtig sind. Dieses Objekt wird dann zu einer Liste von Objekten hinzugefügt (siehe~\ref{lst:rules_def}).
+GReQL-Code wichtig sind. Dieses Objekt wird dann zu einer Liste von Objekten hinzugefügt (siehe Code~\ref{lst:rules_def}).
 
 \subsubsection{Association Class}
 Diese Regel ermöglicht es, die Beziehung von Assoziationsklassen zu identifizieren und zu definieren. Obwohl sie in den
 meisten UML-Diagrammen während der Modellierung selten verwendet wird, spielt sie dennoch bei der Bewertung eine
 wichtige Rolle. Das generierte JSON-Objekt enthält im Wesentlichen Informationen zur zugehörigen Klasse und nicht direkt
-zur Beziehung (siehe~\ref{lst:rules_def}).
+zur Beziehung (siehe Code~\ref{lst:rules_def}).
 
 \subsubsection{Nomination Consistency (optional)}
 Diese Regel dient dazu, festzustellen, ob das zu bewertende Diagramm eine Konsistenz bei der Benennung der verschiedenen
 Attribute aufweist. Zum Beispiel gilt es als schlechte Praxis, Attribute gleichzeitig mit Groß- und Kleinbuchstaben zu
 benennen~\cite{albert2003implementing}. Ein JSON-Objekt wird generiert und zu einer Liste von Objekten hinzugefügt.
 Diese Regel ist optional, was bedeutet, dass sie zu den Regeln gehört, die vom Lehrer selbst hinzugefügt werden müssen.
-Sie wird also nicht automatisch generiert (siehe~\ref{lst:rules_def}).
+Sie wird also nicht automatisch generiert (siehe Code~\ref{lst:rules_def}).
 
 \subsubsection{Count Methods (optional)}
 Diese Regel ermöglicht es, die Anzahl der im UML-Diagramm vorhandenen Methoden zu definieren. Der Lehrer muss als
 Parameter die genaue Anzahl der Methoden angeben, die im UML-Diagramm des Schülers vorhanden sein müssen.
 Ein JSON-Objekt wird generiert und zu einer Liste von Objekten hinzugefügt. Diese Regel ist optional, was bedeutet,
 dass sie zu den Regeln gehört, die vom Lehrer selbst hinzugefügt werden müssen. Sie wird also nicht automatisch
-generiert (siehe~\ref{lst:rules_def}).
+generiert (siehe Code~\ref{lst:rules_def}).
 
 \subsubsection{Count Attributes (optional)}
 Diese Regel ermöglicht es, die Anzahl der im UML-Diagramm vorhandenen Attribute zu definieren. Der Lehrer muss als
 Parameter die genaue Anzahl der Attribute angeben, die im UML-Diagramm des Schülers vorhanden sein müssen. Diese Regel
-ähnelt der Regel Count Methods (siehe~\ref{lst:rules_def}).
+ähnelt der Regel Count Methods (siehe Code~\ref{lst:rules_def}).
 
 \subsubsection{Test Association}
 Diese Regel dient einfach dazu, festzustellen, ob es eine Beziehung zwischen zwei Klassen gibt. Ein JSON-Objekt wird
-generiert und zu einer Liste von Objekten hinzugefügt (siehe~\ref{lst:rules_def}).
+generiert und zu einer Liste von Objekten hinzugefügt (siehe Code~\ref{lst:rules_def}).
 
 \begin{figure}
     \centering
@@ -284,7 +284,7 @@ generiert und zu einer Liste von Objekten hinzugefügt (siehe~\ref{lst:rules_def
 \\~\\
 
 Die zuvor erwähnte Objektliste enthält nun alle Regeln, die aus dem vom Node.js-Server bereitgestellten JSON extrahiert
-wurden. Jede dieser Regeln wird auf der Frontend-Seite angezeigt und ist anpassbar (siehe~\ref{fig:rule_exemple}).
+wurden. Jede dieser Regeln wird auf der Frontend-Seite angezeigt und ist anpassbar (siehe Abbildung~\ref{fig:rule_exemple}).
 Der Benutzer hat somit die Möglichkeit, jede Regel nach seinen Wünschen anzupassen, indem er beispielsweise Kommentare,
 Punkte (Points) sowie jeden mit der jeweiligen Regel verknüpften Attribut ändert. Auf diese Weise werden die Regeln aus dem JSON
 extrahiert und angepasst. Anschließend folgt der nächste Schritt, bei dem diese Regeln in GReQL-Code umgewandelt werden.
@@ -296,7 +296,7 @@ darstellt, welche diese Regeln repräsentieren. Tatsächlich hat jede Regel eine
 verschiedene Möglichkeiten gibt, GReQL-Code zu schreiben, wurde im Verlauf der Entwicklung nach einer optimierten
 Variante gesucht, die das schnellste und effizienteste Ergebnis mit minimalem Code ermöglicht. Konkret geht es darum,
 den GReQL-Code so anzupassen, dass er perfekt zur zu konvertierenden Regel passt, und ihn dann als Vorlage zu verwenden.
-Zum Beispiel für die Regel, die das Vorhandensein einer Klasse definiert (siehe~\ref{lst:class_def_xml}):
+Zum Beispiel für die Regel, die das Vorhandensein einer Klasse definiert (siehe Code~\ref{lst:class_def_xml}):
 \\~\\
 \begin{lstlisting}[caption={Class Definition Template \(erster Teil\)}, label={lst:class_def_xml}, language=xml]
 <rule type="${rule.existence}" points="${rule.points}">
@@ -406,7 +406,7 @@ werden. Es ist jedoch wichtig zu beachten, dass dieser Prozess zur Modifikation 
 arbeitsintensiv angesehen werden kann. Um dies zu verdeutlichen, kann das Beispiel der Anpassung der Anzahl der Punkte (Points)
 für jede Regel in einem Diagramm mit mehr als zwanzig Regeln dienen. Diese Aufgabe erweist sich schnell als zeitaufwändig,
 da jede Regel individuell bearbeitet werden muss, um die erforderlichen Änderungen vorzunehmen. Ebenso stellt sich die
-gleiche Problematik ein, wenn es um die Eigenschaft ``Exact match'' (siehe~\ref{fig:code-uml}) geht (die festlegt, ob
+gleiche Problematik ein, wenn es um die Eigenschaft ``Exact match'' (siehe Abbildung~\ref{fig:code-uml}) geht (die festlegt, ob
 der Name eines Attributs, einer Methode oder einer Klasse genau mit dem im Diagramm angegebenen Namen übereinstimmen
 muss oder ob eine gewisse Fehlermarge akzeptiert wird).
 
@@ -418,7 +418,7 @@ zeigt einen Anwendungsfall dieser Syntax für die Annotation einer Klasse:
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=16cm]{images/annotation}
+    \includegraphics[width=10cm]{images/annotation}
     \caption{Beispiel für die Verwendung des Annotationssystems}
     \label{fig:annotation}
 \end{figure}
@@ -439,6 +439,16 @@ aktivieren, sollte die Direktive ``!method(*)'' verwendet werden.
     \item \textbf{z points for methods}: Bestimmt, wie viele Punkte (Z) die Methodenregeln haben sollten.
 \end{itemize}
 
+
+Ursprünglich wurde in Betracht gezogen, Annotationen direkt vor den relevanten Attributen oder Methoden zu platzieren,
+um das Exact Matching auf die Attribute oder Methoden zu aktivieren. Jedoch stellte sich heraus, dass dies nicht
+praktikabel war. Jedes Mal, wenn ein Sonderzeichen zur Unterscheidung und Abfrage der gewünschten Informationen
+hinzugefügt wurde, löste der PlantUML-Parser einen Fehler aus. Selbst der Versuch, den Namen des Attributs zu
+modifizieren, beispielsweise durch ``number*exact'' oder ``number!exact'', erwies sich als nicht funktionsfähig.
+Daher wurde beschlossen, auf Klassenebene zu arbeiten, da dies als der zugänglichste Ansatz für die Umsetzung dieser
+Funktion erschien. Bisher wurde keine andere Möglichkeit gefunden, diesen Ansatz zu umgehen.
+
+\\~\\
 Dieses Annotierungssystem beschleunigt und optimiert signifikant den Prozess der Generierung von GReQL-Code. Sobald
 die Beherrschung dieses Annotierungssystems erreicht ist, werden Lehrende nicht länger auf die Zwischenrepräsentation
 von Regelobjekten angewiesen sein, da sie in der Lage sein werden, GReQL-Code direkt mit der PlantText-Code und der
