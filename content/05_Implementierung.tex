@@ -25,8 +25,7 @@ PlantText~\cite{planttext} ist ein webbasiertes Instrument zur Diagrammmodellier
 der UML und anderer Modellierungssprachen einen renommierten Status innehat. Dieses Instrument wurde entwickelt,
 um die bequeme Erstellung, Bearbeitung und gemeinsame Nutzung von Diagrammen in einer kollaborativen Umgebung zu
 ermöglichen. Seine Auszeichnungen resultieren aus der Benutzerfreundlichkeit, der Flexibilität und der
-Leistungsfähigkeit, wodurch es zu einer favorisierten Wahl für Softwareentwickler, Systemarchitekten und Projektmanager
-avanciert~\cite{planttext}.
+Leistungsfähigkeit~\cite{planttext}.
 
 PlantText basiert auf einer schlichten, aber wirkungsvollen Konzeption, nämlich der Generierung von Diagrammen durch
 Verwendung von textuellen Notationen. Benutzer können Diagramme unter Einsatz von natürlicher Sprache und vordefinierten
@@ -78,8 +77,8 @@ einer eingehenden Prüfung unterzogen. Diese Werkzeuge schlossen namhafte Anwend
 Astah UML ~\cite{astah}, MagicDraw ~\cite{magic}, Visual Paradigm ~\cite{visual}, Umbrello ~\cite{umbrello} und Draw.io~\cite{draw} ein.
 Eine gemeinsame Eigenschaft dieser Werkzeuge besteht darin, dass sie sich für die rasche Erstellung von Diagrammen
 eignen, was auf ihre intuitive Benutzeroberfläche, leichte Verständlichkeit und Nutzerfreundlichkeit zurückzuführen ist.
-Bedauerlicherweise wiesen sie jedoch einen bedeutenden Mangel auf, der ihre Anwendbarkeit in Bezug auf unsere
-spezifischen Anforderungen einschränkte. Keines dieser Programme bot die Möglichkeit, die erstellten Diagramme in eine
+Bedauerlicherweise wiesen sie jedoch einen bedeutenden Mangel auf, der ihre Anwendbarkeit in Bezug auf die spezifischen
+Anforderungen einschränkte. Keines dieser Programme bot die Möglichkeit, die erstellten Diagramme in eine
 leicht interpretierbare textuelle Form zu überführen.
 
 Die meisten dieser Tools gestatten zwar das Exportieren der erstellten Diagramme im XML-Format, doch dieses Format
@@ -89,10 +88,20 @@ diversen UML-Objekten nur mit großem Aufwand und erheblichen Schwierigkeiten au
 konnten. Dies wäre in der Praxis äußerst zeitaufwendig und würde die Entwicklung eines eigenen Parsers erfordern, um die
 relevanten Informationen zu extrahieren und in eine verwertbare Form zu überführen.
 
+
+Jedoch, wie im Abschnitt~\ref{sec:bewertungsprozess} erwähnt wurde, gibt es Werkzeuge wie BOUML~\cite{bouml},
+Enterprise Architect~\cite{enterarch} oder Software Ideas~\cite{sim}, die es den Studierenden ermöglichen, den XMI-Code
+ihres Diagramms zu exportieren, um auf JACK bewertet zu werden. Der von diesen Werkzeugen generierte XMI bietet die
+Möglichkeit, die Beziehungen zwischen den verschiedenen Elementen eines UML-Diagramms zu bestimmen. JACK verfügt über
+einen XMI-Parser, der in der Lage ist, diese XMI zu interpretieren und sie entsprechend zu bewerten. Die Integration des
+XMI-Parsers in den Prozess der Regelextraktion wäre ebenfalls ein möglicher Ansatz gewesen. Allerdings erfordert die
+Verwendung dieses XMI-Parsers zusätzliche Integrations- und Supportarbeit.
+
+
 Die Nutzung von PlantText hingegen bietet einen klaren Vorteil in dieser Hinsicht. Dies resultiert aus der bereits
 implementierten PlantUML-Engine, die über einen eingebauten Parser verfügt. Diese Funktionalität ermöglicht es,
 den erstellten Code direkt in einem Format zu erhalten, das für die Weiterverarbeitung und Interpretation äußerst zugänglich ist.
-Diese grundlegende Unterscheidung führt dazu, dass PlantText in unserem Anwendungsfall als überlegen angesehen wird.
+Diese grundlegende Unterscheidung führt dazu, dass PlantText in diesem Anwendungsfall als überlegen angesehen wird.
 Durch die Fähigkeit zur Bereitstellung des Modells in einer textuellen Form ermöglicht es eine tiefere und
 bedeutungsvollere Analyse der erstellten Diagramme. Dies fördert die Genauigkeit bei der Modellierung und stellt sicher,
 dass die erstellten Diagramme nicht nur als visuelle Darstellungen betrachtet werden, sondern auch als Quellen
@@ -134,8 +143,8 @@ handhabbare Lösung zur Gestaltung von Benutzeroberflächen in Webanwendungen zu
 im Jahr 2014 initiiert, hat Vue.js eine bemerkenswerte Entfaltung erfahren, die es zu einem herausragenden Akteur unter
 den JavaScript-Frameworks~\cite{levlin2020dom} in der Sphäre der Webentwicklung gemacht hat.
 
-In den Zielen und Vorzügen von Vue.js kristallisiert sich eine Antwort auf die Herausforderungen bei der Generierung
-interaktiver Webanwendungen und die Optimierung des Entwicklungsprozesses in ein ergötzliches Narrativ. Wesentliche
+Die Ziele und Vorteile von Vue.js bieten eine Lösung für die Schwierigkeiten, die mit der Entwicklung interaktiver
+Webanwendungen einhergehen, und unterstützen die Verbesserung des Entwicklungsprozesses. Wesentliche
 Prämissen und Gewinnpunkte von Vue.js offenbaren sich in folgender Weise:
 
 \begin{enumerate}[itemsep=8pt, parsep=5pt]
@@ -182,7 +191,7 @@ wurden in diesem Abschnitt nur die wichtigsten vorgestellt.
 \section{Darlegung des Workflow-Prozesses}\label{sec:darlegung-des-workflow-prozesses}
 
 In diesem Abschnitt wird der umfassende Prozess zur Umsetzung des im vorherigen Kapitels skizzierten Konzepts~\ref{sec:konzept}
-detailliert erörtert. Ein zentrales Element dieser Umsetzung ist das derzeit in der Entwicklungsphase befindliche
+detailliert erörtert. Ein zentrales Element dieser Umsetzung ist das in der Entwicklungsphase befindliche
 Werkzeug, welches unter dem Namen \textbf{``\gls{GReQL Converter}''} firmiert. Dieses Instrument dient dazu, das zuvor skizzierte
 Konzept in die praktische Anwendung zu überführen. Der \gls{GReQL Converter} ist eine Webanwendung, die in der Lage ist,
 GReQL Code aus PlantText zu generieren, um damit die Evaluation von UML-Klassendiagrammen zu ermöglichen. Die
@@ -223,23 +232,36 @@ Verwendung des \gls{GReQL Converter}s ausführlich beschrieben sind. Diese Krite
     \item Eine spezielle Syntax, die für bestimmte Assoziationen einzuhalten ist.
 \end{itemize}
 
-Nachdem der Code für die Musterlösung generiert wurde, kann der Lehrer zur Phase 2 übergehen.
+Tatsächlich gibt es mehrere gültige Formen von PlantUML-Codes, die zur Erzeugung desselben Diagrammtyps dienen können.
+Insbesondere bei der Darstellung einer Methode innerhalb einer Klasse in PlantUML existieren unterschiedliche
+Möglichkeiten. Zwei solcher Varianten sind:
 
+\begin{itemize}
+    \item Lock(): void
+    \item void Lock()
+\end{itemize}
+
+
+Beide genannten Ausdrücke sind in PlantUML gültig, jedoch berücksichtigt der Parser nur eine spezifische Syntax. Daher
+ist es von entscheidender Bedeutung, die präzise Syntax zu kennen, die verwendet werden sollte, damit der generierte
+PlantText-Code ordnungsgemäß im GReQL Converter funktioniert. Um diesen Prozess zu erleichtern, bietet die Dokumentation
+des GReQL Converters eine detaillierte Erläuterung und Begründung für die Verwendung spezifischer Begriffe. Nachdem der
+Code für die Musterlösung generiert wurde, kann der Lehrer zur Phase 2 übergehen.
 
 \subsubsection{Phase 2: Verarbeitung der auf dem \gls{GReQL Converter} erzeugten Regeln}
 
-In der Phase der Regelbearbeitung, die auf die Codegenerierung folgt, hat die Lehrkraft die Aufgabe, den generierten
-Code in den \gls{GReQL Converter} zu übertragen. In dieser Phase entstehen eine Vielzahl von anpassbaren Regeln. Die Anpassung
-erfolgt gemäß den spezifischen Bewertungskriterien, die die Lehrkraft verfolgt. Es ist hierbei möglich, Änderungen an
-den Regeln vorzunehmen, je nachdem, welche Aspekte der Übung bewertet werden sollen. Weiterhin besteht die Option,
-Regeln hinzuzufügen oder zu entfernen. In der Bearbeitung der Regeln ergibt sich auch die Möglichkeit, individuelles
-Feedback für jede einzelne Regel hinzuzufügen und die Punktzahl für jede Regel erneut zu justieren.
+Diese Phase beginnt, nachdem der Lehrer seinen PlantText-Code in den \gls{GReQL Converter} übertragen hat.
+In dieser Phase entstehen eine Vielzahl von anpassbaren Regelobjekten. Die Anpassung erfolgt gemäß den spezifischen
+Bewertungskriterien, die die Lehrkraft verfolgt. Es ist hierbei möglich, diese Regelobjekte zu verarbeiten, je nachdem,
+welche Aspekte der Übung bewertet werden sollen. Weiterhin besteht die Option, Regelobjekte hinzuzufügen oder zu
+entfernen. In der Bearbeitung der Regelobjekten ergibt sich auch die Möglichkeit, individuelles Feedback für jede
+einzelnen Regelobjekte hinzuzufügen und die Punktzahl für jedes Regelobjekt erneut zu justieren.
 
 
-\subsubsection{Phase 3: Generierung des GReQL-Codes}
+\subsubsection{Phase 3: Generierung und Anpassung des GReQL-Codes}
 
 Sobald die Phase der Regelbearbeitung (Phase 2) abgeschlossen ist, kann die Lehrkraft den GReQL-Code auf der Plattform
-generieren. Dabei orientiert sich die Generierung an den zuvor definierten Regeln. Der generierte GReQL-Code kann,
+generieren. Die Generierung des GReQL-Codes erfolgt aus den zuvor definierten Regelobjekten. Der generierte GReQL-Code kann,
 falls erforderlich, weiterhin angepasst werden.
 
 Dieser Bearbeitungsschritt ist nur dann sinnvoll, wenn der Lehrer bereits über Kenntnisse in GReQL zur Generierung von
