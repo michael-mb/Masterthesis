@@ -1,10 +1,19 @@
 \chapter{Entwicklung des Konzepts}
 
-In diesem Kapitel wird der Übergang von der Problemanalyse zur kreativen Konzeptentwicklung im Forschungsprozess hervorgehoben. Es markiert die zentrale Phase, in der theoretisches Wissen und praktische Erkenntnisse zusammenfließen, um innovative Lösungsansätze zu formulieren. Wir integrieren theoretische Grundlagen und Modelle aus vorangegangenen Kapiteln und erläutern die angewandten Methoden zur Entwicklung tragfähiger Lösungen. Dieses Kapitel dient als Brücke zwischen Analyse und Umsetzung, betont die kreative Synthese von Ideen und Lösungsansätzen und bietet einen detaillierten Einblick in den Prozess der Konzeptentwicklung.
+In diesem Kapitel wird der Übergang von der Problemanalyse zur kreativen Konzeptentwicklung im Forschungsprozess betont.
+Es wird die zentrale Phase markiert, in der theoretisches Wissen und praktische Erkenntnisse zusammengeführt werden, um
+innovative Lösungsansätze zu formulieren. Theoretische Grundlagen und Modelle aus vorangegangenen Kapiteln werden
+integriert und die angewandten Methoden zur Entwicklung tragfähiger Lösungen werden erläutert. Dieses Kapitel wird als
+Brücke zwischen Analyse und Umsetzung genutzt, wobei die kreative Synthese von Ideen und Lösungsansätzen betont wird.
+Ein detaillierter Einblick in den Prozess der Konzeptentwicklung wird geboten.
 
 \section{Verschiedene Herangehensweisen}
 
-Vor der Ausarbeitung des endgültigen Implementierungskonzepts wurden mehrere methodische Ansätze einer eingehenden Untersuchung unterzogen. Das vorrangige Ziel dieser methodischen Herangehensweisen bestand in der Extraktion einer Reihe von Regelwerken, die später in GReQL-Ausdrücke transformiert werden sollten. Diese Regelwerke sollten aus den Kommentaren oder Anmerkungen extrahiert werden, welche von Lehrkräften in Bezug auf eine UML-Übung hinterlassen wurden. Die Wahl des Notenformats ist frei, was viele Möglichkeiten bietet. 
+Vor der Ausarbeitung des endgültigen Implementierungskonzepts wurden mehrere methodische Ansätze im Detail untersucht.
+Das Hauptziel dieser methodischen Ansätze bestand darin, eine Reihe von Regeln zu extrahieren, die anschließend in
+GReQL-Ausdrücke umgewandelt werden sollten. Diese Regelsets sollten aus den Kommentaren oder Notizen extrahiert werden,
+die von den Lehrkräften zu einer UML-Übung hinterlassen wurden. Die Wahl des Notizformats ist offen, was viele
+Möglichkeiten bietet. Zwei Ansätze, die in diesem Rahmen erkundet wurden, werden in diesem Kapitel vorgestellt.
 
 \subsection{YAML-basierten Annotationen}
 
@@ -77,7 +86,7 @@ In ihrem aktuellen Stand erfordert diese Herangehensweise erhebliche Anstrengung
 
 \section{Konzept}\label{sec:konzept}
 
-Bei der Entwicklung des Konzepts wurde ein radikal andersartiger Ansatz als der in dem vorherigen Abschnitt dargelegte verfolgt. Die Herangehensweise, Regeln aus Kommentaren abzuleiten, erweist sich als ein komplexer Prozess und potenziell schwierig umzusetzen. Die Gewährleistung der Zuverlässigkeit der erzielten Ergebnisse stellt ebenfalls eine bedeutende Herausforderung dar. In diesem Zusammenhang wurde eine intuitivere Herangehensweise in Betracht gezogen, nämlich die direkte Ableitung von Regeln aus der Mustervorlage.
+Bei der Entwicklung des Konzepts wurde ein andersartiger Ansatz als der in dem vorherigen Abschnitt dargelegte verfolgt. Die Herangehensweise, Regeln aus Kommentaren abzuleiten, erweist sich als ein komplexer Prozess und potenziell schwierig umzusetzen. Die Gewährleistung der Zuverlässigkeit der erzielten Ergebnisse stellt ebenfalls eine bedeutende Herausforderung dar. In diesem Zusammenhang wurde eine intuitivere Herangehensweise in Betracht gezogen, nämlich die direkte Ableitung von Regeln aus der Mustervorlage.
 
 Bevor dieses Konzept im Detail beschrieben wird, ist es unerlässlich, das Endziel in Erinnerung zu rufen, nämlich die Unterstützung von Lehrenden bei der Bewertung von UML-Übungsaufgaben (insbesondere Klassendiagrammen). Dies soll durch erhebliche Vereinfachung des Schreibens von GReQL-Code auf der JACK-Plattform erreicht werden, indem Lehrern mit Hilfe eines im Rahmen dieser Masterarbeit zu entwickelnden Tools (halb-)automatische Unterstützung geboten wird. Das Konzept zur Erfüllung dieser Aufgabe kann in drei Wichtige Schritte unterteilt werden:
 
@@ -87,7 +96,7 @@ Wie im \autoref{sec:bewertungsprozess} erwähnt wurde, umfasst Phase 2 die optio
 
 \subsubsection{Schritt 2: Verarbeitung der exportierten Datei}
 
-Nachdem der Lehrer die Musterlösung erfolgreich modelliert hat, ergibt sich die Notwendigkeit, diese Vorlage in ein geeignetes Format zu exportieren, welches eine programmgesteuerte Bearbeitung ermöglicht. Dieser Transformationsprozess kann mittels diverser Datenformate wie JSON, XML oder sogar YAML realisiert werden. Sobald das exportierte Dokument verfügbar ist, eröffnet sich im Kontext eines Klassendiagramms die Möglichkeit, zunächst sämtliche in der Musterlösung enthaltenen Klassen sowie sämtliche Interdependenzen zwischen den verschiedenen Elementen zu extrahieren. Infolge dieses Phasenschritts besteht die Option zur Ableitung von ``Regel''-Objekten, welche auf der Frontend-Oberfläche sichtbar sind und vom Lehrer interaktiv bearbeitet werden können. Die Bereitstellung dieser Funktionalität befähigt den Lehrer dazu, wertvolles Feedback hinzuzufügen, die zugehörigen Punktzahlen zu definieren und sämtliche erforderlichen Informationen für den nächsten Schritt und die anschließende Evaluierung umfassend zu vervollkommnen.
+Nachdem der Lehrer die Musterlösung erfolgreich modelliert hat, ergibt sich die Notwendigkeit, diese Vorlage in ein geeignetes Format zu exportieren, welches eine programmgesteuerte Bearbeitung ermöglicht. Dieser Transformationsprozess kann mittels diverser Datenformate wie JSON, XML oder sogar YAML realisiert werden. Sobald das exportierte Dokument verfügbar ist, eröffnet sich im Kontext eines Klassendiagramms die Möglichkeit, zunächst sämtliche in der Musterlösung enthaltenen Klassen sowie sämtliche Interdependenzen zwischen den verschiedenen Elementen zu extrahieren. Infolge dieses Phasenschritts besteht die Option zur Ableitung von ``Regel''-Objekten, welche auf der Frontend-Oberfläche sichtbar sind und vom Lehrer interaktiv bearbeitet werden können. Die Integration dieser Funktionalität ermöglicht Lehrkräften, wertvolles Feedback und alle zugehörigen Informationen durch eine einzige Annotation hinzuzufügen, um sowohl die Punktzahlen festzulegen als auch den nächsten Schritt und die anschließende Evaluierung umfassend zu unterstützen.
 
 \subsubsection{Schritt 3: Generierung des GReQL-Codes}
 
@@ -100,4 +109,4 @@ Der abschließende Schritt dieses Vorgehens umfasst die Generierung von GReQL-Co
 	\label{fig:concept}
 \end{figure}
 
-Durch dieses Konzept (siehe Abbildung~\ref{fig:concept}) und seine verschiedenen Schritte ist es möglich, von einer Musterlösung zur Generierung des erforderlichen GReQL-Codes für die Bewertung von Diagrammen durch JACK zu gelangen. Dieser Ansatz hat das Potenzial, den Bewertungsprozess von Diagrammen über die JACK-Plattform erheblich zu vereinfachen, was das zentrale Ziel dieser Masterarbeit ist. Die tatsächliche Umsetzung dieses Konzepts hängt jedoch eng vom gewählten Workflow und der Art und Weise ab, wie das Konzept umgesetzt wird. Dieser Ausblick leitet zum nächsten Kapitel über, das die Implementierung behandelt.
+Durch dieses Konzept und seine verschiedenen Schritte ist es möglich, von einer Musterlösung zur Generierung des erforderlichen GReQL-Codes für die Bewertung von Diagrammen durch JACK zu gelangen. Dieser Ansatz hat das Potenzial, den Bewertungsprozess von Diagrammen über die JACK-Plattform erheblich zu vereinfachen, was das zentrale Ziel dieser Masterarbeit ist. Die tatsächliche Umsetzung dieses Konzepts hängt jedoch eng vom gewählten Workflow und der Art und Weise ab, wie das Konzept umgesetzt wird. Dieser Ausblick leitet zum nächsten Kapitel über, das die Implementierung behandelt.
