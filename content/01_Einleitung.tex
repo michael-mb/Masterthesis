@@ -4,21 +4,42 @@ Das erste Kapitel dieser Arbeit befasst sich mit der grundlegenden Motivation un
 
 \section{Motivation}
 
-Nach den Prüfungsphasen in Bildungseinrichtungen auf Sekundarstufen und Universitätsniveau manifestiert sich regelmäßig die Herausforderung, der zahlreichen Korrekturaufgaben, welche Lehrer und Dozenten zu bewältigen haben. Diese Aufgabe kann mitunter mühsam und zeitaufwendig sein, insbesondere im Falle einer hohen Anzahl an Prüfungen \cite{aufwendig}. Die Evaluation von Prüfungsleistungen von 20 Prüflingen mag noch als vertretbar erscheinen, doch wie verhält es sich in Lehrveranstaltungen, in denen sich 400 oder gar mehr Studierende beteiligen? Bereits in den 1960er Jahren wurden Bestrebungen unternommen, solche Probleme durch die Entwicklung von \gls{E-Assessment-Systemen} zu lösen \cite{Hollingsworth}.
+Nach Abschluss der Prüfungsphasen in Sekundar- und Hochschuleinrichtungen stellt sich regelmäßig die Herausforderung
+einer umfangreichen Anzahl an Korrekturaufgaben, die von Lehrkräften und Dozenten bewältigt werden müssen. Diese Aufgabe
+kann mitunter mühsam und zeitaufwendig sein, insbesondere im Falle einer hohen Anzahl an Prüfungen~\cite{aufwendig}.
+Die Evaluation von Prüfungsleistungen von 20 Prüflingen mag noch als vertretbar erscheinen, doch wie verhält es sich in
+Lehrveranstaltungen, in denen sich 400 oder gar mehr Studierende beteiligen? Bereits in den 1960er Jahren wurden
+Bestrebungen unternommen, solche Probleme durch die Entwicklung von \gls{E-Assessment-Systemen} zu lösen~\cite{Hollingsworth}.
 
-Heute ist die automatisierte und computerbasierte Bewertung von akademischen Arbeiten weit verbreitet im Hochschulbereich. Diverse Plattformen wie Blackboard \cite{blackboard}, \ac{OPAL} \cite{opal}, und Moodle \cite{moodle} wurden konzipiert, um den Prüfungsprozess zu rationalisieren und vollständig zu automatisieren. Diese Plattformen finden insbesondere in der Beurteilung geschlossener Fragen wie Multiple-Choice-Aufgaben Anwendung, bei denen die Antworten klar und die Bewertung einfach automatisiert werden kann. Die Frage, die sich jedoch stellt, ist: Wie gestaltet sich die Evaluation offener Fragenstellungen in Übungen, wie beispielsweise die Erstellung konzeptioneller Modelle, bei denen Lösungsansätze variieren können, jedoch dennoch korrekt sind?
+Heute ist die automatisierte und computerbasierte Bewertung von akademischen Arbeiten weit verbreitet im
+Hochschulbereich. Diverse Plattformen wie Dynexite~\cite{Dynexite}, LPLUS~\cite{LPLUS}, Questionmark~\cite{Questionmark},
+Turnitin~\cite{Turnitin}, Leapsome~\cite{leapsome} wurden konzipiert, um den Prüfungsprozess zu rationalisieren und vollständig zu automatisieren.
+Diese Plattformen finden insbesondere in der Beurteilung geschlossener Fragen wie Multiple-Choice-Aufgaben Anwendung,
+bei denen die Antworten klar und die Bewertung einfach automatisiert werden kann. Die Frage, die sich jedoch stellt,
+ist: Wie gestaltet sich die Evaluation offener Fragenstellungen in Übungen, wie beispielsweise die Erstellung
+konzeptioneller Modelle, bei denen Lösungsansätze variieren können, jedoch dennoch korrekt sind?
 
-In der allgemeinen Informatikbildung ist es üblich, Modelle zur Beschreibung der Architektur eines Systems oder abstrakterer Konzepte heranzuziehen. Diese Modelle können in Form von Diagrammen wie \ac{UML}-Klassendiagrammen, Sequenzdiagrammen oder Zustandsdiagrammen präsentiert werden. Bei einer Bewertungsaufgabe, bei der ein Studierender ein Modell auf Grundlage eines gegebenen Textes erstellen soll, sieht sich der Evaluierende oft mit der Herausforderung konfrontiert, das Ergebnis des Studierenden mit der erwarteten Lösung abzugleichen. Diese Form der Beurteilung kann jedoch diverse Schwierigkeiten aufwerfen: 
+In der allgemeinen Informatikbildung ist es üblich, Modelle zur Beschreibung der Architektur eines Systems oder
+abstrakterer Konzepte heranzuziehen. Diese Modelle können in Form von Diagrammen wie \ac{UML}-Klassendiagrammen, S
+equenzdiagrammen oder Zustandsdiagrammen präsentiert werden. Bei einer Bewertungsaufgabe, bei der ein Studierender ein
+Modell auf Grundlage eines gegebenen Textes erstellen soll, sieht sich der Evaluierende oft mit der Herausforderung
+konfrontiert, das Ergebnis des Studierenden mit der erwarteten Lösung abzugleichen. Diese Form der Beurteilung kann
+jedoch diverse Schwierigkeiten aufwerfen:
 
 
 \begin{enumerate}
-    \item Erstens, in der Modellierung existiert keine eindeutige Lösungsstrategie, was die Aufgabe komplexer gestaltet. Die Resultate jedes Studierenden müssen wiederholt mit der vorgeschlagenen Lösung verglichen werden, um sicherzustellen, dass die Arbeit alle wesentlichen Komponenten der Lösung berücksichtigt.
+    \item In der Modellierung existiert keine eindeutige Lösungsstrategie. Die Resultate jedes Studierenden müssen mit
+    der Musterlösung verglichen werden, um Vollständigkeit sicherzustellen.
 
-    \item Das zweite Hindernis in diesem Evaluationsmodell ist die inhärente Subjektivität. Einige Studierende könnten vollständig funktionierende Modelle entwickeln, die jedoch von der erwarteten Lösung abweichen, und könnten dadurch benachteiligt werden. Dies kann zu einer gewissen Starre im Unterricht führen und verhindern, dass Studierende originelle Ansätze verfolgen.
+    \item Richtige Modelle können von der erwarteten Lösung abweichen und Studierende benachteiligen, was Originalität
+    hemmen könnte.
 
-    \item Eine weitere bedeutende Herausforderung dieses Evaluationsmodells ist die potenzielle Subjektivität der Evaluierenden. Jeder Korrektor könnte eine individuelle Auslegung dessen haben, was als korrekte Antwort betrachtet wird, was zu Unstimmigkeiten in der Benotung und einer ungleichen Verteilung von Noten zwischen den Arbeiten der Studierenden führen kann. Dies könnte besonders problematisch sein, wenn mehrere Evaluierende dieselben Arbeiten bewerten, da dies zu signifikanten Unterschieden in den vergebenen Noten führen kann.
+    \item Die Beurteilung kann subjektiv sein. Unterschiedliche Auslegungen könnten zu ungleichen Bewertungen führen,
+    besonders wenn mehrere Personen bewerten.
 
-    \item Zuletzt kann dieses Evaluationsmodell auch beträchtlich zeitaufwendig sein, insbesondere in Lehrveranstaltungen mit einer hohen Anzahl an Studierenden. Ein ausführlicher Abgleich der Studierendenarbeiten mit der Referenzlösung erfordert Zeit und könnte zu Verzögerungen bei der Mitteilung der Ergebnisse an die Studierenden und einer erhöhten Arbeitsbelastung für die Evaluierenden führen.
+    \item Das Evaluationsmodell ist zeitaufwendig, besonders bei vielen Studierenden. Der Abgleich der Studierendenarbeiten
+    mit der Musterlösung erfordert Zeit und kann zu Verzögerungen führen.
+
 \end{enumerate}
     
 
@@ -46,4 +67,4 @@ Das Kapitel fünf beschäftigt sich mit der praktischen Umsetzung der entwickelt
 
 Das sechste Kapitel widmet sich der Bewertung der entwickelten Lösung. Es werden Kriterien definiert, anhand derer der Prototyp bewertet wird. Der Evaluationsprozess wird erläutert, einschließlich der durchgeführten User Studies. Im Kapitel sieben werden die Ergebnisse der Arbeit kritisch diskutiert und interpretiert. Hierbei werden die Implikationen der Ergebnisse auf das Gesamtforschungsgebiet erörtert, eventuelle Limitationen der Arbeit aufgezeigt und mögliche Ansätze für zukünftige Forschung identifiziert.
 
-Abschließend bietet Kapitel sechs eine Zusammenfassung der wichtigsten Erkenntnisse und Ergebnisse dieser Masterarbeit. Es werden auch Perspektiven für die Weiterentwicklung der vorgestellten Lösung sowie die Bereitstellung der vollständigen Dokumentation des entwickelten Tools dargelegt.
+Abschließend bietet Kapitel acht eine Zusammenfassung der wichtigsten Erkenntnisse und Ergebnisse dieser Masterarbeit. Es werden auch Perspektiven für die Weiterentwicklung der vorgestellten Lösung sowie die Bereitstellung der vollständigen Dokumentation des entwickelten Tools dargelegt.
