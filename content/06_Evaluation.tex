@@ -797,7 +797,9 @@ diesem Annotationsystem finden sich in der Dokumentation des GReQL Converters.
 \begin{lstlisting}[!h, caption={Ausschnitt aus dem GReQL-Code, der nach der Konvertierung erhalten wurde}, label={lst:combined}, language=xml]
 <checkerrules>
     <!-- Combined  Rule -->
+
     <rule type="presence" points="0">
+
         <!-- Aggregation SubRule -->
         <query>
             from x, y : V{Class}, p: V{Property},
@@ -821,6 +823,7 @@ diesem Annotationsystem finden sich in der Dokumentation des GReQL Converters.
                 x --> V{Property} --> b
                 report 1 end
         </query>
+
         <!-- Composition SubRule -->
         <query>
             from x, y : V{Class}, p: V{Property},
@@ -844,6 +847,7 @@ diesem Annotationsystem finden sich in der Dokumentation des GReQL Converters.
                 x --> V{Property} --> b
                 report 1 end
         </query>
+
         <!-- Simple Association SubRule -->
         <query>
             from x,y : V{Class}, ass : V{Association},

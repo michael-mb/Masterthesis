@@ -6,7 +6,7 @@ von UML-Klassendiagrammen auf der JACK-Plattform. Die Realisierung dieser Anwend
 im Frontend und Node.js im Backend, wie in fig-~\ref{fig:infrastructure} veranschaulicht. In diesem Kapitel wird der
 Implementierungsprozess der Plattform sowie ihrer verschiedenen Komponenten ausführlich erläutert.
 
-\begin{figure}[h]
+\begin{figure}[h!]
     \centering
     \includegraphics[width=15cm]{images/infrastucture}
     \caption{GReQL-Converter global infrastructure}
@@ -36,7 +36,7 @@ auf den ersten Blick leicht erkennbar sein, um das Verständnis zu fördern und 
 Arbeit zu ermöglichen~\cite{guntupalli2008user}. Die Seite ``Class Converter'' stellt die Benutzeroberfläche dar, auf
 der der Benutzer seinen PlantText-Code in GReQL-Code umwandeln kann. Diese Seite ist in drei Hauptabschnitte unterteilt:
 
-\begin{figure}
+\begin{figure}[h]
     \centering
     \includegraphics[width=16cm]{images/board}
     \caption{Dashboard im Überblick}
@@ -67,7 +67,7 @@ das es ihm ermöglicht, die in der Regel vorhandenen Informationen nach Belieben
 wodurch der \gls{GReQL Converter} zu einem halbautomatischen Werkzeug wird. Diese Informationen variieren je nach Art der Regel
 und den für die Generierung des GReQL-Codes erforderlichen Informationen.
 
-\begin{figure}[h]
+\begin{figure}[h!]
     \centering
     \includegraphics[width=16cm]{images/derived_rule}
     \caption{Beispiel eines Regelobjekts}
@@ -100,7 +100,7 @@ Um den Extraktionsprozess, der in diesem Kapitel beschrieben wird, einzuführen,
 Modellierung in PlantText angefangen. Die Schritte bis zur Erstellung der Regeln werden verfolgt. Hierzu wird der
 folgende PlantText-Code verwendet, der ein UML-Diagramm modelliert (siehe Abbildung~\ref{fig:code-uml}).
 
-\begin{figure}[h]
+\begin{figure}[h!]
     \centering
     \includegraphics[width=16cm]{images/code-uml}
     \caption{PlantText-Code mit der grafischen Darstellung}
@@ -274,14 +274,13 @@ Parameter die genaue Anzahl der Attribute angeben, die im UML-Diagramm des Schü
 Diese Regel dient einfach dazu, festzustellen, ob es eine Beziehung zwischen zwei Klassen gibt. Ein JSON-Objekt wird
 generiert und zu einer Liste von Objekten hinzugefügt (siehe Code~\ref{lst:rules_def}).
 
-\begin{figure}
+\begin{figure}[h!]
     \centering
     \includegraphics[width=16cm]{images/extracted_rules}
     \caption{Regeln, die dem geparsten PlantText-Code entsprechen}
     \label{fig:extracted_rules}
 \end{figure}
 
-\\~\\
 
 Die zuvor erwähnte Objektliste enthält nun alle Regeln, die aus dem vom Node.js-Server bereitgestellten JSON extrahiert
 wurden. Jede dieser Regeln wird auf der Frontend-Seite angezeigt und ist anpassbar (siehe Abbildung~\ref{fig:rule_exemple}).
@@ -322,7 +321,6 @@ gültigen GReQL-Code erhalten, der auf der JACK-Plattform verwendet werden kann.
 \\~\\
 \begin{lstlisting}[!h, caption={Ausschnitt aus dem GReQL-Code, der nach der Konvertierung erhalten wurde}, label={lst:final_xml_convert}, language=xml]
 <checkerrules>
-
     <!-- Class Definition -->
     <rule type="presence" points="0">
         <query>
@@ -337,7 +335,6 @@ gültigen GReQL-Code erhalten, der auf der JACK-Plattform verwendet werden kann.
             ClassA bereitgestellt werden.
         </feedback>
     </rule>
-
     <!-- Class Definition -->
     <rule type="presence" points="0">
         <query>
@@ -416,7 +413,7 @@ selten verwendet werden, insbesondere Generika, sowie das Labeling-System von Pl
 Syntax entwickelt, deren Einzelheiten in der Dokumentation des GReQL Converters erläutert sind. Das folgende Beispiel~\ref{fig:annotation}
 zeigt einen Anwendungsfall dieser Syntax für die Annotation einer Klasse:
 
-\begin{figure}[h]
+\begin{figure}[h!]
     \centering
     \includegraphics[width=10cm]{images/annotation}
     \caption{Beispiel für die Verwendung des Annotationssystems}
