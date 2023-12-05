@@ -20,15 +20,15 @@ ist: Wie gestaltet sich die Evaluation offener Fragenstellungen in Übungen, wie
 konzeptioneller Modelle, bei denen Lösungsansätze variieren können, jedoch dennoch korrekt sind?
 
 In der allgemeinen Informatikbildung ist es üblich, Modelle zur Beschreibung der Architektur eines Systems oder
-abstrakterer Konzepte heranzuziehen. Diese Modelle können in Form von Diagrammen wie \ac{UML}-Klassendiagrammen, S
-equenzdiagrammen oder Zustandsdiagrammen präsentiert werden. Bei einer Bewertungsaufgabe, bei der ein Studierender ein
+abstrakterer Konzepte heranzuziehen. Diese Modelle können in Form von Diagrammen wie \ac{UML}-Klassendiagrammen,
+Sequenzdiagrammen oder Zustandsdiagrammen präsentiert werden. Bei einer Bewertungsaufgabe, bei der ein Studierender ein
 Modell auf Grundlage eines gegebenen Textes erstellen soll, sieht sich der Evaluierende oft mit der Herausforderung
 konfrontiert, das Ergebnis des Studierenden mit der erwarteten Lösung abzugleichen. Diese Form der Beurteilung kann
 jedoch diverse Schwierigkeiten aufwerfen:
 
 
 \begin{enumerate}
-    \item In der Modellierung existiert keine eindeutige Lösungsstrategie. was die Aufgabe komplexer gestaltet. Die
+    \item In der Modellierung existiert keine eindeutige Lösungsstrategie, was die Aufgabe komplexer gestaltet. Die
     Resultate jedes Studierenden müssen wiederholt mit der Musterlösung verglichen werden, um Vollständigkeit sicherzustellen.
 
     \item Richtige Modelle können von der erwarteten Lösung abweichen und Studierende benachteiligen, was Originalität
@@ -49,13 +49,13 @@ In diesem Zusammenhang könnte die Implementierung einer automatisierten Bewertu
 
 Im Rahmen dieser Masterarbeit wird das Ziel verfolgt, ein Verfahren zur (halb-)automatischen Erstellung von Bewertungsregeln auf Basis annotierter Musterlösungen zu entwickeln und in Form einer Softwareanwendung zu prototypisieren. Dieses Verfahren soll dazu beitragen, den Prozess der Regeldefinition zu vereinfachen und zu optimieren.
 
-In der Fakultät für Informatik an der \ac{UDE} wird ein E-Assessment-System namens ``\gls{JACK}'' \cite{jack}  verwendet, um Studierende automatisch bei bestimmten Prüfungen und Übungen zu bewerten. \gls{JACK} ist in der Lage, verschiedene Arten von Aufgaben, sowohl geschlossene als auch offene Fragen, zu bewerten. Unter den verschiedenen Aufgabentypen fallen auch Aufgaben zur Erstellung von \ac{UML}-Diagrammen. \gls{JACK} wurde entwickelt, um die Lösungen der Studierenden zu bewerten und Noten zu vergeben. Bei der Bewertung von \ac{UML}-Diagrammen verwendet \gls{JACK} regelbasierte Ansätze. Die Lehrenden müssen die Regeln definieren, die das Diagramm des Studierenden validieren und ihm eine Note zuweisen. Dieser Prozess der Regeldefinition ist jedoch zeitaufwändig und birgt das Risiko, dass kleine, aber bedeutende Unaufmerksamkeitsfehler und Flüchtigkeitsfehler auftreten.
+In der Fakultät für Informatik an der \ac{UDE} wird ein E-Assessment-System namens ``\gls{JACK}'' \cite{jack}  verwendet, um Studierende automatisch bei bestimmten Prüfungen und Übungen zu bewerten. \gls{JACK} ist in der Lage, verschiedene Arten von Aufgaben, sowohl geschlossene als auch offene Fragen, zu bewerten. Unter den verschiedenen Aufgabentypen fallen auch Aufgaben zur Erstellung von \ac{UML}-Diagrammen. \gls{JACK} wurde entwickelt, um die Lösungen der Studierenden zu bewerten und Feedbacks zu vergeben. Bei der Bewertung von \ac{UML}-Diagrammen verwendet \gls{JACK} regelbasierte Ansätze. Die Lehrenden müssen die Regeln definieren, die das Diagramm des Studierenden validieren und ihm ein Feedback geben. Dieser Prozess der Regeldefinition ist jedoch zeitaufwändig und birgt das Risiko, dass kleine, aber bedeutende Unaufmerksamkeitsfehler und Flüchtigkeitsfehler auftreten.
 
 Das angestrebte Verfahren soll daher Lehrkräften dabei unterstützen, solche Bewertungsregeln effizienter und fehlerminimiert zu erstellen, indem es auf vorhandene annotierte Musterlösungen zurückgreift. Durch die Entwicklung einer Softwareanwendung, die diesen Prozess (halb-)automatisch durchführt, wird das Ziel verfolgt, eine zeit- und ressourcensparende Lösung bereitzustellen. Damit kann die Qualität der automatischen Bewertung von UML-Diagrammen in \gls{JACK} verbessert und der Aufwand für die Lehrkräfte reduziert werden.
 
 \section{Aufbau der Arbeit}
 
-Die vorliegende Arbeit gliedert sich in sechs Hauptkapitel, die jeweils einen spezifischen Aspekt des Forschungsgebiets beleuchten.
+Die vorliegende Arbeit gliedert sich in sieben Hauptkapitel, die jeweils einen spezifischen Aspekt des Forschungsgebiets beleuchten.
 
 Im zweiten Kapitel werden die grundlegenden Konzepte und Informationen eingeführt, die für das Verständnis der Arbeit erforderlich sind. Dies umfasst eine Erklärung der \gls{E-Assessment-Systemen}, konzeptioneller Modelle sowie der automatisierten Bewertung. Darüber hinaus werden verschiedene Ansätze zur automatisierten Bewertung im Detail betrachtet. Ein Überblick über den aktuellen Stand der Forschung auf diesem Gebiet wird ebenfalls gegeben, gefolgt von einer Einführung in das E-Assessment-System \gls{JACK}.
 
