@@ -103,6 +103,14 @@ Erfassung der Ausrichtung dieser Assoziation. Ebenso bleiben die mit Assoziation
 unberücksichtigt. Diese und andere Feinheiten könnten zukünftige Erweiterungen des GReQL Converters sein, um das Tool
 in Bezug auf die Generierung präziserer GReQL-Regeln zu bereichern.
 
+
+Bei der Entwicklung wurde diese Möglichkeit berücksichtigt. Das Hinzufügen einer neuen Regel besteht einfach darin,
+einen neuen Regeltyp in die Enummerationsdatei aufzunehmen, das die Definitionen der Regeln enthält. Danach muss das
+Objekt erstellt werden, das die grafische Darstellung der Regel repräsentiert. Abschließend muss nur die Methode
+geschrieben werden, die die Variablen in einer zuvor definierten Vorlage hinzufügt und zur generierten GReQL-Regelliste
+hinzufügt.
+
+
 \subsection{Erweiterung bestehender Regeln}
 
 Eine Vielzahl von Regeln könnte von Verbesserungen profitieren, um eine größere Bandbreite von Designvarianten zu
@@ -122,6 +130,7 @@ diese Tools und die Möglichkeit zur Auswahl des bevorzugten Tools über die gra
 Converter einschließen. Glücklicherweise sollte diese Aufgabe nicht besonders komplex sein.
 
 \subsection{Erweiterung des PlantText-Syntaxparsers zur Erkennung von Syntaxfehlern}
+
 Während des Interviews mit Dr. Michael Striewe wurde ein Verhalten bemerkt. Als er seinen PlantText-Code auf die
 Plattform kopierte, konnten nur die Klassendefinitionen Regeln (``Class Definition'') generiert werden, und die
 Assoziationsregeln wurden nicht erkannt. Dies lag daran, dass die Klassennamen in den Assoziationen in
@@ -131,6 +140,12 @@ zwangsläufig vom Parser verarbeitet werden kann. Aus diesem Grund sollte man si
 Regeln zu schreiben, und auf der Entwicklungsseite einen Weg finden, diese Fehler zu identifizieren und insbesondere den
 Benutzer darauf aufmerksam zu machen, dass etwas nicht wie erwartet funktioniert. Das gilt auch für den Fehler, den er
 bezüglich des Enums erwähnt hat, der eine spezifische Syntax im GReQL Converter erfordert.
+
+
+Der PlantText-Parser ist ein Open-Source-Projekt, was bedeutet, dass der Quellcode für jeden zugänglich,
+modifizierbar und verteilbar ist. Es ist also möglich, direkt auf der Parser-Ebene Änderungen vorzunehmen, um Funktionen
+hinzuzufügen und damit seine Fähigkeiten zu erweitern.
+
 
 \subsection{Erweiterung auf andere UML-Diagrammtypen}
 
@@ -142,6 +157,16 @@ mithilfe von PlantUML modellierbar. Folglich könnte der GReQL Converter tatsäc
 verschiedene Arten von Diagrammen zu generieren. Es wäre also ein Ansatz zur Verbesserung des GReQL Converters, nicht
 nur auf Klassendiagramme beschränkt zu sein, sondern auch andere Diagrammtypen zu unterstützen. Dies würde das Tool
 vielseitiger machen und seine Anwendungsfälle deutlich erweitern.
+
+
+Um das Hinzufügen neuer Diagrammtypen zu erleichtern, wurden mehrere Abstraktionsebenen von Anfang an eingeführt, um
+eine vereinfachte Integration zu ermöglichen. Wenn ein Entwickler die Unterstützung eines neuen Diagrammtyps hinzufügen
+möchte, müsste er zunächst dieses Diagramm zum Menü und zur Hauptseite der Anwendung hinzufügen. Anschließend müsste er
+ein Enum erstellen, das die Regeln für dieses Diagramm definiert. Als nächstes müssten die Objekte erstellt werden, die
+eine grafische Darstellung dieser Regeln sind, und dann müssten die Methoden entwickelt werden, die den erforderlichen
+GReQL-Code zur Auswertung dieses Diagramms generieren. Es gibt auch Zwischenschritte zu berücksichtigen, wie die
+Tatsache, dass die JSON-Daten, die vom Parser empfangen werden, anders behandelt werden müssen als die Klassendiagramme.
+
 \\~\\
 
 Die Entwicklung des GReQL Converters basierte auf der grundlegenden Überlegung, ein Tool zu schaffen, das sich
