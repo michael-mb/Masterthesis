@@ -183,22 +183,19 @@ Da diese Aufgabe offen und subjektiv ist, müssen die Prüfer die Kreativität u
 
 \section{Automatisierte Bewertung von UML-Modellen: Verschiedene Ansätze}\label{sec:automatisierte-bewertung-von-uml-modellen:-verschiedene-ansatze}
 
-In diesem Kapitel wird die Diskussion auf bestimmte, mehr oder weniger aktuelle Technologien ausgedehnt, die im Kontext
-des E-Assessments verschiedene Methoden aus dem vorherigen Kapitel verwenden.
+In diesem Kapitel wird die Diskussion auf bestimmte, mehr oder weniger aktuelle Technologien ausgedehnt, die im Kontext des E-Assessments verschiedene Methoden aus dem vorherigen Kapitel verwenden.
 
 \subsection{Machine learning zur Bewertung von UML}
 
 Der Artikel mit dem Titel ``Automatic Assessment of Students Software Models Using a Simple Heuristic and Machine
 Learning''~\cite{boubekeur2020automatic} stammt von den Autoren Younes Boubekeur, Gunter Mussbacher und Shane McIntosh.
-In ihrem Artikel stellen sie einen innovativen Ansatz zur Bewertung von Studienarbeiten in Modellierungskursen vor. Ihr
+In ihrem Artikel stellen sie einen Ansatz zur Bewertung von Studienarbeiten in Modellierungskursen vor. Ihr
 Hauptziel besteht darin, den zeitaufwändigen und subjektiven Bewertungsprozess von UML-Diagrammen zu bewältigen, der in
 der Softwaretechnikausbildung weit verbreitet ist. Die vorgeschlagene Methodik kombiniert einen einfachen heuristischen
-Algorithmus mit fortgeschrittenen maschinellen Lernverfahren, um nicht nur hochwertige Studienarbeiten zu
+Algorithmus mit fortgeschrittenen maschinellen Lernverfahren, um nicht nur Studienarbeiten zu
 identifizieren, sondern auch ungefähre Noten vorherzusagen.
 
-stellen Die Autoren stellen ihren innovativen Ansatz vor, der einen einfachen heuristischen Algorithmus verwendet, um
-die Einreichungen der Studierenden mit einer Idealvorlage zu vergleichen~\cite{boubekeur2020automatic}. Dieser
-heuristische Algorithmus basiert auf dem Prinzip, die Unterschiede zwischen der Einreichung des Studierenden und der
+Dieser heuristische Algorithmus basiert auf dem Prinzip, die Unterschiede zwischen der Einreichung des Studierenden und der
 Idealvorlage zu quantifizieren und anschließend eine Punktzahl aufgrund dieser Unterschiede zuzuweisen~\cite{huyck1993efficient}.
 Darüber hinaus setzen die Autoren maschinelle Lernverfahren ein, um ungefähre Noten vorherzusagen, basierend auf den von
 dem heuristischen Algorithmus generierten Punktzahlen (siehe Abbildung~\ref{fig:ml-approach}).
@@ -212,23 +209,15 @@ dem heuristischen Algorithmus generierten Punktzahlen (siehe Abbildung~\ref{fig:
 
 Um die Effektivität ihres vorgeschlagenen Ansatzes zu validieren, führten die Autoren eine empirische Studie mit 50
 Studierenden durch, die an einem Softwaretechnikkurs teilnahmen. Die Studierenden wurden gebeten, UML-Diagramme für ein
-gegebenes Problem einzureichen, und die Autoren wandten ihren innovativen Ansatz zur Bewertung dieser Einreichungen an.
+gegebenes Problem einzureichen, und die Autoren wandten ihren Ansatz zur Bewertung dieser Einreichungen an.
 Um die Zuverlässigkeit der Bewertung sicherzustellen, wurden auch zwei menschliche Prüfer beauftragt, dieselben
 Einreichungen unabhängig voneinander zu bewerten.
 
 Die Ergebnisse der Studie zeigen, dass der vorgeschlagene Ansatz mit der menschlichen Bewertung hinsichtlich der
 Identifizierung hochwertiger Einreichungen vergleichbar ist und erstaunlich präzise ungefähre Noten vorhersagen kann.
 Darüber hinaus verglichen die Autoren ihren Ansatz mit einer komplexen regelbasierten Technik und stellten fest, dass
-ihre Methode in Bezug auf Effizienz und Wartbarkeit überlegen ist~\cite{boubekeur2020automatic}.
-
-Zusammenfassend bietet der innovative Ansatz eine Lösung zur Bewertung von UML-Diagrammen im Bereich
-der Softwaretechnikausbildung. Durch die Kombination eines einfachen heuristischen Algorithmus mit fortgeschrittenen
-maschinellen Lernverfahren identifiziert ihr Ansatz nicht nur hochwertige Einreichungen, sondern bietet auch eine
-Möglichkeit zur Vorhersage ungefährer Noten. Die Autoren betonen das potenzielle Zeitersparnis und die Reduzierung der
-Subjektivität im Bewertungsprozess und schlagen vor, dass ihr Ansatz auf andere Bereiche erweitert werden kann,
-sofern es eine klare Definition einer Idealvorlage gibt und eine Methode existiert, um die Einreichungen der
-Studierenden mit dieser Idealvorlage zu vergleichen. Diese Herangehensweise weist jedoch einige zu berücksichtigende
-Schwächen auf:
+ihre Methode in Bezug auf Effizienz und Wartbarkeit überlegen ist~\cite{boubekeur2020automatic}. Diese Herangehensweise
+weist jedoch einige zu berücksichtigende Schwächen auf:
 
 \begin{enumerate}
     \item Es muss ein Zwischenmodell generiert werden, von dem aus die Diagramme der Studierenden bewertet werden,
@@ -245,79 +234,50 @@ Die in dieser Masterarbeit behandelte Herangehensweise, wie sie im Konzeptkapite
 ermöglicht es hingegen, von einer bereits vorhandenen Musterlösung des Lehrers auszugehen, Regeln zu generieren und
 Feedback zu erhalten, um einen Student schnell und ohne Zwischenkomplexität zu bewerten. Diese Musterlösung sollte im
 Voraus annotiert werden, um zusätzliche Details hinzuzufügen, die zur Erstellung dieser Regeln erforderlich sind. Dieser
-Ansatz ist daher schneller.
+Ansatz ist schneller und erleichtert die Arbeit der Lehrkräfte.
 
 
 \subsection{Bewertung auf Basis von Ähnlichkeitsmaßen}
 
 Die Autoren des Artikels ``A Different Approach on Automated Use Case Diagram Semantic
-Assessment''~\cite{fauzan2021different} sind Daniel Siahaan, Siti Rochimah, Reza Fauzan und Evi Triandini. In diesem
-Artikel stellen die Autoren eine innovative Methode zur automatischen semantischen Bewertung von
-Anwendungsfall-Diagrammen im Rahmen von UML-Diagrammen vor. Das Hauptziel dieser Methode besteht darin, die
-Herausforderungen anzugehen, vor denen Lehrkräfte bei der Bewertung von Anwendungsfall-Diagrammen stehen, sowohl in
-zwischenmenschlicher als auch intrapersonaler Hinsicht.
+Assessment''~\cite{fauzan2021different} sind Daniel Siahaan, Siti Rochimah, Reza Fauzan und Evi Triandini. Sie
+untersuchten  einen semantischen Bewertungsansatz für Anwendungsfalldiagramme. Ihr Ansatz konzentriert sich auf
+Eigenschaften und Beziehungen. Durch die Verwendung von Cosinus-Ähnlichkeit und WuPalmer für WordNet-Suchen bewerteten
+sie 39 Diagramme ~\cite{fauzan2021different,al2017matching}, gesammelt aus drei Projekten.
 
-Die Autoren verwenden einen semantischen Bewertungsansatz, der in zwei Hauptdimensionen unterteilt ist: Eigenschaft
-(property) und Beziehung (relationship). Alle in dieser Bewertung verwendeten Informationen stammen aus Beschriftungen,
-die aus einem \ac{XMI}-Dokument~\cite{xmi} übersetzt wurden. Zur Messung der Ähnlichkeit zwischen den Beschriftungen
-verwenden die Autoren die Kosinus-Ähnlichkeit und nutzen WuPalmer zur Unterstützung von
-WordNet-Suchen~\cite{fauzan2021different,al2017matching}.
+Vor der Bewertung etablierten sie einen Goldstandard als Referenz basierend auf Expertenbewertungen von Studentenantworten. Die
+vorgeschlagene Methode wurde mit dem Goldstandard verglichen, und die Ergebnisse zeigten eine hohe
+Übereinstimmung. Interessanterweise war die Methode sogar präziser als die durchschnittliche Übereinstimmung zwischen
+Experten~\cite{fauzan2021different}.
 
-Für ihre empirische Studie sammelten die Autoren einen Datensatz aus drei unterschiedlichen Projekten: Outlay, QuickBill
-und dem Restaurant Management System (RMS). Diese Projekte umfassen die Finanzaufzeichnung, den Point of Sale und das
-Restaurant-Bestellsystem. Den Studierenden wurden Demonstrationen zur Funktionsweise jedes Projekts gezeigt, und anschließend wurden sie
-aufgefordert, Anwendungsfall-Diagramme auf der Grundlage ihres Verständnisses der Projekte und der zugehörigen
-Terminologie zu erstellen. Insgesamt sammelten die Autoren 36 Anwendungsfall-Diagramme von den Studierenden, wobei
-jedes Projekt ein Antwortschlüssel-Diagramm hatte. Somit umfasst der Datensatz insgesamt 39
-Anwendungsfall-Diagramme~\cite{fauzan2021different}.
+Die Autoren stellten fest, dass Lehrkräfte bei der Bewertung von Anwendungsfalldiagrammen tendenziell mehr Wert auf
+Eigenschaften als auf Beziehungen legen. Dies könnte den Bewertungsprozess verbessern und zu einer objektiveren
+Beurteilung führen. Die vorgestellte semantische Bewertung konzentriert sich auf die Bedeutung von Informationen in
+Anwendungsfalldiagrammen und nicht nur auf ihre Form oder Struktur. Die Methode wurde jedoch noch nicht auf
+Klassendiagramme übertragen, da diese eine andere Struktur haben. Diese Herangehensweise weist einige zu
+berücksichtigende Schwächen auf:
 
-Bevor sie ihre vorgeschlagene Methode bewerteten, etablierten die Autoren einen Goldstandard als Referenz für die
-Bewertung. Dieser Goldstandard repräsentiert das durchschnittliche Ergebnis der Expertenbewertungen von
-Studentenantworten auf der Grundlage des Antwortschlüssels. Insgesamt beteiligten sich 21 Experten an dieser
-Bewertung, die von zwölf verschiedenen Universitäten stammten. Die Mindestanforderung für eine Expertin oder einen
-Experten war ein Master-Abschluss in Informatik.
+\begin{enumerate}
+    \item Diese Herangehensweise erfordert jedoch eine spezifischere Terminologie und Semantik seitens der Lehrkraft, was
+    zusätzliche Anstrengungen von seiner Seite bedeutet.
+    \item Diese Herangehensweise bedeutet, dass die Lehrkraft so präzise wie möglich sein muss, wenn er die Übung
+    erstellt. Dadurch gibt er jedoch Anweisungen, die zu klar sind, was die Modellierungsaufgabe für den Studenten sehr
+    offensichtlich macht.
+    \item Diese Herangehensweise lässt der Vorstellungskraft des Studenten bezüglich der Modellierung keinen freien
+    Raum, da die Anweisungen so präzise sind, dass es nur eine mögliche Lösung geben würde. Dies ist im Allgemeinen
+    nicht der Fall bei Modellierungsaufgaben.
+\end{enumerate}
 
-Zur Bewertung ihrer vorgeschlagenen Methode nutzten die Autoren Gwets AC1, ein Maß, das den Grad der
-Übereinstimmung zwischen zwei Experten anzeigt. In diesem Fall repräsentiert der erste Experte den Durchschnitt der
-Bewertungen der Experten, während der zweite Experte die Bewertung durch die vorgeschlagene Methode darstellt. Die
-Autoren übertrugen die Ähnlichkeitswerte der beiden Experten auf eine Skala von 1 bis 5, wobei eine Wertung von eins
-ein Bewertungsergebnis von weniger als zwanzig, zwei ein Bewertungsergebnis von zwanzig bis vierzig, drei ein Ergebnis
-von vierzig bis sechzig, vier ein Ergebnis von sechzig bis achtzig und fünf ein Ergebnis von mehr als achtzig darstellt.
-Anschließend berechneten die Autoren die Übereinstimmung zwischen den beiden Experten unter Verwendung von Gwets
-AC1~\cite{fauzan2021different}.
-
-Die Ergebnisse ihrer Bewertung zeigten, dass die vorgeschlagene Methode eine erhebliche Übereinstimmung mit der
-Bewertung durch den Experten aufwies. Interessanterweise stellten die Autoren fest, dass ihre vorgeschlagene Methode
-eine höhere Übereinstimmung mit dem Experten aufwies als die durchschnittliche Übereinstimmung zwischen den Experten.
-Darüber hinaus beobachteten die Autoren, dass Lehrkräfte tendenziell mehr Wert auf Informationen über Eigenschaften
-legen als auf Informationen über Beziehungen bei der Bewertung von Anwendungsfall-Diagrammen. Diese Erkenntnis könnte
-dazu beitragen, den Bewertungsprozess zu verbessern und eine konsistentere und objektivere Bewertung von
-Studentenantworten zu gewährleisten~\cite{fauzan2021different}.
-
-Die semantische Bewertung ist eine Evaluierungsmethode, die sich auf die Bedeutung und das Verständnis von
-Informationen konzentriert, anstatt auf ihre Form oder Struktur. Diese Herangehensweise ist für Anwendungsfalldiagramme
-geeignet. Dabei wird die semantische Bewertung genutzt, um die Bedeutung und Relevanz der Diagrammelemente wie
-Eigenschaften und Beziehungen zu bewerten, anstatt lediglich zu überprüfen, ob sie korrekt beschriftet oder formatiert sind.
-
-
-Die vom Autorenteam präsentierte Methode wurde bisher noch nicht auf Klassendiagramme angepasst, da Klassendiagramme
-eine andere Struktur als Anwendungsfalldiagramme aufweisen. Daher können die relevanten semantischen Informationen für
-Klassendiagramme anders sein als für Anwendungsfalldiagramme. Um die Evaluierung von Klassendiagrammen mit dieser
-Methode zu ermöglichen, müssten die für die Extraktion semantischer Informationen verwendeten natürlichsprachlichen
-Verarbeitungstechniken an die spezifischen semantischen Informationen von Klassendiagrammen angepasst werden~\cite{fauzan2021different}. Dennoch
-bedeutet diese Methode zusätzliche Arbeit für den Lehrer. Bei der Erstellung seiner Übung wird er spezifische Wörter
-verwenden müssen und eine klar definierte Semantik beherrschen müssen, um dem Evaluierungstool die größtmögliche
-Präzision bei der Bewertung der Diagramme zu ermöglichen. Jedoch wurde aus denselben Gründen wie in dem vorherigen
-Abschnitt eine schnellere Herangehensweise für die Bewertung von Klassendiagrammen im Rahmen dieser Masterarbeit gewählt.
+Die Verwendung dieser Methode wäre daher nicht für das Hauptziel dieser Arbeit geeignet, das darin besteht, Lehrkräften
+die Beurteilung von UML-Klassendiagrammen zu erleichtern.
 
 
 \subsection{Graph matching zur Bewertung von UML}
 
 Der Artikel mit dem Titel ``New method for summative evaluation of UML class diagrams based on graph similarities''
 wurde von Outair Anas, Mohammed Ouadou und Abdelhadi Lotfi verfasst~\cite{anas2021new}. In ihrem Artikel widmen sich die
-Autoren der anspruchsvollen Aufgabe der Bewertung von UML-Klassendiagrammen, die von Studierenden erstellt wurden. Diese
-Aufgabe ist oft komplex für Lehrende, da UML-Klassendiagramme mehrere gültige Darstellungen haben können. Die Autoren
-schlagen ein halbautomatisches System vor, das dieses Problem durch den Einsatz eines Vergleichs von syntaktischen,
+Autoren der Aufgabe der Bewertung von UML-Klassendiagrammen, die von Studierenden erstellt wurden. Sie
+schlagen ein halbautomatisches System vor, das diese Aufgabe durch den Einsatz eines Vergleichs von syntaktischen,
 strukturellen und semantischen Ähnlichkeiten angeht, um Fehler von Studierenden zu identifizieren und wertvolles
 Feedback zu ihrem Lernprozess zu geben. Ihre Methode besteht aus drei Schritten:
 
@@ -346,28 +306,41 @@ Feedback zu ihrem Lernprozess zu geben. Ihre Methode besteht aus drei Schritten:
 
 Die Leistung des Systems wird anhand eines Datensatzes bewertet, der aus 100 von Studierenden erstellten
 Klassendiagrammen besteht, wobei für jedes Diagramm ein entsprechendes Referenzdiagramm zur Bewertung bereitgestellt
-wird. Drei Übungen werden ausgewählt, um das System offline zu konfigurieren und zu bewerten, wobei iterative
+wird. Drei Übungen wurden ausgewählt, um das System offline zu konfigurieren und zu bewerten, wobei iterative
 Verbesserungen an den Ähnlichkeitskriterien und der Systemfunktionalität auf Grundlage der Übungsergebnisse vorgenommen
-werden. Die Ergebnisse zeigen, dass das System eine Genauigkeitsrate von 70 \% bei der Erkennung von Fehlern von
+wurden. Die Ergebnisse zeigen, dass das System eine Genauigkeitsrate von 70 \% bei der Erkennung von Fehlern von
 Studierenden erreicht und minimalen Eingriff erfordert, um Übereinstimmungen für 80 \% der verarbeiteten Diagramme zu
 korrigieren~\cite{anas2021new}. Die Autoren betonen, dass der in das System integrierte formative Bewertungsansatz gut
 geeignet ist, um UML-Klassendiagramme zu bewerten, da er den Studierenden Feedback zur Verbesserung ihres Verständnisses
 des Lehrstoffes liefert. Darüber hinaus hat das System das Potenzial, die Belastung der Lehrenden zu verringern, indem
 es den Bewertungsprozess automatisiert und ihnen ermöglicht, individuelleres Feedback an einzelne Studierende zu geben.
+Dieser Ansatz weist einige zu berücksichtigende Schwächen auf:
 
-Zusammenfassend bietet die in diesem Artikel vorgestellte Methode eine vielversprechende Möglichkeit zur summativen
-Bewertung von UML-Klassendiagrammen unter Berücksichtigung der Möglichkeit mehrerer gültiger Darstellungen. Durch den
-umfassenden Vergleich von syntaktischen, strukturellen und semantischen Ähnlichkeiten kann das System Fehler in von
-Studierenden erstellten Diagrammen erkennen und zur Verbesserung ihres Lernfortschritts beitragen. Die Autoren erkennen
-an, dass weitere Forschung erforderlich ist, um das System zu verfeinern und seine Genauigkeit zu verbessern, aber die
-Ergebnisse dieser Studie legen nahe, dass es das Potenzial hat, eine wertvolle Unterstützung sowohl für Lehrende als
-auch für Studierende bei der Bewertung von UML-Klassendiagrammen zu sein.
+\begin{enumerate}
+    \item Die Autoren erkennen an, dass weitere Forschung erforderlich ist, um das System zu verfeinern und seine Genauigkeit zu
+    verbessern.
+    \item Dieser Ansatz ermöglicht keine Varianten oder Alternativen in den Lösungen, die die Studierenden präsentieren
+    könnten. Sie konzentriert sich ausschließlich auf die Genauigkeit und lässt somit keinen Raum für mögliche
+    Alternativen.
+\end{enumerate}
+
+Die in der Sektion zum Konzept~\ref{sec:konzept} vorgestellte Methode bietet eine direkte Lösung für dieses Problem.
+Durch die Annotation der Lehrerlösung ist es möglich, verschiedene Modellierungsvarianten des Studierenden zu
+berücksichtigen. Diese Methode ist zudem zuverlässiger, denn wenn das Modell und die Alternativen klar definiert sind,
+liegt die Präzision stets bei 100\%.
+
 
 \subsection{Automatisierte Bewertung mit GReQL}\label{subsec:automatisierte-bewertung-mit-greql}
 
-In ihrem Artikel ``Automated checks on UML diagrams'' \cite{striewe2011automated} stellen Michael Striewe und Michael Goedicke eine innovative Technik zur Evaluierung von UML-Klassendiagrammen auf der Grundlage von Graphabfragen vor. Sie betrachten UML-Klassendiagramme als Graphen und formalisieren ihren Ansatz mithilfe einer Graphabfragesprache namens GReQL, die von der JGraLab-Bibliothek bereitgestellt wird.
+In ihrem Artikel ``Automated checks on UML diagrams''~\cite{striewe2011automated} stellen Michael Striewe und Michael
+Goedicke eine Technik zur Evaluierung von UML-Klassendiagrammen auf der Grundlage von Graphabfragen vor. Sie betrachten
+UML-Klassendiagramme als Graphen und formalisieren ihren Ansatz mithilfe einer Graphabfragesprache namens GReQL.
 
-\ac{GReQL}, ähnlich wie SQL, eignet sich gut für die Implementierung regelbasierter Prüfungen von graphenbasierten Daten \cite{striewe2014automated}. Sie ermöglicht die Abfrage von Elementen bestimmter Typen, die Untersuchung ihrer Verbindungen und die Überprüfung ihrer Attribute. Im Kontext von UML-Klassendiagrammen können diese Abfragen das Vorhandensein von Diagrammelementen wie Klassen, Schnittstellen, Eigenschaften, Operationen, Parametern, Assoziationen und Generalisierungen ermitteln und ihre Beziehungen bewerten \cite{striewe2011automated}.
+\ac{GReQL}, ähnlich wie SQL, eignet sich gut für die Implementierung regelbasierter Prüfungen von graphenbasierten
+Daten~\cite{striewe2014automated}. Sie ermöglicht die Abfrage von Elementen bestimmter Typen, die Untersuchung ihrer
+Verbindungen und die Überprüfung ihrer Attribute. Im Kontext von UML-Klassendiagrammen können diese Abfragen das
+Vorhandensein von Diagrammelementen wie Klassen, Schnittstellen, Eigenschaften, Operationen, Parametern, Assoziationen
+und Generalisierungen ermitteln und ihre Beziehungen bewerten~\cite{striewe2011automated}.
 
 \begin{lstlisting}[caption={[Codebeispiel] Codebeispiel in GReQL}, label={lst:greql}, float=!ht, language=xml]
   <rule type="presence" points="5">
@@ -387,19 +360,22 @@ In ihrem Artikel ``Automated checks on UML diagrams'' \cite{striewe2011automated
   </rule>
 \end{lstlisting}
 
-Um ein UML-Diagramm mithilfe dieses Ansatzes zu evaluieren, parsen die Autoren das Diagramm zunächst in eine graphenbasierte Darstellung seiner abstrakten Syntax, in der Regel durch einen XML-Parser. Anschließend verwenden sie \ac{GReQL}-Abfragen, um die Anwesenheit bestimmter Diagrammelemente und ihrer Verbindungen zu überprüfen. Die Autoren stellen eine Reihe von Regeln vor, die als \ac{GReQL}-Abfragen implementiert sind und an die Anforderungen bestimmter Kurse oder Aufgaben angepasst werden können.
+Um ein UML-Diagramm mithilfe dieses Ansatzes zu evaluieren, parsen die Autoren das Diagramm zunächst in eine
+graphenbasierte Darstellung seiner abstrakten Syntax, in der Regel durch einen XML-Parser. Anschließend verwenden sie
+\ac{GReQL}-Abfragen, um die Anwesenheit bestimmter Diagrammelemente und ihrer Verbindungen zu überprüfen. Die Autoren
+stellen eine Reihe von Regeln vor, die als \ac{GReQL}-Abfragen implementiert sind und an die Anforderungen bestimmter
+Kurse oder Aufgaben angepasst werden können.
 
-In ihrem Bewertungssystem werden einzelnen Regeln individuelle Punktzahlen zugewiesen, wobei unterschiedliche Gewichtungen zur Unterscheidung zwischen Korrektheits- und Qualitätsaspekten verwendet werden. Zum Beispiel könnte eine Regel, die das Vorhandensein einer Klasse mit einem bestimmten Namen sicherstellt, als wichtiger angesehen werden als eine, die das Vorhandensein eines Kommentars zu einer Klasse überprüft. Die Autoren schlagen auch eine Methode zur Berechnung von Gesamtnoten vor, indem die Punktzahlen jeder Regel aggregiert werden \cite{striewe2011automated}.
+In ihrem Bewertungssystem werden einzelnen Regeln individuelle Punktzahlen zugewiesen, wobei unterschiedliche
+Gewichtungen zur Unterscheidung zwischen Korrektheits- und Qualitätsaspekten verwendet werden. Die Autoren schlagen auch
+eine Methode zur Berechnung von Gesamtnoten vor, indem die Punktzahlen jeder Regel aggregiert werden~\cite{striewe2011automated}.
 
-Um die praktische Anwendung ihres Ansatzes zu zeigen, bieten die Autoren ein Beispiel aus einem UML-Modellierungskurs an, in dem Lösungen von Studierenden automatisch mit ihrer Methodik bewertet wurden. Das Ergebnis dieser Beispielbewertung zeigt die Effektivität ihres Ansatzes bei der Erkennung von Fehlern und der Bereitstellung rechtzeitigen Feedbacks an die Studierenden, wodurch die Arbeitsbelastung der Dozenten reduziert wird \cite{striewe2011automated}.
-
-Über UML hinaus sehen die Autoren die Vielseitigkeit ihres Ansatzes bei der Bewertung anderer Sprachen, die in eine graphenbasierte Darstellung ihrer abstrakten Syntax transformiert werden können, was praktisch alle Programmiersprachen einschließt. Sie sehen seine Anwendung in intelligenten Tutoringsystemen und automatisiertem Tutoring, da es eine sofortige Rückmeldung an Studierende ermöglicht und den Bewertungsprozess für Lehrkräfte vereinfacht.
-
-Mögliche Einschränkungen dieses Ansatzes sind jedoch die Abhängigkeit von der Annahme einer korrekten Umwandlung von UML-Diagrammen in graphenbasierte Darstellungen, die zu Ungenauigkeiten führen kann, wenn der Umwandlungsprozess fehlerhaft ist. Die Autoren schlagen jedoch vor, den Umwandlungsprozess durch eine Reihe von Testfällen zu validieren, um die Zuverlässigkeit sicherzustellen \cite{striewe2011automated}.
-
-Zusätzlich konzentriert sich der Ansatz hauptsächlich darauf, das Vorhandensein von Diagrammelementen und ihren Verbindungen zu überprüfen, bewertet jedoch nicht intrinsisch die Korrektheit des Inhalts innerhalb dieser Elemente. Zum Beispiel kann er überprüfen, ob eine Klasse einen bestimmten Namen hat, aber er überprüft nicht die Richtigkeit der zugehörigen Attribute und Methoden. Die Autoren weisen jedoch darauf hin, dass ihr Ansatz erweitert werden kann, um komplexere Regeln für die Bewertung des Inhalts von Diagrammelementen zu umfassen \cite{striewe2014automated}.
-
-Zusammenfassend bietet der Ansatz von Striewe und Goedicke eine vielversprechende Alternative zur Bewertung von UML-Klassendiagrammen. Indem sie diese Diagramme als Graphen behandeln und \ac{GReQL} für Abfragen nutzen, bieten sie eine flexible und anpassbare Möglichkeit zur Bewertung. Ihre Methodik hat das Potenzial für breitere Anwendungen in verschiedenen Sprachen und Bildungsbereichen und verspricht, das Feedback an Studierende zu verbessern, während sie die Arbeit für Lehrende vereinfacht.
+Diese Herangehensweise wurde für die Entwicklung des Konzepts verwendet (siehe Abschnitt~\ref{sec:konzept}). Durch sie
+ist es möglich, ein Diagramm schnell zu bewerten und ein Feedback vom Lehrer zu erhalten. Im Vergleich zu anderen
+Methoden ist diese Herangehensweise zuverlässiger und genauer hinsichtlich der erzielten Ergebnisse. Allerdings weist
+sie auch mehrere Schwächen auf, die im Abschnitt zur Problemanalyse (siehe Kapitel~\ref{ch:problemanalyse}) dargelegt
+werden. Eine Lösung zur Verbesserung des Bewertungsprozesses wird ebenfalls im Kapitel zum Konzept
+(siehe Abschnitt~\ref{sec:konzept}) präsentiert.
 
 
 \section{JACK}
