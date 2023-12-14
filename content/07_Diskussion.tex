@@ -32,9 +32,9 @@ Im Verlauf des Entwicklungsprozesses manifestierten sich verschiedene herausford
 Entwicklungsdynamik bedingten. Dies wiederum zwang die Notwendigkeit zur Implementierung spezifischer Beschränkungen
 oder die Abkehr von bestimmten funktionalen Aspekten.
 
-\subsubsection{PlantText Parser}
+\subsubsection{PlantUML Parser}
 
-Bezüglich des PlantText Parsers sind gewisse Limitationen zu konstatieren. Er ist nicht in der Lage, statische
+Bezüglich des PlantUML Parsers sind gewisse Limitationen zu konstatieren. Er ist nicht in der Lage, statische
 Attribute, statische Methoden und statische Klassen zu erfassen. Indessen fand rasch eine Lösung in Form eines
 Kompromisses Anklang, indem dem Anwender ermöglicht wird, diese Modifikationen manuell im Rahmen des Regel-Editors
 vorzunehmen.
@@ -122,7 +122,7 @@ Erweiterung auf andere Diagramm-Modellierungstools sollte hauptsächlich das Hin
 diese Tools. Glücklicherweise sollte diese Aufgabe nicht besonders komplex sein.
 
 
-\subsection{Erweiterung des PlantText-Syntaxparsers zur Erkennung von Syntaxfehlern}
+\subsection{Erweiterung des PlantUML-Syntaxparsers zur Erkennung von Syntaxfehlern}
 
 Während des Interviews mit Dr. Michael Striewe wurde ein Verhalten bemerkt. Als er seinen PlantText-Code auf die
 Plattform kopierte, konnten nur die Klassendefinitionen Regeln (``Class Definition'') generiert werden, und die
@@ -135,7 +135,7 @@ Benutzer darauf aufmerksam zu machen, dass etwas nicht wie erwartet funktioniert
 bezüglich des Enums erwähnt hat, der eine spezifische Syntax im GReQL Converter erfordert.
 
 
-Der PlantText-Parser ist ein Open-Source-Projekt, was bedeutet, dass der Quellcode für jeden zugänglich,
+Der PlantUML-Parser ist ein Open-Source-Projekt, was bedeutet, dass der Quellcode für jeden zugänglich,
 modifizierbar und verteilbar ist. Es ist also möglich, direkt auf der Parser-Ebene Änderungen vorzunehmen, um Funktionen
 hinzuzufügen und damit seine Fähigkeiten zu erweitern.
 
@@ -158,7 +158,7 @@ Erweiterung möglich ist. Dies ermöglicht zukünftigen Entwicklern, die Funktio
 mehrere Teile des Codes ändern zu müssen, was zu Fehlern führen könnte. Dieser Abschnitt präsentiert die 
 Gesamtarchitektur des Datentransits im GReQL Converter sowie verschiedene Möglichkeiten zur Erweiterung des Tools.
 
-\subsection{Datentransit im GReQL-Converter}
+\subsection{Datentransit im GReQL-Converter}\label{subsec:datentransit-im-greql-converter}
 
 Der Prozess zur Generierung des GReQL-Codes aus dem GReQL Converter durchläuft mehrere Schritte, die bereits im
 Implementierungskapitel beschrieben wurden. Diese Sektion bietet detaillierte Einblicke, die wichtig sind, um zu
@@ -166,7 +166,7 @@ verstehen, wie die Funktionalitäten des Tools erweitert werden können. Dieser 
 Abbildung~\ref{fig:transit} veranschaulicht, die die verschiedenen Schritte des Datentransits zeigt.
 
 
-Es beginnt zunächst mit dem PlantText-Code der Lehrkraft, der an den PlantText-Parser gesendet wird, der auf einem
+Es beginnt zunächst mit dem PlantText-Code der Lehrkraft, der an den PlantUML-Parser gesendet wird, der auf einem
 Node.js-Server läuft. Der Parser gibt ein JSON-Objekt zurück, das Informationen über die UML-Entitäten sowie deren
 Beziehungen enthält (siehe Code~\ref{lst:parsed-json}). Nach diesem Schritt wird dieses JSON vom ``Class Converter''
 verarbeitet. Der Class Converter nutzt das JSON des Parsers und enthält Methoden zur Identifizierung von Entitäten und
@@ -282,8 +282,27 @@ getestet wurde, kann der Lehrer automatisch GReQL-Code für diese neue Plattform
 </rule>
 \end{lstlisting}
 
-\subsection{Prozess der Erweiterung um einen neuen Diagrammtypus}
-write something here
+\subsection{Prozess der Erweiterung um einen neuen Diagrammtypen}
+
+
+Der GReQL Converter arbeitet nur mit Klassendiagrammen. Es ist jedoch geplant, dass das Tool sich weiterentwickeln kann,
+indem es andere Arten von Diagrammen integriert. Um die Unterstützung eines neuen Diagrammtyps hinzuzufügen, muss der
+Entwickler zunächst eine Datei ähnlich dem ``Class Converter'' erstellen. Für Sequenzdiagramme könnte dies beispielsweise
+``Sequenz Converter'' genannt werden. Es sollte die gleichen Funktionen wie der Class Converter haben, jedoch für
+Sequenzdiagramme. Es wird eine Anfrage an den PlantUML-Parser gesendet, der ein Objekt zurückgibt, das die Entitäten
+und Beziehungen zwischen den Elementen des Sequenzdiagramms darstellt, das mit PlantText generiert wurde. Anschließend
+verwendet der Sequenz Converter eine ``Sequenz Rules Definition''-Datei, um Regeln zu generieren, die auf dem gleichen
+Prinzip basieren, das im Abschnitt zum Datentransit im GReQL-Converter beschrieben ist
+(siehe Abschnitt~\ref{subsec:datentransit-im-greql-converter}). Danach muss der Entwickler Vue.js-Klassen erstellen, die
+zur grafischen Modifikation und Visualisierung jeder dieser Regeln dienen. Abschließend muss der Entwickler einen
+``Sequenz GReQL Rules Generator'' erstellen, der den GReQL-Code für jede Regel generiert (basierend auf dem gleichen
+Prinzip wie der Class GReQL Rules Generator).
+
+Es ist wichtig zu betonen, dass zusätzliche Änderungen an der Startseite und der Tool-Dokumentation erforderlich sind,
+um dem Toolbenutzer zu ermöglichen zu sehen, dass diese Funktionalität bereits möglich ist. Dieser Prozess zur
+Hinzufügung eines neuen Diagrammtyps ist generisch. Sobald der Entwickler den Prozess für Klassen verstanden hat, ist es
+recht einfach, dasselbe für andere Arten von Diagrammen zu tun. Diese Strategie wurde von Anfang an während der
+Entwicklung des Tools konzipiert, um zukünftige Integrationen zu erleichtern.
 
 
 \section{Zusammenfassung der Diskussion}
