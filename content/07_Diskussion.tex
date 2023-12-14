@@ -190,13 +190,13 @@ Komponenten (die in Kürze erwähnt werden) unnötig komplex gemacht. Dies hätt
 Änderungen an mehreren Stellen vorzunehmen.
 
 
-Jedoch ermöglicht die Verwendung der Class Rules Definitions eine harmonisierte Regelgenerierung. Es wäre lediglich
+Jedoch ermöglicht die Verwendung der Class Rules Definition eine harmonisierte Regelgenerierung. Es wäre lediglich
 erforderlich, diese Datei zu ändern und entsprechende Zuordnungen in den sie nutzenden Dateien hinzuzufügen oder zu
 entfernen, um eine neue Regel hinzuzufügen oder zu entfernen. Die Regeln, die vom Lehrer geändert werden können,
 erfordern eine grafische Darstellung. Diese grafische Darstellung wird durch Vue.js-Klassen realisiert, die Regeln
 darstellen. Diese Vue.js-Klassen ermöglichen es dem Lehrer, die generierten Regelobjekte auf der grafischen
 Benutzeroberfläche zu ändern (siehe Abbildung~\ref{fig:extracted_rules}). Diese Vue.js-Klassen nutzen natürlich die
-Class Rules Definitions, um die Regelobjekte ihren verschiedenen Platzhaltern zuzuordnen.
+Class Rules Definition, um die Regelobjekte ihren verschiedenen Platzhaltern zuzuordnen.
 
 Nach diesen Generierungs- und Änderungsschritten wird eine Liste mit allen Regelobjekten erstellt. Diese Liste wird
 dann an den ``Class GReQL Rules Generator'' gesendet. Der Class GReQL Rules Generator generiert basierend auf jeder
@@ -224,7 +224,29 @@ abstrakt.
 \end{figure}
 
 \subsection{Prozess der Integration neuer Regeln}
-write something here
+
+In der Sektion Potenzialen für Weiterentwicklungen genannten Methoden wurde die Möglichkeit diskutiert, neue Regeln
+hinzuzufügen. In diesem Abschnitt wird gezeigt, wie dies im Code des GReQL Converters möglich ist. Bei der Entwicklung
+wurde stets berücksichtigt, dass das Tool weiter verbessert werden muss. Dies beeinflusste den Entwicklungsprozess,
+der darauf abzielte, Abstraktionen zu priorisieren, um eine solide Grundlage für die Verbesserung der
+Tool-Funktionalitäten zu schaffen.
+
+Ein Entwickler möchte eine Regel hinzufügen, die die Anzahl der Methoden in einer Klasse bestimmt: ``count\_class\_methods''.
+Zunächst muss er die Parameter bestimmen, die diese Regel ausmachen, und sie in der Class Rules Definition definieren.
+Im Fall von ``count\_class\_methods'' muss er als Attribut den Klassennamen, der untersucht werden soll, sowie die
+Anzahl der Methoden haben. Nach dieser Definition muss der Entwickler eine neue PlantText-Annotation erstellen, um die
+Identifizierung dieses neuen Regeltyps durch den ``Class Converter'' zu ermöglichen (unter der Annahme, dass die Regel
+aus dem PlantText-Code generiert werden soll und nicht manuell). Nachdem er die Annotation entwickelt hat, muss er
+eine Zuordnung zwischen der identifizierten Annotation und der neuen Methode hinzufügen, die er für die Generierung des
+JSONs erstellt hat (wie zu Beginn definiert). Um diese Regel für den Lehrer sichtbar und bearbeitbar zu machen, muss er
+eine Vue.js-Klasse erstellen, die die grafische Darstellung der Regel darstellt. Abschließend muss er zum ``Class GReQL
+Rule Generator'' gehen, um eine neue Regel und eine neue Methode zur Generierung des entsprechenden GReQL-Codes für die
+von ihm erstellte neue Regel hinzuzufügen.
+
+Dieser Prozess zur Hinzufügung einer Regel ist für alle Regeln allgemeingültig. Sobald ein Entwickler dies für eine
+Regel durchgeführt hat, wird es für andere Entwickler offensichtlich. Der Arbeitsablauf bleibt für fast alle Regeln auf
+der Plattform weitgehend gleich.
+
 
 \subsection{Prozess zur Erweiterung der Kompatibilität mit einer neuen Plattform}
 write something here
