@@ -119,8 +119,7 @@ Wie zuvor erwähnt, ist der von GReQL Converter generierte GReQL-Code derzeit zu
 die mit BOUML erstellt wurden. Der GReQL Converter wurde jedoch mit Blick auf die Erweiterbarkeit zu anderen
 Technologien entwickelt, die die Modellierung von UML-Diagrammen und die Generierung von XMI-Dateien ermöglichen. Die
 Erweiterung auf andere Diagramm-Modellierungstools sollte hauptsächlich das Hinzufügen von regelbasierten Vorlagen für
-diese Tools und die Möglichkeit zur Auswahl des bevorzugten Tools über die grafische Benutzeroberfläche des GReQL
-Converter einschließen. Glücklicherweise sollte diese Aufgabe nicht besonders komplex sein.
+diese Tools. Glücklicherweise sollte diese Aufgabe nicht besonders komplex sein.
 
 
 \subsection{Erweiterung des PlantText-Syntaxparsers zur Erkennung von Syntaxfehlern}
@@ -249,7 +248,39 @@ der Plattform weitgehend gleich.
 
 
 \subsection{Prozess zur Erweiterung der Kompatibilität mit einer neuen Plattform}
-write something here
+
+
+In der Sektion zur Erweiterung der Kompatibilität des GReQL Converters wurde die Möglichkeit diskutiert, die
+Unterstützung neuer Plattformen hinzuzufügen. Aktuell ist BOUML die einzige Plattform, die mit dem GReQL Converter
+kompatibel ist. Die Hinzufügung der Unterstützung einer neuen Plattform ist jedoch eine Aufgabe, die im GReQL Converter
+leicht realisierbar ist. Da sich der Regeltyp und die Parameter nicht ändern, sind keine wesentlichen Änderungen im Code
+erforderlich. Der Entwickler muss lediglich eine neue Query zur Vorlage jeder Regel hinzufügen (siehe Code~\ref{lst:example_more_Queries}).
+Wenn der GReQL Engine eine Regel auswertet, prüft er lediglich, ob eine der Queries gültig ist. Wenn die Unterstützung
+einer neuen Plattform hinzugefügt werden soll, muss der Entwickler nur die Queries der bereits vorhandenen Regeln
+vervollständigen, die eine Erweiterung erfordern. Durch diese Methode muss der Entwickler nur an einer einzigen Stelle
+im Code Änderungen vornehmen. Der Lehrer muss keine Zielplattform auswählen. Sobald die Unterstützung hinzugefügt und
+getestet wurde, kann der Lehrer automatisch GReQL-Code für diese neue Plattform generieren.
+
+\begin{lstlisting}[caption={ Codebeispiel mit mehreren Queries}, label={lst:example_more_Queries}, float=!ht, language=xml]
+<rule type="${rule.existence}" points="${rule.points}">
+  <!-- Aggregation Regel -->
+  <query>
+    <!-- Query for BOUML -->
+	from x, y : V{Class}, p: V{Property},
+        a,b: V{LiteralString} with
+	${checkName}
+	isDefined(p.aggregation) and
+	p.aggregation="composite" and
+	x --&gt; V{Property} --&gt; V{Association}
+	--&gt; p &lt;-- y and
+	report 1 end
+  </query>
+  <query>
+    <!-- Enterprise Architect Query hier schreiben -->
+  </query>
+  <feedback>${rule.feedback}</feedback>
+</rule>
+\end{lstlisting}
 
 \subsection{Prozess der Erweiterung um einen neuen Diagrammtypus}
 write something here
