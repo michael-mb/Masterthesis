@@ -104,13 +104,6 @@ unberücksichtigt. Diese und andere Feinheiten könnten zukünftige Erweiterunge
 in Bezug auf die Generierung präziserer GReQL-Regeln zu bereichern.
 
 
-Bei der Entwicklung wurde diese Möglichkeit berücksichtigt. Das Hinzufügen einer neuen Regel besteht einfach darin,
-einen neuen Regeltyp in die Enummerationsdatei aufzunehmen, das die Definitionen der Regeln enthält. Danach muss das
-Objekt erstellt werden, das die grafische Darstellung der Regel repräsentiert. Abschließend muss nur die Methode
-geschrieben werden, die die Variablen in einer zuvor definierten Vorlage hinzufügt und zur generierten GReQL-Regelliste
-hinzufügt.
-
-
 \subsection{Erweiterung bestehender Regeln}
 
 Eine Vielzahl von Regeln könnte von Verbesserungen profitieren, um eine größere Bandbreite von Designvarianten zu
@@ -128,11 +121,6 @@ Technologien entwickelt, die die Modellierung von UML-Diagrammen und die Generie
 Erweiterung auf andere Diagramm-Modellierungstools sollte hauptsächlich das Hinzufügen von regelbasierten Vorlagen für
 diese Tools und die Möglichkeit zur Auswahl des bevorzugten Tools über die grafische Benutzeroberfläche des GReQL
 Converter einschließen. Glücklicherweise sollte diese Aufgabe nicht besonders komplex sein.
-
-Zum Beispiel, wenn ein Entwickler die Unterstützung für die Enterprise Architect-Plattform hinzufügen möchte, müsste er
-zunächst dem Benutzer die Möglichkeit geben, diese Plattform vor der Generierung des GReQL-Codes auszuwählen.
-Anschließend müsste der Entwickler lediglich eine Kopie der vorhandenen GReQL-Codevorlagen für BOUML erstellen und diese
-an die Enterprise Architect-Plattform anpassen.
 
 
 \subsection{Erweiterung des PlantText-Syntaxparsers zur Erkennung von Syntaxfehlern}
@@ -164,16 +152,88 @@ verschiedene Arten von Diagrammen zu generieren. Es wäre also ein Ansatz zur Ve
 nur auf Klassendiagramme beschränkt zu sein, sondern auch andere Diagrammtypen zu unterstützen. Dies würde das Tool
 vielseitiger machen und seine Anwendungsfälle deutlich erweitern.
 
+\section{Erweiterbarkeit des GReQL-Converters}
 
-Um das Hinzufügen neuer Diagrammtypen zu erleichtern, wurden mehrere Abstraktionsebenen von Anfang an eingeführt, um
-eine vereinfachte Integration zu ermöglichen. Wenn ein Entwickler die Unterstützung eines neuen Diagrammtyps hinzufügen
-möchte, müsste er zunächst dieses Diagramm zum Menü und zur Hauptseite der Anwendung hinzufügen. Anschließend müsste er
-ein Enum erstellen, das die Regeln für dieses Diagramm definiert. Als nächstes müssten die Objekte erstellt werden, die
-eine grafische Darstellung dieser Regeln sind, und dann müssten die Methoden entwickelt werden, die den erforderlichen
-GReQL-Code zur Auswertung dieses Diagramms generieren. Es gibt auch Zwischenschritte zu berücksichtigen, wie die
-Tatsache, dass die JSON-Daten, die vom Parser empfangen werden, anders behandelt werden müssen als die Klassendiagramme.
+In den vorherigen Abschnitten wurde erläutert, dass der GReQL Converter so entwickelt wurde, dass eine einfache 
+Erweiterung möglich ist. Dies ermöglicht zukünftigen Entwicklern, die Funktionalität des Tools zu erweitern, ohne 
+mehrere Teile des Codes ändern zu müssen, was zu Fehlern führen könnte. Dieser Abschnitt präsentiert die 
+Gesamtarchitektur des Datentransits im GReQL Converter sowie verschiedene Möglichkeiten zur Erweiterung des Tools.
 
-\\~\\
+\subsection{Datentransit im GReQL-Converter}
+
+Der Prozess zur Generierung des GReQL-Codes aus dem GReQL Converter durchläuft mehrere Schritte, die bereits im
+Implementierungskapitel beschrieben wurden. Diese Sektion bietet detaillierte Einblicke, die wichtig sind, um zu
+verstehen, wie die Funktionalitäten des Tools erweitert werden können. Dieser Prozess wird durch
+Abbildung~\ref{fig:transit} veranschaulicht, die die verschiedenen Schritte des Datentransits zeigt.
+
+
+Es beginnt zunächst mit dem PlantText-Code der Lehrkraft, der an den PlantText-Parser gesendet wird, der auf einem
+Node.js-Server läuft. Der Parser gibt ein JSON-Objekt zurück, das Informationen über die UML-Entitäten sowie deren
+Beziehungen enthält (siehe Code~\ref{lst:parsed-json}). Nach diesem Schritt wird dieses JSON vom ``Class Converter''
+verarbeitet. Der Class Converter nutzt das JSON des Parsers und enthält Methoden zur Identifizierung von Entitäten und
+Beziehungen, wodurch Regeln für jede Entität und Beziehung generiert werden. Die Art und Weise dieser
+Identifizierung wird im Implementierungskapitel beschrieben (siehe Code~\ref{lst:condition-check}).
+
+
+Der Class Converter verwendet die ``Class Rules Definition'' zur Generierung der Regeln. Die Class Rules Definition ist
+eine Art Enum, die als Konfigurationsdatei betrachtet werden kann (siehe Code~\ref{lst:rules_def}). Sie enthält alle
+Definitionen für jedes Objekt des Regeltyps. In dieser Datei ist es möglich, eine neue Regel und ihre Attribute zu
+definieren. Mithilfe dieser Datei kann der Class Converter Regeln basierend auf dem JSON des Parsers generieren.
+Die Verwendung der Class Rules Definition spielt eine entscheidende Rolle im GReQL Converter, da viele andere
+Komponenten von dieser Klasse abhängig sind.
+
+
+Es wäre möglich gewesen, diese Regelobjekte direkt im Class Converter zu generieren, ohne die Class Rules Definition und
+unabhängig von anderen Anwendungskomponenten zu nutzen. Diese Objekte wären dann fest codiert gewesen, was eine
+schlechte Praxis darstellt. Dies hätte jedoch den Prozess des Hinzufügens und der Anpassung von Regeln in anderen
+Komponenten (die in Kürze erwähnt werden) unnötig komplex gemacht. Dies hätte von zukünftigen Entwicklern verlangt,
+Änderungen an mehreren Stellen vorzunehmen.
+
+
+Jedoch ermöglicht die Verwendung der Class Rules Definitions eine harmonisierte Regelgenerierung. Es wäre lediglich
+erforderlich, diese Datei zu ändern und entsprechende Zuordnungen in den sie nutzenden Dateien hinzuzufügen oder zu
+entfernen, um eine neue Regel hinzuzufügen oder zu entfernen. Die Regeln, die vom Lehrer geändert werden können,
+erfordern eine grafische Darstellung. Diese grafische Darstellung wird durch Vue.js-Klassen realisiert, die Regeln
+darstellen. Diese Vue.js-Klassen ermöglichen es dem Lehrer, die generierten Regelobjekte auf der grafischen
+Benutzeroberfläche zu ändern (siehe Abbildung~\ref{fig:extracted_rules}). Diese Vue.js-Klassen nutzen natürlich die
+Class Rules Definitions, um die Regelobjekte ihren verschiedenen Platzhaltern zuzuordnen.
+
+Nach diesen Generierungs- und Änderungsschritten wird eine Liste mit allen Regelobjekten erstellt. Diese Liste wird
+dann an den ``Class GReQL Rules Generator'' gesendet. Der Class GReQL Rules Generator generiert basierend auf jeder
+Regel den entsprechenden GReQL-Code. Für jedes Objekt in der Liste identifiziert er zunächst den Regeltyp und generiert
+dann den entsprechenden GReQL-Code. Der Generierungsprozess wurde im Implementierungskapitel ausführlich beschrieben
+(siehe Code~\ref{lst:class_def_xml}). Für jeden Regeltyp ist eine spezifische Methode für die Generierung des
+GReQL-Codes verantwortlich.
+
+Es wäre auch möglich gewesen, eine einzige Methode zu schreiben, die die gesamte Liste umwandeln könnte. Dies hätte
+jedoch den Prozess der Regelgenerierung unnötig komplex gemacht. Es wäre für einen neuen Entwickler schwer gewesen, die
+Funktionsweise der Methode zu verstehen und die Punkte zu identifizieren, an denen eine neue Regel hinzugefügt oder
+eine bereits vorhandene geändert werden könnte. Der gewählte Ansatz erleichtert das Hinzufügen neuer Regeln. Diese
+Vorgehensweise schafft eine Abstraktion, die die Trennung der Generierung verschiedener Regeltypen erleichtert und somit
+die Entwicklererfahrung verbessert.
+
+Am Ende dieses Prozesses wird der GReQL-Code erhalten, der von bestimmten Bibliotheken leicht modifiziert wird, um ihn
+auf der Benutzeroberfläche darstellbar zu machen. Diese Sektion beschreibt den Datenverkehr in der Anwendung recht
+abstrakt.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=12cm]{images/transit}
+    \caption{Repräsentatives Schema des Datentransits im GReQL-Converter.}
+    \label{fig:transit}
+\end{figure}
+
+\subsection{Prozess der Integration neuer Regeln}
+write something here
+
+\subsection{Prozess zur Erweiterung der Kompatibilität mit einer neuen Plattform}
+write something here
+
+\subsection{Prozess der Erweiterung um einen neuen Diagrammtypus}
+write something here
+
+
+\section{Zusammenfassung der Diskussion}
 
 Die Entwicklung des GReQL Converters basierte auf der grundlegenden Überlegung, ein Tool zu schaffen, das sich
 kontinuierlich weiterentwickeln kann. Dieser Aspekt fand sich in der Gestaltung des Codes wider, der gemäß etablierter
