@@ -499,10 +499,10 @@ Class Rules Definition, um die Regelobjekte ihren verschiedenen Platzhaltern zuz
 
 Nach diesen Generierungs- und Änderungsschritten wird eine Liste mit allen Regelobjekten erstellt. Diese Liste wird
 dann an den ``Class GReQL Rules Generator'' gesendet. Der Class GReQL Rules Generator generiert basierend auf jeder
-Regel den entsprechenden GReQL-Code. Für jedes Objekt in der Liste identifiziert er zunächst den Regeltyp und generiert
-dann den entsprechenden GReQL-Code. Der Generierungsprozess wurde im Implementierungskapitel ausführlich beschrieben
-(siehe Code~\ref{lst:class_def_xml}). Für jeden Regeltyp ist eine spezifische Methode für die Generierung des
-GReQL-Codes verantwortlich.
+Regel den entsprechenden GReQL-Code. Für jedes Objekt in der Liste identifiziert er zunächst den Regeltyp (durch
+Verwendung der Class Rule Definition) und generiert dann den entsprechenden GReQL-Code. Der Generierungsprozess wurde
+im Implementierungskapitel ausführlich beschrieben (siehe Code~\ref{lst:class_def_xml}). Für jeden Regeltyp ist eine
+spezifische Methode für die Generierung des GReQL-Codes verantwortlich.
 
 Es wäre auch möglich gewesen, eine einzige Methode zu schreiben, die die gesamte Liste umwandeln könnte. Dies hätte
 jedoch den Prozess der Regelgenerierung unnötig komplex gemacht. Es wäre für einen neuen Entwickler schwer gewesen, die
