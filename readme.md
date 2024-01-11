@@ -6,7 +6,7 @@
 | Theme | Generierung von Feedback-Regeln für Modelle aus annotierten Musterlösungen |
 | Grade    | Master of Science (MSc) in Computer Science                                |
 
-Click [Thesis](out/main.pdf) to read the Thesis.
+Click [Thesis](Masterthesis.pdf) to read the Thesis.
 
 ## Resume :
 
