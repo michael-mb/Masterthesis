@@ -4,7 +4,7 @@
 |:------ |:---------------------------------------------------------------------------|
 | Language   | German                                                                     |
 | Theme | Generierung von Feedback-Regeln für Modelle aus annotierten Musterlösungen |
-| Grade    | Master of Science (MSc) in Computer Science                                |
+| Grade    | Master of Science (M.Sc.) in Computer Science                                |
 
 Click [Thesis](Masterthesis.pdf) to read the Thesis.
 
