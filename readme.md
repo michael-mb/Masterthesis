@@ -8,7 +8,7 @@
 
 Click [Thesis](Masterthesis.pdf) to read the Thesis.
 
-## Resume :
+## Abstract :
 
 
 This master’s thesis focuses on the development of the GReQL Converter to simplify the process of 
